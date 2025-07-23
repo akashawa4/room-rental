@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { Home, Plus, Shield, LogOut } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Home, Plus, Shield, LogOut, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import RoomCard from './components/RoomCard.jsx';
 import RoomDetailModal from './components/RoomDetailModal.jsx';
 import AddRoomModal from './components/AddRoomModal.jsx';
 import AdminLoginModal from './components/AdminLoginModal.jsx';
+import GenderSelectionModal from './components/GenderSelectionModal.jsx';
 import { sampleRooms } from './data/rooms.js';
 import './App.css';
 
@@ -14,7 +15,14 @@ function App() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [editRoom, setEditRoom] = useState(null); // NEW: track room being edited
+  const [editRoom, setEditRoom] = useState(null);
+  const [selectedGender, setSelectedGender] = useState(null);
+  const [showGenderSelection, setShowGenderSelection] = useState(true);
+
+  // Filter rooms based on selected gender
+  const filteredRooms = selectedGender 
+    ? rooms.filter(room => room.gender === selectedGender)
+    : rooms;
 
   const handleViewDetails = (room) => {
     setSelectedRoom(room);
@@ -48,15 +56,22 @@ function App() {
     setShowAddForm(false);
   };
 
-  // NEW: handle edit button click
   const handleEditRoom = (room) => {
     setEditRoom(room);
   };
 
-  // NEW: handle edit form submit
   const handleUpdateRoom = (updatedRoom) => {
     setRooms(prev => prev.map(r => r.id === updatedRoom.id ? updatedRoom : r));
     setEditRoom(null);
+  };
+
+  const handleGenderSelect = (gender) => {
+    setSelectedGender(gender);
+    setShowGenderSelection(false);
+  };
+
+  const handleChangeGender = () => {
+    setShowGenderSelection(true);
   };
 
   return (
@@ -75,10 +90,25 @@ function App() {
                 </h1>
                 <p className="text-blue-100 text-sm">
                   Find your perfect room near campus
+                  {selectedGender && (
+                    <span className="ml-2 px-2 py-1 bg-white/20 rounded-full text-xs">
+                      {selectedGender === 'boy' ? 'Boys' : 'Girls'} Rooms
+                    </span>
+                  )}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
+              {selectedGender && (
+                <Button
+                  onClick={handleChangeGender}
+                  variant="outline"
+                  className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                >
+                  <Settings className="w-4 h-4" />
+                  Change Gender
+                </Button>
+              )}
               {isAdmin && (
                 <div className="status-badge status-admin animate-fade-scale">
                   <Shield className="w-4 h-4" />
@@ -113,16 +143,21 @@ function App() {
         <div className="mb-8 text-center animate-slide-up">
           <h2 className="text-4xl font-bold title-gradient mb-3">
             Available Rooms
+            {selectedGender && (
+              <span className="text-2xl ml-2">
+                for {selectedGender === 'boy' ? 'Boys' : 'Girls'}
+              </span>
+            )}
           </h2>
           <p className="text-gray-600 text-lg">
-            {rooms.length} room{rooms.length !== 1 ? 's' : ''} available for rent
+            {filteredRooms.length} room{filteredRooms.length !== 1 ? 's' : ''} available for rent
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Enhanced Room Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {rooms.map((room, index) => (
+          {filteredRooms.map((room, index) => (
             <div 
               key={room.id} 
               className="animate-slide-up"
@@ -131,15 +166,37 @@ function App() {
               <RoomCard
                 room={room}
                 onViewDetails={handleViewDetails}
-                isAdmin={isAdmin} // NEW
-                onEdit={handleEditRoom} // NEW
+                isAdmin={isAdmin}
+                onEdit={handleEditRoom}
               />
             </div>
           ))}
         </div>
 
         {/* Empty State */}
-        {rooms.length === 0 && (
+        {filteredRooms.length === 0 && selectedGender && (
+          <div className="text-center py-16 animate-fade-scale">
+            <div className="w-24 h-24 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Home className="w-12 h-12 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              No rooms available for {selectedGender === 'boy' ? 'boys' : 'girls'}
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Be the first to add a room listing for {selectedGender === 'boy' ? 'boys' : 'girls'}!
+            </p>
+            <Button
+              onClick={handleShowAddForm}
+              className="btn-primary"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Add First Room
+            </Button>
+          </div>
+        )}
+
+        {/* Empty State - No gender selected */}
+        {filteredRooms.length === 0 && !selectedGender && (
           <div className="text-center py-16 animate-fade-scale">
             <div className="w-24 h-24 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6">
               <Home className="w-12 h-12 text-white" />
@@ -156,6 +213,11 @@ function App() {
           </div>
         )}
       </main>
+
+      {/* Gender Selection Modal */}
+      {showGenderSelection && (
+        <GenderSelectionModal onGenderSelect={handleGenderSelect} />
+      )}
 
       {/* Room Detail Modal */}
       {selectedRoom && (
@@ -178,8 +240,8 @@ function App() {
         <AddRoomModal
           onClose={() => setEditRoom(null)}
           onAddRoom={handleUpdateRoom}
-          initialRoom={editRoom} // NEW PROP
-          isEdit // NEW PROP
+          initialRoom={editRoom}
+          isEdit
         />
       )}
 

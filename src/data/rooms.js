@@ -7,6 +7,7 @@ export const sampleRooms = [
     address: "123 College Road, Near Gate 2, University Area",
     location: "50m away from College Gate",
     mapLink: "https://maps.google.com/?q=123+College+Road+University+Area",
+    gender: "boy", // Available for boys
     images: [
       "/Ayan Mulla/mulla 0.jpg",
       "/Ayan Mulla/mulla 1.jpg",
@@ -30,8 +31,9 @@ export const sampleRooms = [
     rent: 1500,
     contact: "+91 7219637257",
     address: "879/53, More Mane Nagar, Shivganga Colony, Kolhapur, Maharashtra 416011",
-    location: "Behind Canteen Mess or Mahalaxmi Mess",
+    location: "70m away from College Gate, Behind Canteen Mess or Mahalaxmi Mess",
     mapLink: "https://goo.gl/maps/9FvULyBjMRWmYziG8?g_st=aw",
+    gender: "boy", // Available for boys
     images: [
       "/api/placeholder/400/300",
       "/api/placeholder/400/300"
@@ -47,6 +49,7 @@ export const sampleRooms = [
     address: "789 Family Colony, Near Main Market",
     location: "Main Market Area",
     mapLink: "https://maps.google.com/?q=789+Family+Colony+Main+Market",
+    gender: "boy", // Available for boys
     images: [
       "/api/placeholder/400/300",
       "/api/placeholder/400/300",
@@ -64,6 +67,7 @@ export const sampleRooms = [
     address: "321 Girls PG Street, Safe Area",
     location: "Girls PG Area",
     mapLink: "https://maps.google.com/?q=321+Girls+PG+Street+Safe+Area",
+    gender: "girl", // Available for girls
     images: [
       "/api/placeholder/400/300",
       "/api/placeholder/400/300"
@@ -73,33 +77,67 @@ export const sampleRooms = [
   },
   {
     id: 5,
-    title: "Studio Apartment - Modern",
+    title: "Studio Apartment - Modern (Girls Only)",
     rent: 3000,
     contact: "+91 9876543214",
     address: "654 Modern Complex, Tech Park Area",
     location: "Tech Park Area",
     mapLink: "https://maps.google.com/?q=654+Modern+Complex+Tech+Park+Area",
+    gender: "girl", // Available for girls
     images: [
       "/api/placeholder/400/300",
       "/api/placeholder/400/300",
       "/api/placeholder/400/300"
     ],
-    description: "Modern studio apartment with contemporary design. Perfect for students who prefer privacy and modern amenities.",
+    description: "Modern studio apartment with contemporary design. Perfect for female students who prefer privacy and modern amenities.",
     amenities: ["Modern Furniture", "High-Speed WiFi", "Gym Access", "Swimming Pool", "Security"]
   },
   {
     id: 6,
-    title: "Shared Room - Budget Friendly",
+    title: "Shared Room - Budget Friendly (Boys)",
     rent: 1500,
     contact: "+91 9876543215",
     address: "987 Budget Street, Student Area",
     location: "Student Area",
     mapLink: "https://maps.google.com/?q=987+Budget+Street+Student+Area",
+    gender: "boy", // Available for boys
     images: [
       "/api/placeholder/400/300"
     ],
-    description: "Budget-friendly shared accommodation perfect for students looking for affordable options. Clean and well-maintained.",
+    description: "Budget-friendly shared accommodation perfect for male students looking for affordable options. Clean and well-maintained.",
     amenities: ["Shared Kitchen", "WiFi", "Study Area", "Common Room"]
+  },
+  {
+    id: 7,
+    title: "Girls Hostel - Premium",
+    rent: 4000,
+    contact: "+91 9876543216",
+    address: "456 Safe Haven Street, Girls Area",
+    location: "Girls Hostel Area",
+    mapLink: "https://maps.google.com/?q=456+Safe+Haven+Street+Girls+Area",
+    gender: "girl", // Available for girls
+    images: [
+      "/api/placeholder/400/300",
+      "/api/placeholder/400/300"
+    ],
+    description: "Premium girls hostel with all modern amenities. Safe and secure environment with 24/7 security.",
+    amenities: ["AC", "Meals Included", "Laundry", "WiFi", "CCTV", "Lady Warden", "Study Hall"]
+  },
+  {
+    id: 8,
+    title: "Boys Hostel - Deluxe",
+    rent: 3800,
+    contact: "+91 9876543217",
+    address: "789 Boys Colony, Student Area",
+    location: "Boys Hostel Area",
+    mapLink: "https://maps.google.com/?q=789+Boys+Colony+Student+Area",
+    gender: "boy", // Available for boys
+    images: [
+      "/api/placeholder/400/300",
+      "/api/placeholder/400/300"
+    ],
+    description: "Deluxe boys hostel with excellent facilities. Perfect for serious students with all necessary amenities.",
+    amenities: ["AC", "Meals Included", "Laundry", "WiFi", "Security", "Gym", "Study Hall"]
   }
 ];
 
