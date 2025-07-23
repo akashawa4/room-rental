@@ -1,8 +1,9 @@
 export const sampleRooms = [
   {
     id: 1,
-    title: "Mulla's 1RK & 1RK(without including light & water bill)",
+    title: "Mulla's 1RK & 1RK",
     rent: 5000,
+    note: "without including light and water bill",
     contact: "+91 9890491855",
     address: "123 College Road, Near Gate 2, University Area",
     location: "50m away from College Gate",
@@ -27,26 +28,30 @@ export const sampleRooms = [
   },
   {
     id: 2,
-    title: "Sangita Gavde's Single Room (without including light & water bill)",
+    title: "Sangita Gavde's Single Room",
     rent: 1500,
+    note: "without including light and water bill",
     contact: "+91 7219637257",
     address: "879/53, More Mane Nagar, Shivganga Colony, Kolhapur, Maharashtra 416011",
-    location: "70m away from College Gate, Behind Canteen Mess or Mahalaxmi Mess",
+    location: "Behind Canteen Mess or Mahalaxmi Mess",
     mapLink: "https://goo.gl/maps/9FvULyBjMRWmYziG8?g_st=aw",
     gender: "boy", // Available for boys
     images: [
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300"
+      "/Sabgita Gavde/S Gavde 0.jpg",
+      "/Sabgita Gavde/S Gavde 1.jpg",
+      "/Sabgita Gavde/S Gavde 2.jpg",
+      "/Sabgita Gavde/S Gavde 3.jpg",
     ],
-    description: "Clean and comfortable single room in boys hostel area. Ideal for focused study environment.",
-    amenities: ["Furnished", "Study Table", "Wardrobe", "Common Kitchen"]
+    description: "2 Boys can stay in this room, 1 YEAR AGREEMENT ,1000 Rs. Deposite ,After 11pm no entry , Friends are not allowed in room .",
+    amenities: ["WIFI", "WATER SUPPLY", "LIGHT BILL SEPRATE METER", "PARKING", "GAS GEYSER"]
   },
   {
     id: 3,
-    title: "3BHK Family Apartment",
-    rent: 6000,
-    contact: "+91 9876543212",
-    address: "789 Family Colony, Near Main Market",
+    title: "Dipali Teli's 1RK",
+    rent: 2000 ,
+    note: "Whole Room, rent including light and water bill",
+    contact: "+91 7568183951",
+    address: "789 Family Colony, Near Main Marke",
     location: "Main Market Area",
     mapLink: "https://maps.google.com/?q=789+Family+Colony+Main+Market",
     gender: "boy", // Available for boys
@@ -61,7 +66,7 @@ export const sampleRooms = [
   },
   {
     id: 4,
-    title: "PG for Girls - AC Rooms",
+    title: "PG for",
     rent: 3500,
     contact: "+91 9876543213",
     address: "321 Girls PG Street, Safe Area",

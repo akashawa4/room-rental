@@ -47,8 +47,13 @@ const RoomCard = ({ room, onViewDetails, isAdmin, onEdit }) => {
             {room.title}
           </h3>
           <div className="price-highlight text-2xl font-bold">
-            ₹{room.rent.toLocaleString()}/month
+            ₹{room.rent.toLocaleString()}/month <span className="text-base font-semibold">per student</span>
           </div>
+          {room.note && (
+            <div className="text-base font-bold text-gray-700 mt-1">
+              {room.note}
+            </div>
+          )}
         </div>
 
         {/* Location */}
