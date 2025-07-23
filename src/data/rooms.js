@@ -51,8 +51,8 @@ export const sampleRooms = [
     rent: 2000 ,
     note: " Rent including light and water bill,2/3 girls can stay in this room.",
     contact: "+91 7568183951",
-    address: "Survey Nagar ,Infront of Mug Kirana Shop ,Klamaba.",
-    location: "Main Market Area",
+    address: "Survey Nagar ,Klamaba.",
+    location: "150m away from College Gate, Infront of Mug Kirana Shop ,",
     mapLink: "https://maps.app.goo.gl/wwbd9bpKvDYmuowo6?g_st=aw",
     gender: "girl", // Available for girls
     images: [
@@ -71,36 +71,52 @@ export const sampleRooms = [
   },
   {
     id: 4,
-    title: "PG for",
-    rent: 3500,
-    contact: "+91 9876543213",
-    address: "321 Girls PG Street, Safe Area",
-    location: "Girls PG Area",
-    mapLink: "https://maps.google.com/?q=321+Girls+PG+Street+Safe+Area",
+    title: "Trimurti House",
+    rent: 1700,
+    note: "Including light and water bill , 1 girl can stay in this room.",
+    contact: "+91 8999181429",
+    address: " More Mane Nagar , Kalamba",
+    location: "300m away from College Gate, Girls PG Area",
+    mapLink: "https://goo.gl/maps/pc8vTXNy433X5CVq6?g_st=aw",
     gender: "girl", // Available for girls
     images: [
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300"
+      "/Trimurti House/house 0.jpg",
+      "/Trimurti House/house 1.jpg",
+      "/Trimurti House/house 2.jpg",
+      "/Trimurti House/house 3.jpg",
+      "/Trimurti House/house 4.jpg",
+      "/Trimurti House/house 5.jpg",
+      "/Trimurti House/house 6.jpg",
+      
     ],
-    description: "Safe and secure PG accommodation for girls with AC rooms. Homely environment with all facilities.",
-    amenities: ["AC", "Meals Included", "Laundry", "WiFi", "CCTV", "Lady Warden"]
+    description: "After 10pm no entry , Self cooking not allowed , 1700 Rs. Advance , addhar car and student photo is mandatory ",
+    amenities: ["WIFI", "GEYSER", "WATER SUPPLY", "CHARGING BULB FOR LIGHT ISSUE", "TERRACE ACCESS" , "PARKING" , "AQUA FILTRE"]
   },
   {
     id: 5,
-    title: "Studio Apartment - Modern (Girls Only)",
-    rent: 3000,
-    contact: "+91 9876543214",
-    address: "654 Modern Complex, Tech Park Area",
-    location: "Tech Park Area",
-    mapLink: "https://maps.google.com/?q=654+Modern+Complex+Tech+Park+Area",
+    title: "SHREE SWAMI SAMARTH GIRLS HOSTEL",
+    rent: 2000,
+    note: "Including light and water bill , 1 girl can stay in this room.",
+    contact: "+91 9975867802",
+    address: "MORE MANE NAGAR KALAMBA ",
+    location: "320m away from College Gate, Girls PG Area",
+    mapLink: "https://maps.app.goo.gl/Ydgb2vWPs4hGAUfa8?g_st=aw",
     gender: "girl", // Available for girls
     images: [
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300"
+      "/more sir girls hostel/hostel 0.jpg",
+      "/more sir girls hostel/hostel 1.jpg",
+      "/more sir girls hostel/hostel 2.jpg",
+      "/more sir girls hostel/hostel 3.jpg",
+      "/more sir girls hostel/hostel 4.jpg",
+      "/more sir girls hostel/hostel 5.jpg",
+      "/more sir girls hostel/hostel 6.jpg",
+      "/more sir girls hostel/hostel 7.jpg",
+      "/more sir girls hostel/hostel 8.jpg",
+      "/more sir girls hostel/hostel 9.jpg",
+      
     ],
-    description: "Modern studio apartment with contemporary design. Perfect for female students who prefer privacy and modern amenities.",
-    amenities: ["Modern Furniture", "High-Speed WiFi", "Gym Access", "Swimming Pool", "Security"]
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry(Entry gate locked) , Self cooking not allowed , 2000 Rs. Advance , addhar car and student photo is mandatory ",
+    amenities: ["3 Floor buliding","WIFI", "GEYSER", "WATER SUPPLY", "Cloth Drying Area", "TERRACE ACCESS" , "PARKING" , "CCTV CAMERA" , "SECURITY" , "BEDS" , "CUBERT", "LADY DOCTOR SUPPORT", "shoes stand" , "Grbage Mnagement by owner", "Parents allowed for stay", "Solar Panel"]
   },
   {
     id: 6,
