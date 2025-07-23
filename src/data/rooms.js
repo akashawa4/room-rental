@@ -3,7 +3,7 @@ export const sampleRooms = [
     id: 1,
     title: "Mulla's 1RK & 1RK",
     rent: 5000,
-    note: "without including light and water bill",
+    note: "without including light and water bill , 2/3 Students can stay in this 1RK.",
     contact: "+91 9890491855",
     address: "123 College Road, Near Gate 2, University Area",
     location: "50m away from College Gate",
@@ -23,7 +23,7 @@ export const sampleRooms = [
       "/Ayan Mulla/mulla 10.jpg",
       "/Ayan Mulla/mulla 11.jpg"
     ],
-    description: "Only 2/3 Students can stay in this 1RK.",
+    description: "After 10pm no entry , Friends are not allowed in room .",
     amenities: ["GAS GEYSER", "WIFI", "WATER SUPPLY", "SECURITY", "PARKING", ]
   },
   {
@@ -49,20 +49,25 @@ export const sampleRooms = [
     id: 3,
     title: "Dipali Teli's 1RK",
     rent: 2000 ,
-    note: "Whole Room, rent including light and water bill",
+    note: " Rent including light and water bill,2/3 girls can stay in this room.",
     contact: "+91 7568183951",
-    address: "789 Family Colony, Near Main Marke",
+    address: "Survey Nagar ,Infront of Mug Kirana Shop ,Klamaba.",
     location: "Main Market Area",
-    mapLink: "https://maps.google.com/?q=789+Family+Colony+Main+Market",
-    gender: "boy", // Available for boys
+    mapLink: "https://maps.app.goo.gl/wwbd9bpKvDYmuowo6?g_st=aw",
+    gender: "girl", // Available for girls
     images: [
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300"
+      "/Dipali Teli/Teli 0.jpg",
+      "/Dipali Teli/Teli 1.jpg",
+      "/Dipali Teli/Teli 2.jpg",
+      "/Dipali Teli/Teli 3.jpg",
+      "/Dipali Teli/Teli 4.jpg",
+      "/Dipali Teli/Teli 5.jpg",
+      "/Dipali Teli/Teli 6.jpg",
+      "/Dipali Teli/Teli 7.jpg",
+
     ],
-    description: "Spacious 3BHK apartment suitable for families or group of students. Located in peaceful family colony.",
-    amenities: ["Fully Furnished", "AC", "WiFi", "Parking", "Garden", "Security"]
+    description: "After 09:30 pm  no entry , Only Praents Allowed in room except brother , addhar card and photo of student  is mandatory ",
+    amenities: ["PARKING", "WATER SUPPLY", "SELF COOKING  ALLOW", "OWNER HAVE MESS", "TERRACE ACCESS"]
   },
   {
     id: 4,
