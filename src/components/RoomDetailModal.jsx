@@ -19,11 +19,14 @@ import {
   Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
+import { Dialog, DialogContent } from '@/components/ui/dialog.jsx';
+import { useIsMobile } from '@/hooks/use-mobile.js';
 
 const RoomDetailModal = ({ room, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [shareMessage, setShareMessage] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prev) => 
@@ -91,6 +94,8 @@ const RoomDetailModal = ({ room, onClose }) => {
     return <Zap className="w-4 h-4" />;
   };
 
+  const isMobile = useIsMobile();
+
   return (
     <div className="modal-backdrop fixed inset-0 flex items-center justify-center p-4 z-50">
       <div className="modal-content max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-fade-scale">
@@ -115,11 +120,6 @@ const RoomDetailModal = ({ room, onClose }) => {
                 <MapPin className="w-4 h-4" />
                 {room.location}
               </p>
-              <div className="flex items-center gap-1">
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                <span className="text-sm font-semibold text-gray-700">4.8</span>
-                <span className="text-sm text-gray-500">(24 reviews)</span>
-              </div>
             </div>
           </div>
           <Button
@@ -142,7 +142,8 @@ const RoomDetailModal = ({ room, onClose }) => {
                   <img
                     src={room.images[currentImageIndex]}
                     alt={`${room.title} - Image ${currentImageIndex + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover cursor-zoom-in"
+                    onClick={() => setIsFullscreen(true)}
                   />
                   {room.images.length > 1 && (
                     <>
@@ -296,6 +297,74 @@ const RoomDetailModal = ({ room, onClose }) => {
           </div>
         </div>
       </div>
+
+      {/* Fullscreen Dialog for Image */}
+      <Dialog open={isFullscreen} onOpenChange={setIsFullscreen}>
+        <DialogContent className={`max-w-none w-screen h-screen flex items-center justify-center bg-black/90 p-0 ${isMobile ? 'rounded-none' : ''} animate-zoom-in`}>
+          {/* Image count and title overlay */}
+          <div className="absolute top-0 left-0 w-full flex flex-col items-center z-40 pointer-events-none">
+            <div className="mt-4 px-4 py-1 rounded-full bg-black/60 text-white text-xs font-semibold shadow-lg animate-fade-in">
+              {room.title} &nbsp;|&nbsp; {currentImageIndex + 1} / {room.images.length}
+            </div>
+          </div>
+          <div className="relative w-full h-full flex flex-col items-center justify-center">
+            <button
+              onClick={() => setIsFullscreen(false)}
+              className={`absolute top-2 right-2 z-50 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg ${isMobile ? 'top-3 right-3 p-3' : ''}`}
+              style={isMobile ? { top: 12, right: 12 } : {}}
+            >
+              <X className={`text-black ${isMobile ? 'w-8 h-8' : 'w-6 h-6'}`} />
+            </button>
+            <div
+              className="flex-1 flex items-center justify-center w-full overflow-x-auto relative"
+              {...(isMobile ? {
+                onTouchStart: (e) => (window._touchStartX = e.touches[0].clientX),
+                onTouchEnd: (e) => {
+                  const dx = e.changedTouches[0].clientX - window._touchStartX;
+                  if (dx > 50) handlePrevImage();
+                  if (dx < -50) handleNextImage();
+                }
+              } : {})}
+            >
+              <button
+                onClick={handlePrevImage}
+                className={`absolute left-2 top-1/2 transform -translate-y-1/2 z-50 bg-white/90 hover:bg-orange-400 rounded-full flex items-center justify-center shadow-lg border-2 border-orange-200 ${isMobile ? 'w-14 h-14' : 'w-12 h-12'}`}
+                style={isMobile ? { left: 8 } : {}}
+              >
+                <ChevronLeft className={`text-black ${isMobile ? 'w-9 h-9' : 'w-7 h-7'}`} />
+              </button>
+              <img
+                src={room.images[currentImageIndex]}
+                alt={`${room.title} - Fullscreen Image ${currentImageIndex + 1}`}
+                className={`object-contain mx-auto transition-all duration-500 shadow-2xl ${isMobile ? 'max-h-[70vh] max-w-full rounded-lg' : 'max-h-[90vh] max-w-3xl rounded-2xl'} animate-image-fade-in`}
+                style={isMobile ? { maxHeight: '70vh', width: '100%' } : {}}
+              />
+              <button
+                onClick={handleNextImage}
+                className={`absolute right-2 top-1/2 transform -translate-y-1/2 z-50 bg-white/90 hover:bg-orange-400 rounded-full flex items-center justify-center shadow-lg border-2 border-orange-200 ${isMobile ? 'w-14 h-14' : 'w-12 h-12'}`}
+                style={isMobile ? { right: 8 } : {}}
+              >
+                <ChevronRight className={`text-black ${isMobile ? 'w-9 h-9' : 'w-7 h-7'}`} />
+              </button>
+              {/* Gradient overlay for thumbnails */}
+              <div className="absolute bottom-0 left-0 w-full h-24 pointer-events-none" style={{background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%)'}} />
+            </div>
+            {/* Thumbnails for scrolling */}
+            <div className={`w-full flex ${isMobile ? 'flex-row overflow-x-auto py-2 px-1 gap-1 bg-black/80' : 'gap-2 justify-center items-center py-4 overflow-x-auto bg-black/60'} z-30`} style={isMobile ? { maxWidth: '100vw' } : {}}>
+              {room.images.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img}
+                  alt={`Thumbnail ${idx + 1}`}
+                  className={`object-cover rounded cursor-pointer border-2 transition-all duration-300 ${idx === currentImageIndex ? 'border-orange-400 shadow-lg ring-2 ring-orange-400' : 'border-transparent opacity-70 hover:opacity-100'} ${isMobile ? 'h-12 w-20' : 'h-16 w-24'}`}
+                  onClick={() => setCurrentImageIndex(idx)}
+                  style={isMobile ? { minWidth: 80, height: 48 } : {}}
+                />
+              ))}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

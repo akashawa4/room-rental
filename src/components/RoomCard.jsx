@@ -37,11 +37,6 @@ const RoomCard = ({ room, onViewDetails, isAdmin, onEdit }) => {
           <Heart className="w-4 h-4 text-gray-600 hover:text-red-500" />
         </button>
         
-        {/* Rating Badge */}
-        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
-          <Star className="w-3 h-3 text-yellow-500 fill-current" />
-          <span className="text-xs font-semibold text-gray-700">4.8</span>
-        </div>
       </div>
 
       {/* Enhanced Content Section */}
