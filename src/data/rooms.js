@@ -5,9 +5,9 @@ export const sampleRooms = [
     rent: 5000,
     note: "without including light and water bill , 2/3 Students can stay in this 1RK.",
     contact: "+91 9890491855",
-    address: "123 College Road, Near Gate 2, University Area",
+    address: "Salokhe Nagar, Kalamba",
     location: "50m away from College Gate",
-    mapLink: "https://maps.google.com/?q=123+College+Road+University+Area",
+    mapLink: "https://maps.app.goo.gl/iSpymFmgpNX7F22X7?g_st=aw",
     gender: "boy", // Available for boys
     images: [
       "/Ayan Mulla/mulla 0.jpg",
@@ -23,8 +23,8 @@ export const sampleRooms = [
       "/Ayan Mulla/mulla 10.jpg",
       "/Ayan Mulla/mulla 11.jpg"
     ],
-    description: "After 10pm no entry , Friends are not allowed in room .",
-    amenities: ["GAS GEYSER", "WIFI", "WATER SUPPLY", "SECURITY", "PARKING", ]
+    description: "5000 Rs. Advance , Gas Geyser Cylinder Should Refill by students ,The rent should be paid between the 1st and 10th of each month ,Student Addhar card , photo and paraent phone number is mandatory , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , ",
+    features: ["GAS GEYSER", "WIFI", "WATER SUPPLY", "Charging Bulb for light issue", "PARKING" , "Study Table for Students","3 CHAIRS FOR STUDENTS" , "MESS IN NEIGHBOUR HOUSE" , "TERRACE ACCESS" ]
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const sampleRooms = [
     note: "without including light and water bill",
     contact: "+91 7219637257",
     address: "879/53, More Mane Nagar, Shivganga Colony, Kolhapur, Maharashtra 416011",
-    location: "Behind Canteen Mess or Mahalaxmi Mess",
+    location: "50m away from College Gate , Behind Canteen Mess ",
     mapLink: "https://goo.gl/maps/9FvULyBjMRWmYziG8?g_st=aw",
     gender: "boy", // Available for boys
     images: [
@@ -43,7 +43,7 @@ export const sampleRooms = [
       "/Sabgita Gavde/S Gavde 3.jpg",
     ],
     description: "2 Boys can stay in this room, 1 YEAR AGREEMENT ,1000 Rs. Deposite ,After 11pm no entry , Friends are not allowed in room .",
-    amenities: ["WIFI", "WATER SUPPLY", "LIGHT BILL SEPRATE METER", "PARKING", "GAS GEYSER"]
+    features: ["WIFI", "WATER SUPPLY", "fOR LIGHT BILL SEPRATE METER", "PARKING", "GAS GEYSER"]
   },
   {
     id: 3,
@@ -67,7 +67,7 @@ export const sampleRooms = [
 
     ],
     description: "After 09:30 pm  no entry , Only Praents Allowed in room except brother , addhar card and photo of student  is mandatory ",
-    amenities: ["PARKING", "WATER SUPPLY", "SELF COOKING  ALLOW", "OWNER HAVE MESS", "TERRACE ACCESS"]
+    features: ["PARKING", "WATER SUPPLY", "SELF COOKING  ALLOW", "OWNER HAVE MESS", "TERRACE ACCESS"]
   },
   {
     id: 4,
@@ -90,7 +90,7 @@ export const sampleRooms = [
       
     ],
     description: "After 10pm no entry , Self cooking not allowed , 1700 Rs. Advance , addhar car and student photo is mandatory ",
-    amenities: ["WIFI", "GEYSER", "WATER SUPPLY", "CHARGING BULB FOR LIGHT ISSUE", "TERRACE ACCESS" , "PARKING" , "AQUA FILTRE"]
+    features: ["WIFI", "GEYSER", "WATER SUPPLY", "CHARGING BULB FOR LIGHT ISSUE", "TERRACE ACCESS" , "PARKING" , "AQUA FILTRE"]
   },
   {
     id: 5,
@@ -116,22 +116,23 @@ export const sampleRooms = [
       
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry(Entry gate locked) , Self cooking not allowed , 2000 Rs. Advance , addhar car and student photo is mandatory ",
-    amenities: ["3 Floor buliding","WIFI", "GEYSER", "WATER SUPPLY", "Cloth Drying Area", "TERRACE ACCESS" , "PARKING" , "CCTV CAMERA" , "SECURITY" , "BEDS" , "CUBERT", "LADY DOCTOR SUPPORT", "shoes stand" , "Grbage Mnagement by owner", "Parents allowed for stay", "Solar Panel"]
+    features: ["3 Floor buliding","WIFI", "GEYSER", "WATER SUPPLY", "Cloth Drying Area", "TERRACE ACCESS" , "PARKING" , "CCTV CAMERA" , "SECURITY" , "BEDS" , "CUBERT", "LADY DOCTOR SUPPORT", "shoes stand" , "Grbage Mnagement by owner", "Parents allowed for stay", "Solar Panel"]
   },
   {
     id: 6,
-    title: "Shared Room - Budget Friendly (Boys)",
-    rent: 1500,
-    contact: "+91 9876543215",
-    address: "987 Budget Street, Student Area",
-    location: "Student Area",
+    title: "RUPALI RIKAM'S 1RK",
+    rent: 2000,
+    note: "Including light and water bill , 4/5 GIRLS can stay in this room.",
+    contact: "+91 8855883164",
+    address: "MORE MANE NAGAR ,Klamaba.",
+    location: "300m away from College Gate, Near Trimurti House.",
     mapLink: "https://maps.google.com/?q=987+Budget+Street+Student+Area",
-    gender: "boy", // Available for boys
+    gender: "girls", // Available for girls
     images: [
       "/api/placeholder/400/300"
     ],
     description: "Budget-friendly shared accommodation perfect for male students looking for affordable options. Clean and well-maintained.",
-    amenities: ["Shared Kitchen", "WiFi", "Study Area", "Common Room"]
+    features: ["Shared Kitchen", "WiFi", "Study Area", "Common Room"]
   },
   {
     id: 7,
@@ -147,7 +148,7 @@ export const sampleRooms = [
       "/api/placeholder/400/300"
     ],
     description: "Premium girls hostel with all modern amenities. Safe and secure environment with 24/7 security.",
-    amenities: ["AC", "Meals Included", "Laundry", "WiFi", "CCTV", "Lady Warden", "Study Hall"]
+    features: ["AC", "Meals Included", "Laundry", "WiFi", "CCTV", "Lady Warden", "Study Hall"]
   },
   {
     id: 8,
@@ -163,7 +164,7 @@ export const sampleRooms = [
       "/api/placeholder/400/300"
     ],
     description: "Deluxe boys hostel with excellent facilities. Perfect for serious students with all necessary amenities.",
-    amenities: ["AC", "Meals Included", "Laundry", "WiFi", "Security", "Gym", "Study Hall"]
+    features: ["AC", "Meals Included", "Laundry", "WiFi", "Security", "Gym", "Study Hall"]
   }
 ];
 

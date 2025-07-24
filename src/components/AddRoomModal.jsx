@@ -22,7 +22,7 @@ const AddRoomModal = ({ onClose, onAddRoom, initialRoom, isEdit }) => {
     location: initialRoom.location || '',
     mapLink: initialRoom.mapLink || '',
     description: initialRoom.description || '',
-    amenities: initialRoom.amenities ? initialRoom.amenities.join(', ') : '',
+    features: initialRoom.features ? initialRoom.features.join(', ') : '',
     gender: initialRoom.gender || 'boy',
     images: initialRoom.images || []
   } : {
@@ -33,7 +33,7 @@ const AddRoomModal = ({ onClose, onAddRoom, initialRoom, isEdit }) => {
     location: '',
     mapLink: '',
     description: '',
-    amenities: '',
+    features: '',
     gender: 'boy',
     images: []
   });
@@ -145,7 +145,7 @@ const AddRoomModal = ({ onClose, onAddRoom, initialRoom, isEdit }) => {
         location: formData.location.trim(),
         mapLink: formData.mapLink.trim(),
         description: formData.description.trim(),
-        amenities: formData.amenities.split(',').map(a => a.trim()).filter(a => a),
+        features: formData.features.split(',').map(a => a.trim()).filter(a => a),
         gender: formData.gender,
         images: formData.images.length > 0 ? formData.images : ['/api/placeholder/400/300']
       };
@@ -347,19 +347,24 @@ const AddRoomModal = ({ onClose, onAddRoom, initialRoom, isEdit }) => {
               )}
             </div>
 
-            {/* Amenities */}
+            {/* Features */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Amenities (comma-separated)
+                Features (comma-separated)
               </label>
               <input
                 type="text"
-                name="amenities"
-                value={formData.amenities}
+                name="features"
+                value={formData.features}
                 onChange={handleInputChange}
-                placeholder="Furnished, WiFi, Parking, 24/7 Security"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., WIFI, PARKING, GEYSER"
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  errors.features ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
+              {errors.features && (
+                <p className="text-red-500 text-sm mt-1">{errors.features}</p>
+              )}
             </div>
 
             {/* Gender Selection */}

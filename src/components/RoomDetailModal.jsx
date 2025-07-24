@@ -199,22 +199,29 @@ const RoomDetailModal = ({ room, onClose }) => {
                   {room.note}
                 </div>
               )}
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {room.description}
-              </p>
-              
-              {/* Enhanced Amenities */}
-              {room.amenities && room.amenities.length > 0 && (
+              {room.description && (
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Amenities</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Conditions</h3>
+                  <ul className="text-gray-600 leading-relaxed list-disc list-inside">
+                    {room.description.split(/,|\n/).map((item, idx) => (
+                      item.trim() && <li key={idx}>{item.trim()}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {/* Enhanced Features */}
+              {room.features && room.features.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Features</h3>
                   <div className="flex flex-wrap gap-2">
-                    {room.amenities.map((amenity, index) => (
+                    {room.features.map((feature, index) => (
                       <div
                         key={index}
                         className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-full text-sm font-medium text-gray-700"
                       >
-                        {getAmenityIcon(amenity)}
-                        {amenity}
+                        {getAmenityIcon(feature)}
+                        {feature}
                       </div>
                     ))}
                   </div>
@@ -280,26 +287,7 @@ const RoomDetailModal = ({ room, onClose }) => {
             </div>
           </div>
 
-          {/* Enhanced Google Maps Embed */}
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Map View</h3>
-            <div className="relative h-64 bg-gray-100 rounded-xl overflow-hidden">
-              <iframe
-                src={getMapEmbedUrl()}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-xl"
-                title="Room Location"
-              />
-              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                <p className="text-gray-500">Map will load with valid Google Maps API key</p>
-              </div>
-            </div>
-          </div>
+          {/* Removed Map View card as requested */}
         </div>
       </div>
 
