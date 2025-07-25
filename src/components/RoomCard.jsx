@@ -1,7 +1,7 @@
 import { MapPin, Phone, ExternalLink, Heart, Star, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 
-const RoomCard = ({ room, onViewDetails, isAdmin, onEdit }) => {
+const RoomCard = ({ room, onViewDetails, isAdmin, onEdit, isFirst }) => {
   const handleCallClick = () => {
     window.location.href = `tel:${room.contact}`;
   };
@@ -15,15 +15,21 @@ const RoomCard = ({ room, onViewDetails, isAdmin, onEdit }) => {
       {/* Enhanced Image Section */}
       <div className="relative mb-4 overflow-hidden rounded-xl">
         <div className="w-full h-48 bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
-          <img
-            src={room.images[0]}
-            alt={room.title}
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'flex';
-            }}
-          />
+          <picture>
+            <source srcSet={room.images[0]?.replace(/\.(jpg|jpeg|png)$/i, '.avif')} type="image/avif" />
+            <source srcSet={room.images[0]?.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+            <img
+              src={room.images[0]}
+              alt={room.title}
+              className="w-full h-full object-cover"
+              decoding="async"
+              {...(isFirst ? {} : { loading: 'lazy' })}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+          </picture>
           <div className="text-center" style={{ display: 'none' }}>
             <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-2">
               <Home className="w-8 h-8 text-white" />
@@ -33,7 +39,7 @@ const RoomCard = ({ room, onViewDetails, isAdmin, onEdit }) => {
         </div>
         
         {/* Favorite Button */}
-        <button className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all">
+        <button aria-label="Add to favorites" className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all">
           <Heart className="w-4 h-4 text-gray-600 hover:text-red-500" />
         </button>
         
@@ -72,6 +78,7 @@ const RoomCard = ({ room, onViewDetails, isAdmin, onEdit }) => {
           <button
             onClick={handleCallClick}
             className="font-medium hover:text-blue-600 transition-colors"
+            aria-label="Call contact number"
           >
             {room.contact}
           </button>

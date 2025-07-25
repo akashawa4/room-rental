@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Home, Plus, Shield, LogOut, Settings } from 'lucide-react';
+import { Home, Plus, Shield, LogOut, Settings, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import RoomCard from './components/RoomCard.jsx';
 import RoomDetailModal from './components/RoomDetailModal.jsx';
@@ -18,11 +18,19 @@ function App() {
   const [editRoom, setEditRoom] = useState(null);
   const [selectedGender, setSelectedGender] = useState(null);
   const [showGenderSelection, setShowGenderSelection] = useState(true);
+  const [category, setCategory] = useState('All');
+  const [search, setSearch] = useState('');
 
-  // Filter rooms based on selected gender
-  const filteredRooms = selectedGender 
-    ? rooms.filter(room => room.gender === selectedGender)
-    : rooms;
+  // Room type categories
+  const categories = ['All', 'Single Room', 'Cot Basis', '1 RK', '1 BHK', '2 BHK'];
+
+  // Enhanced filtering
+  const filteredRooms = rooms.filter(room => {
+    const matchesGender = selectedGender ? room.gender === selectedGender : true;
+    const matchesCategory = category === 'All' || (room.title && room.title.toLowerCase().includes(category.toLowerCase()));
+    const matchesSearch = room.title && room.title.toLowerCase().includes(search.toLowerCase());
+    return matchesGender && matchesCategory && matchesSearch;
+  });
 
   const handleViewDetails = (room) => {
     setSelectedRoom(room);
@@ -139,6 +147,33 @@ function App() {
 
       {/* Enhanced Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Categories Bar and Search Bar */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 animate-slide-up">
+          <div className="flex flex-wrap gap-2">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                className={`px-4 py-2 rounded-full border transition-all text-sm font-semibold ${category === cat ? 'bg-orange-500 text-white border-orange-500' : 'bg-white text-orange-500 border-orange-300 hover:bg-orange-100'}`}
+                onClick={() => setCategory(cat)}
+                aria-pressed={category === cat}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          <div className="relative w-full md:w-72">
+            <input
+              type="text"
+              placeholder="Search by room title..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-400"
+              aria-label="Search rooms by title"
+            />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-400 w-5 h-5 pointer-events-none" />
+          </div>
+        </div>
+
         {/* Enhanced Room Count Section */}
         <div className="mb-8 text-center animate-slide-up">
           <h2 className="text-4xl font-bold title-gradient mb-3">
@@ -168,6 +203,7 @@ function App() {
                 onViewDetails={handleViewDetails}
                 isAdmin={isAdmin}
                 onEdit={handleEditRoom}
+                isFirst={index === 0}
               />
             </div>
           ))}

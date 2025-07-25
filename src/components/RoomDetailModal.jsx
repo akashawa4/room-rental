@@ -139,12 +139,18 @@ const RoomDetailModal = ({ room, onClose }) => {
             <div className="relative h-80 bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl overflow-hidden">
               {room.images && room.images.length > 0 ? (
                 <>
+                  <picture>
+                    <source srcSet={room.images[currentImageIndex]?.replace(/\.(jpg|jpeg|png)$/i, '.avif')} type="image/avif" />
+                    <source srcSet={room.images[currentImageIndex]?.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
                   <img
                     src={room.images[currentImageIndex]}
                     alt={`${room.title} - Image ${currentImageIndex + 1}`}
                     className="w-full h-full object-cover cursor-zoom-in"
+                      loading="lazy"
+                      decoding="async"
                     onClick={() => setIsFullscreen(true)}
                   />
+                  </picture>
                   {room.images.length > 1 && (
                     <>
                       <button
@@ -345,14 +351,19 @@ const RoomDetailModal = ({ room, onClose }) => {
             {/* Thumbnails for scrolling */}
             <div className={`w-full flex ${isMobile ? 'flex-row overflow-x-auto py-2 px-1 gap-1 bg-black/80' : 'gap-2 justify-center items-center py-4 overflow-x-auto bg-black/60'} z-30`} style={isMobile ? { maxWidth: '100vw' } : {}}>
               {room.images.map((img, idx) => (
+                <picture key={idx}>
+                  <source srcSet={img.replace(/\.(jpg|jpeg|png)$/i, '.avif')} type="image/avif" />
+                  <source srcSet={img.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
                 <img
-                  key={idx}
                   src={img}
                   alt={`Thumbnail ${idx + 1}`}
                   className={`object-cover rounded cursor-pointer border-2 transition-all duration-300 ${idx === currentImageIndex ? 'border-orange-400 shadow-lg ring-2 ring-orange-400' : 'border-transparent opacity-70 hover:opacity-100'} ${isMobile ? 'h-12 w-20' : 'h-16 w-24'}`}
+                    loading="lazy"
+                    decoding="async"
                   onClick={() => setCurrentImageIndex(idx)}
                   style={isMobile ? { minWidth: 80, height: 48 } : {}}
                 />
+                </picture>
               ))}
             </div>
           </div>
