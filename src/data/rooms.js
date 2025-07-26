@@ -9,6 +9,7 @@ export const sampleRooms = [
     location: "50m away from College Gate",
     mapLink: "https://maps.app.goo.gl/iSpymFmgpNX7F22X7?g_st=aw",
     gender: "boy", // Available for boys
+    roomType: "1 RK",
     images: [
       "/Ayan Mulla/mulla 0_converted.avif",
       "/Ayan Mulla/mulla 1_converted.avif",
@@ -36,6 +37,7 @@ export const sampleRooms = [
     location: "50m away from College Gate , Behind Canteen Mess ",
     mapLink: "https://goo.gl/maps/9FvULyBjMRWmYziG8?g_st=aw",
     gender: "boy", // Available for boys
+    roomType: "Single Room",
     images: [
       "/Sabgita Gavde/S Gavde 0_converted.avif",
       "/Sabgita Gavde/S Gavde 1_converted.avif",
@@ -55,6 +57,7 @@ export const sampleRooms = [
     location: "150m away from College Gate, Infront of Mug Kirana Shop ,",
     mapLink: "https://maps.app.goo.gl/wwbd9bpKvDYmuowo6?g_st=aw",
     gender: "girl", // Available for girls
+    roomType: "1RK",
     images: [
       "/Dipali Teli/Teli 0_converted.avif",
       "/Dipali Teli/Teli 1_converted.avif",
@@ -78,6 +81,7 @@ export const sampleRooms = [
     location: "300m away from College Gate, Girls PG Area",
     mapLink: "https://goo.gl/maps/pc8vTXNy433X5CVq6?g_st=aw",
     gender: "girl", // Available for girls
+    roomType: "Cot Basis",
     images: [
       "/Trimurti House/house 0_converted.avif",
       "/Trimurti House/house 1_converted.avif",
@@ -100,6 +104,7 @@ export const sampleRooms = [
     location: "320m away from College Gate, Girls PG Area",
     mapLink: "https://maps.app.goo.gl/Ydgb2vWPs4hGAUfa8?g_st=aw",
     gender: "girl", // Available for girls
+    roomType: "Cot Basis",
     images: [
       "/more sir girls hostel/hostel 0.avif",
       "/more sir girls hostel/hostel 1.avif",
@@ -126,6 +131,7 @@ export const sampleRooms = [
     location: "300m away from College Gate, Near Trimurti House.",
     mapLink: "https://maps.google.com/?q=987+Budget+Street+Student+Area",
     gender: "girls", // Available for girls
+    roomType: "Cot Basis",
     images: [
       "/api/placeholder/400/300"
     ],
@@ -150,19 +156,27 @@ export const sampleRooms = [
   },
   {
     id: 8,
-    title: "Boys Hostel - Deluxe",
-    rent: 3800,
-    contact: "+91 9876543217",
-    address: "789 Boys Colony, Student Area",
-    location: "Boys Hostel Area",
-    mapLink: "https://maps.google.com/?q=789+Boys+Colony+Student+Area",
+    title: "Vimal Ashok Patil's 1RK",
+    rent: 2000,
+    contact: "+91 8421150854",
+    address: "Kalamba",
+    location: "600m away from DYPSN College Gate, Near Karvir Chicken Shop , Kalamba.",
+    mapLink: "https://maps.app.goo.gl/bYt8aXNyASz1KWhW7?g_st=aw",
     gender: "boy", // Available for boys
     images: [
-      "/api/placeholder/400/300",
-      "/api/placeholder/400/300"
+      "/Vimal Patil/Vimal 0_converted.avif",
+      "/Vimal Patil/Vimal 1_converted.avif",
+      "/Vimal Patil/Vimal 2_converted.avif",
+      "/Vimal Patil/Vimal 3_converted.avif",
+      "/Vimal Patil/Vimal 4_converted.avif",
+      "/Vimal Patil/Vimal 5_converted.avif",
+      "/Vimal Patil/Vimal 6_converted.avif",
+      "/Vimal Patil/Vimal 7_converted.avif",
+      "/Vimal Patil/Vimal 8_converted.avif",
+      "/Vimal Patil/Vimal 9_converted.avif",
     ],
-    description: "Deluxe boys hostel with excellent facilities. Perfect for serious students with all necessary amenities.",
-    features: ["AC", "Meals Included", "Laundry", "WiFi", "Security", "Gym", "Study Hall"]
+    description: "2000 Rs. Advance , 1 YEAR AGREEMENT ,The rent should be paid between the 1st and 10th of each month, Self Cleaning , After 10pm no entry  , addhar card and student photo and parent phone number is mandatory ",
+    features: ["Beds", "Mattress", "Water Supply", "Dressing Table", "Water Supply", "Self Cooking allowed", "Parking" , "Shoes stand","cloth Drying Space ", "Charging Bulb for light issue" , "Water Jar Provided for Drinking Water", "Market Accessible"] 
   }
 ];
 

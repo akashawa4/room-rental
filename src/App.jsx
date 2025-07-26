@@ -27,7 +27,7 @@ function App() {
   // Enhanced filtering
   const filteredRooms = rooms.filter(room => {
     const matchesGender = selectedGender ? room.gender === selectedGender : true;
-    const matchesCategory = category === 'All' || (room.title && room.title.toLowerCase().includes(category.toLowerCase()));
+    const matchesCategory = category === 'All' || (room.roomType && room.roomType === category);
     const matchesSearch = room.title && room.title.toLowerCase().includes(search.toLowerCase());
     return matchesGender && matchesCategory && matchesSearch;
   });
@@ -248,7 +248,60 @@ function App() {
             </Button>
           </div>
         )}
+
+        {/* About Us Section */}
+        <section className="my-20 max-w-4xl mx-auto text-center animate-fade-scale">
+          <div className="bg-white/90 rounded-2xl shadow-xl p-8 border border-orange-100">
+            <h2 className="text-4xl font-extrabold mb-6 text-orange-600 tracking-tight flex items-center justify-center gap-3">
+              <span>About Us</span>
+              <span role="img" aria-label="team">👥</span>
+            </h2>
+            <p className="text-gray-700 text-lg mb-10 max-w-2xl mx-auto">We are dedicated to helping students find the perfect room near their college campus. Our platform is designed to be transparent, easy to use, and focused on student needs.</p>
+            {/* Team/Creators Section */}
+            <div className="flex flex-wrap justify-center gap-10 mb-10">
+              <div className="flex flex-col items-center bg-orange-50 rounded-xl p-4 shadow-md w-48">
+                <img src="/Ayan Mulla/mulla 0_converted.avif" alt="Ayan Mulla" className="w-24 h-24 rounded-full object-cover border-4 border-orange-200 mb-2 shadow" />
+                <div className="font-bold text-gray-900 text-lg">Ayan Mulla</div>
+                <div className="text-sm text-gray-600">Developer</div>
+              </div>
+              <div className="flex flex-col items-center bg-orange-50 rounded-xl p-4 shadow-md w-48">
+                <img src="/Dipali Teli/Teli 0_converted.avif" alt="Dipali Teli" className="w-24 h-24 rounded-full object-cover border-4 border-orange-200 mb-2 shadow" />
+                <div className="font-bold text-gray-900 text-lg">Dipali Teli</div>
+                <div className="text-sm text-gray-600">Developer</div>
+              </div>
+              <div className="flex flex-col items-center bg-orange-50 rounded-xl p-4 shadow-md w-48">
+                <img src="/Sabgita Gavde/S Gavde 0_converted.avif" alt="Sabgita Gavde" className="w-24 h-24 rounded-full object-cover border-4 border-orange-200 mb-2 shadow" />
+                <div className="font-bold text-gray-900 text-lg">Sabgita Gavde</div>
+                <div className="text-sm text-gray-600">Developer</div>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 mt-10">
+              <div className="bg-gradient-to-br from-orange-100 to-white rounded-xl p-6 shadow flex flex-col items-center">
+                <h3 className="text-2xl font-bold mb-2 text-orange-500 flex items-center gap-2"><span role="img" aria-label="target">🎯</span> Our Mission</h3>
+                <p className="text-gray-700">To simplify the room rental process for students and property owners, making it safe, reliable, and accessible for everyone.</p>
+              </div>
+              <div className="bg-gradient-to-br from-orange-100 to-white rounded-xl p-6 shadow flex flex-col items-center">
+                <h3 className="text-2xl font-bold mb-2 text-orange-500 flex items-center gap-2"><span role="img" aria-label="vision">🌟</span> Our Vision</h3>
+                <p className="text-gray-700">To become the most trusted and student-friendly room rental platform, empowering students to make informed choices and fostering a supportive community.</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-orange-100 to-orange-200 border-t border-orange-200 py-8 mt-16 text-center text-gray-700 text-base animate-fade-scale shadow-inner">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <p className="font-semibold">&copy; {new Date().getFullYear()} College Room Rental. All rights reserved.</p>
+            <p>Contact: <a href="mailto:info@collegeroomrental.com" className="text-orange-600 hover:underline font-medium">info@collegeroomrental.com</a></p>
+          </div>
+          <div className="flex gap-4 justify-center mt-2 md:mt-0">
+            <a href="#" className="hover:text-orange-600 transition">Privacy Policy</a>
+            <a href="#" className="hover:text-orange-600 transition">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
 
       {/* Gender Selection Modal */}
       {showGenderSelection && (
