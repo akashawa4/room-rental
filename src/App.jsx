@@ -257,24 +257,6 @@ function App() {
               <span role="img" aria-label="team">👥</span>
             </h2>
             <p className="text-gray-700 text-lg mb-10 max-w-2xl mx-auto">We are dedicated to helping students find the perfect room near their college campus. Our platform is designed to be transparent, easy to use, and focused on student needs.</p>
-            {/* Team/Creators Section */}
-            <div className="flex flex-wrap justify-center gap-10 mb-10">
-              <div className="flex flex-col items-center bg-orange-50 rounded-xl p-4 shadow-md w-48">
-                <img src="/Ayan Mulla/mulla 0_converted.avif" alt="Ayan Mulla" className="w-24 h-24 rounded-full object-cover border-4 border-orange-200 mb-2 shadow" />
-                <div className="font-bold text-gray-900 text-lg">Ayan Mulla</div>
-                <div className="text-sm text-gray-600">Developer</div>
-              </div>
-              <div className="flex flex-col items-center bg-orange-50 rounded-xl p-4 shadow-md w-48">
-                <img src="/Dipali Teli/Teli 0_converted.avif" alt="Dipali Teli" className="w-24 h-24 rounded-full object-cover border-4 border-orange-200 mb-2 shadow" />
-                <div className="font-bold text-gray-900 text-lg">Dipali Teli</div>
-                <div className="text-sm text-gray-600">Developer</div>
-              </div>
-              <div className="flex flex-col items-center bg-orange-50 rounded-xl p-4 shadow-md w-48">
-                <img src="/Sabgita Gavde/S Gavde 0_converted.avif" alt="Sabgita Gavde" className="w-24 h-24 rounded-full object-cover border-4 border-orange-200 mb-2 shadow" />
-                <div className="font-bold text-gray-900 text-lg">Sabgita Gavde</div>
-                <div className="text-sm text-gray-600">Developer</div>
-              </div>
-            </div>
             <div className="grid md:grid-cols-2 gap-8 mt-10">
               <div className="bg-gradient-to-br from-orange-100 to-white rounded-xl p-6 shadow flex flex-col items-center">
                 <h3 className="text-2xl font-bold mb-2 text-orange-500 flex items-center gap-2"><span role="img" aria-label="target">🎯</span> Our Mission</h3>

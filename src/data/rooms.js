@@ -158,6 +158,7 @@ export const sampleRooms = [
     id: 8,
     title: "Vimal Ashok Patil's 1RK",
     rent: 2000,
+    note: "Including light and water bill , 4/3 boys can stay in this room.",
     contact: "+91 8421150854",
     address: "Kalamba",
     location: "600m away from DYPSN College Gate, Near Karvir Chicken Shop , Kalamba.",
