@@ -297,7 +297,7 @@ function App() {
                   onViewDetails={handleViewDetails}
                   isAdmin={isAdmin}
                   onEdit={handleEditRoom}
-                  isFirst={index === 0}
+                  isFirst={index < 3}
                 />
               </div>
             ))}

@@ -53,9 +53,17 @@ const RoomCard = memo(({ room, onViewDetails, isAdmin, onEdit, isFirst }) => {
                 src={room.images[0]}
                 alt={`${room.title} - 1`}
                 className="h-44 md:h-52 lg:h-60 w-full object-cover rounded-lg border border-orange-100 hover:scale-105 transition-transform"
-                loading={isFirst ? undefined : 'lazy'}
-                decoding="async"
-                onError={e => { e.target.style.display = 'none'; }}
+                loading={isFirst ? "eager" : 'lazy'}
+                decoding="sync"
+                onError={e => { 
+                  console.warn(`Failed to load image: ${room.images[0]}`);
+                  e.target.style.display = 'none'; 
+                }}
+                onLoad={() => {
+                  if (isFirst) {
+                    console.log(`Successfully loaded critical image: ${room.images[0]}`);
+                  }
+                }}
               />
             </picture>
           ) : (

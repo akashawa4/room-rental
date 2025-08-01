@@ -147,8 +147,8 @@ const RoomDetailModal = ({ room, onClose }) => {
                     src={room.images[currentImageIndex]}
                     alt={`${room.title} - Image ${currentImageIndex + 1}`}
                     className="w-full h-full object-cover md:object-cover cursor-zoom-in"
-                      loading="lazy"
-                      decoding="async"
+                    loading="eager"
+                    decoding="sync"
                     onClick={() => setIsFullscreen(true)}
                   />
                   </picture>
