@@ -14,7 +14,7 @@ export const sampleRooms = [
     roomType: "1 RK",
     rooms: "1 RK & 1RK",
     images: [
-      "/Ayan Mulla/mulla 0_converted.avif",
+      "/Ayan Mulla/mulla 0_converted_converted.avif",
       "/Ayan Mulla/mulla 1_converted.avif",
       "/Ayan Mulla/mulla 2_converted.avif",
       "/Ayan Mulla/mulla 3_converted.avif",
@@ -43,7 +43,7 @@ export const sampleRooms = [
     roomType: "Single Room",
     rooms: "Single Room",
     images: [
-      "/Sabgita Gavde/S Gavde 0_converted.avif",
+      "/Sabgita Gavde/S Gavde 0_converted_converted.avif",
       "/Sabgita Gavde/S Gavde 1_converted.avif",
       "/Sabgita Gavde/S Gavde 2_converted.avif",
       "/Sabgita Gavde/S Gavde 3_converted.avif"
@@ -64,7 +64,7 @@ export const sampleRooms = [
     roomType: "1 RK",
     rooms: "1 RK",
     images: [
-      "/Dipali Teli/Teli 0_converted.avif",
+      "/Dipali Teli/Teli 0_converted_converted.avif",
       "/Dipali Teli/Teli 1_converted.avif",
       "/Dipali Teli/Teli 2_converted.avif",
       "/Dipali Teli/Teli 3_converted.avif",
