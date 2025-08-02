@@ -169,7 +169,32 @@ export const translations = {
     femaleStudentsOnly: "Female students only",
     
     // Additional
-    successStories: "Success Stories"
+    successStories: "Success Stories",
+    
+    // Authentication
+    signIn: "Sign In",
+    signUp: "Sign Up",
+    signOut: "Sign Out",
+    email: "Email",
+    password: "Password",
+    firstName: "First Name",
+    lastName: "Last Name",
+    confirmPassword: "Confirm Password",
+    settings: "Settings",
+    enterEmail: "Enter your email",
+    enterPassword: "Enter your password",
+    enterFirstName: "First name",
+    enterLastName: "Last name",
+    signInDescription: "Welcome back to Nivasi.space",
+    signUpDescription: "Join Nivasi.space today",
+    dontHaveAccount: "Don't have an account?",
+    alreadyHaveAccount: "Already have an account?",
+    signingIn: "Signing in...",
+    signingUp: "Signing up...",
+    signInFailed: "Sign in failed. Please try again.",
+    signUpFailed: "Sign up failed. Please try again.",
+    passwordsDoNotMatch: "Passwords do not match",
+    passwordTooShort: "Password must be at least 8 characters long"
   },
   
   hi: {
@@ -501,6 +526,31 @@ export const translations = {
     designDevelopedBy: "डिझाइन आणि विकास:",
     akashSolutions: "आकाश.सोल्युशन्स",
     trustedPlatform: "भारताचे विश्वसनीय कॉलेज रूम रेंटल प्लॅटफॉर्म जे 2025 पासून विद्यार्थ्यांना परिपूर्ण आवासासह जोडत आहे. आम्ही तंत्रज्ञानाला विद्यार्थ्यांच्या गरजांसह मिसळतो जेणेकरून तुम्हाला कॅम्पसाजवळ तुमची आदर्श खोली मिळू शकेल.",
-    collegeAddress: "डॉ. डीवाय पाटील प्रतिष्ठान कॉलेज ऑफ इंजीनिअरिंग, सलोखेनगा, कोल्हापूर, महाराष्ट्र, 416007 भारत"
+    collegeAddress: "डॉ. डीवाय पाटील प्रतिष्ठान कॉलेज ऑफ इंजीनिअरिंग, सलोखेनगा, कोल्हापूर, महाराष्ट्र, 416007 भारत",
+    
+    // Authentication
+    signIn: "साइन इन करा",
+    signUp: "साइन अप करा",
+    signOut: "साइन आउट करा",
+    email: "ईमेल",
+    password: "पासवर्ड",
+    firstName: "पहिले नाव",
+    lastName: "आडनाव",
+    confirmPassword: "पासवर्डची पुष्टी करा",
+    settings: "सेटिंग्ज",
+    enterEmail: "तुमचा ईमेल प्रविष्ट करा",
+    enterPassword: "तुमचा पासवर्ड प्रविष्ट करा",
+    enterFirstName: "पहिले नाव",
+    enterLastName: "आडनाव",
+    signInDescription: "Nivasi.space मध्ये परत स्वागत आहे",
+    signUpDescription: "आजच Nivasi.space मध्ये सामील व्हा",
+    dontHaveAccount: "खाते नाही?",
+    alreadyHaveAccount: "आधीपासूनच खाते आहे?",
+    signingIn: "साइन इन होत आहे...",
+    signingUp: "साइन अप होत आहे...",
+    signInFailed: "साइन इन अयशस्वी. कृपया पुन्हा प्रयत्न करा.",
+    signUpFailed: "साइन अप अयशस्वी. कृपया पुन्हा प्रयत्न करा.",
+    passwordsDoNotMatch: "पासवर्ड जुळत नाहीत",
+    passwordTooShort: "पासवर्ड किमान 8 अक्षरे असले पाहिजे"
   }
 }; 
