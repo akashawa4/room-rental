@@ -196,26 +196,19 @@ const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
                 {hasScrolledToBottom ? 'You have read the terms' : 'Please scroll to read all terms'}
               </span>
             </div>
-            <div className="flex gap-3">
-              <Button
-                variant="outline"
-                onClick={onDecline}
-                className="border-gray-300 text-gray-700 hover:bg-gray-50"
-              >
-                Decline
-              </Button>
-              <Button
-                onClick={onAccept}
-                disabled={!hasScrolledToBottom}
-                className={`${
-                  hasScrolledToBottom 
-                    ? 'bg-orange-600 hover:bg-orange-700 text-white' 
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
-              >
-                I Agree & Continue
-              </Button>
-            </div>
+                         <div className="flex justify-center">
+               <Button
+                 onClick={onAccept}
+                 disabled={!hasScrolledToBottom}
+                 className={`${
+                   hasScrolledToBottom 
+                     ? 'bg-orange-600 hover:bg-orange-700 text-white' 
+                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                 }`}
+               >
+                 I Agree & Continue
+               </Button>
+             </div>
           </div>
         </div>
       </div>
