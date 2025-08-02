@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button.jsx';
 import { Check, X, FileText, Shield, AlertTriangle } from 'lucide-react';
+import InstallPWAButton from './InstallPWAButton.jsx';
 
 const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
   const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
@@ -189,26 +190,43 @@ const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
 
         {/* Footer */}
         <div className="p-6 border-t border-gray-200 bg-gray-50">
-          <div className="flex flex-col sm:flex-row gap-3 justify-between items-center">
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Check className={`w-4 h-4 ${hasScrolledToBottom ? 'text-green-600' : 'text-gray-400'}`} />
-              <span className={hasScrolledToBottom ? 'text-green-600' : 'text-gray-500'}>
-                {hasScrolledToBottom ? 'You have read the terms' : 'Please scroll to read all terms'}
-              </span>
+          <div className="flex flex-col gap-4">
+            {/* Install App Section */}
+            <div className="flex flex-col items-center gap-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200">
+              <div className="flex items-center gap-2 text-purple-700">
+                <span className="text-lg">📱</span>
+                <span className="font-semibold text-sm">Install Nivasi.space App</span>
+              </div>
+              <p className="text-xs text-purple-600 text-center">
+                Get the best experience with our mobile app - Quick access, offline support, and push notifications
+              </p>
+              <div className="w-full flex justify-center">
+                <InstallPWAButton />
+              </div>
             </div>
-                         <div className="flex justify-center">
-               <Button
-                 onClick={onAccept}
-                 disabled={!hasScrolledToBottom}
-                 className={`${
-                   hasScrolledToBottom 
-                     ? 'bg-orange-600 hover:bg-orange-700 text-white' 
-                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                 }`}
-               >
-                 I Agree & Continue
-               </Button>
-             </div>
+            
+            {/* Terms Agreement Section */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-between items-center">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Check className={`w-4 h-4 ${hasScrolledToBottom ? 'text-green-600' : 'text-gray-400'}`} />
+                <span className={hasScrolledToBottom ? 'text-green-600' : 'text-gray-500'}>
+                  {hasScrolledToBottom ? 'You have read the terms' : 'Please scroll to read all terms'}
+                </span>
+              </div>
+              <div className="flex justify-center">
+                <Button
+                  onClick={onAccept}
+                  disabled={!hasScrolledToBottom}
+                  className={`${
+                    hasScrolledToBottom 
+                      ? 'bg-orange-600 hover:bg-orange-700 text-white' 
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
+                >
+                  I Agree & Continue
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

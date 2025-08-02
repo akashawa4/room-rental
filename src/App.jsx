@@ -5,6 +5,7 @@ import RoomCard from './components/RoomCard.jsx';
 import Logo from './components/Logo.jsx';
 import LanguageSelector from './components/LanguageSelector.jsx';
 import TermsAndConditionsModal from './components/TermsAndConditionsModal.jsx';
+import InstallPWAButton from './components/InstallPWAButton.jsx';
 
 import { useLanguage } from './contexts/LanguageContext.jsx';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
@@ -302,11 +303,11 @@ function App() {
                 </div>
 
                 {/* Bottom Row - Contact and Admin */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2 mb-3">
                   <Button
                     onClick={handleContactUs}
                     size="sm"
-                    className="btn-primary hover-lift flex-1 mr-2"
+                    className="btn-primary hover-lift flex-1"
                   >
                     <Phone className="w-4 h-4" />
                     {t('contactUs')}
@@ -322,6 +323,13 @@ function App() {
                       {t('logout')}
                     </Button>
                   )}
+                </div>
+
+                {/* Install App Row - Dedicated row for better visibility */}
+                <div className="flex justify-center mb-3">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/20">
+                    <InstallPWAButton />
+                  </div>
                 </div>
 
                 {/* Status Indicators */}
@@ -392,6 +400,8 @@ function App() {
                     <Phone className="w-4 h-4" />
                     {t('contactUs')}
                   </Button>
+                  
+                  <InstallPWAButton />
                   
                   {/* User Profile */}
                   <div className="flex flex-col items-center gap-1">
