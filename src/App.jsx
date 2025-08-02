@@ -255,8 +255,96 @@ function App() {
           
           {/* Enhanced Header */}
           <header className="header-gradient text-white shadow-2xl">
-            <div className="container mx-auto px-4 py-6">
-              <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center relative z-10 w-full">
+            <div className="container mx-auto px-4 py-4 sm:py-6">
+              {/* Mobile Layout */}
+              <div className="sm:hidden">
+                {/* Top Row - Logo, Title, and Profile */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <Logo className="bg-white/20 backdrop-blur-sm" />
+                    <div>
+                      <h1 className="text-xl font-bold text-white leading-tight">
+                        {t('title')}
+                      </h1>
+                      <p className="text-white text-xs opacity-90">
+                        {t('tagline')}
+                      </p>
+                    </div>
+                  </div>
+                  {/* User Profile - Top Right */}
+                  <div className="flex flex-col items-center gap-1">
+                    <UserButton 
+                      appearance={{
+                        elements: {
+                          avatarBox: "w-8 h-8",
+                          userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                        }
+                      }}
+                    />
+                    <span className="text-xs text-white/80 font-medium">Profile</span>
+                  </div>
+                </div>
+
+                {/* Middle Row - Language and Gender */}
+                <div className="flex items-center justify-between mb-3">
+                  <LanguageSelector />
+                  {selectedGender && (
+                    <Button
+                      onClick={handleChangeGender}
+                      variant="outline"
+                      size="sm"
+                      className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                    >
+                      <Settings className="w-4 h-4" />
+                      {t('changeGender')}
+                    </Button>
+                  )}
+                </div>
+
+                {/* Bottom Row - Contact and Admin */}
+                <div className="flex items-center justify-between">
+                  <Button
+                    onClick={handleContactUs}
+                    size="sm"
+                    className="btn-primary hover-lift flex-1 mr-2"
+                  >
+                    <Phone className="w-4 h-4" />
+                    {t('contactUs')}
+                  </Button>
+                  {isAdmin && (
+                    <Button
+                      variant="outline"
+                      onClick={handleAdminLogout}
+                      size="sm"
+                      className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      {t('logout')}
+                    </Button>
+                  )}
+                </div>
+
+                {/* Status Indicators */}
+                <div className="flex items-center justify-center gap-2 mt-3">
+                  {selectedGender && (
+                    <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">
+                      {selectedGender === 'boy' ? t('forBoys') : t('forGirls')}
+                    </span>
+                  )}
+                  <span className="px-2 py-1 bg-white/10 rounded-full text-xs text-white">
+                    {currentLanguage.toUpperCase()}
+                  </span>
+                  {isAdmin && (
+                    <div className="status-badge status-admin animate-fade-scale text-xs">
+                      <Shield className="w-3 h-3" />
+                      {t('adminMode')}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Desktop Layout */}
+              <div className="hidden sm:flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center relative z-10 w-full">
                 <div className="flex flex-col xs:flex-row xs:items-center gap-2 sm:gap-4 w-full">
                   <div className="flex items-center gap-3 mx-auto sm:mx-0">
                     <Logo className="bg-white/20 backdrop-blur-sm" />
@@ -297,37 +385,40 @@ function App() {
                     </div>
                   )}
                   
-              <Button
-                onClick={handleContactUs}
-                className="w-full sm:w-auto btn-primary hover-lift"
-              >
-                <Phone className="w-4 h-4" />
-                {t('contactUs')}
-              </Button>
-              
+                  <Button
+                    onClick={handleContactUs}
+                    className="w-full sm:w-auto btn-primary hover-lift"
+                  >
+                    <Phone className="w-4 h-4" />
+                    {t('contactUs')}
+                  </Button>
+                  
                   {/* User Profile */}
-                  <UserButton 
-                    appearance={{
-                      elements: {
-                        avatarBox: "w-8 h-8",
-                        userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
-                      }
-                    }}
-                  />
-              {isAdmin && (
-                <Button
-                  variant="outline"
-                  onClick={handleAdminLogout}
-                  className="w-full sm:w-auto bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
-                >
-                  <LogOut className="w-4 h-4" />
-                  {t('logout')}
-                </Button>
-              )}
+                  <div className="flex flex-col items-center gap-1">
+                    <UserButton 
+                      appearance={{
+                        elements: {
+                          avatarBox: "w-8 h-8",
+                          userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                        }
+                      }}
+                    />
+                    <span className="text-xs text-white/80 font-medium">Profile</span>
+                  </div>
+                  {isAdmin && (
+                    <Button
+                      variant="outline"
+                      onClick={handleAdminLogout}
+                      className="w-full sm:w-auto bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      {t('logout')}
+                    </Button>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </header>
+          </header>
 
         {/* Enhanced Main Content */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
