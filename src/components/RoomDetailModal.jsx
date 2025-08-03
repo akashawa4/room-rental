@@ -15,12 +15,14 @@ import {
   Wifi,
   Car,
   Shield,
-  Zap
+  Zap,
+  Calendar
 } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import { Dialog, DialogContent } from '@/components/ui/dialog.jsx';
 import { useIsMobile } from '@/hooks/use-mobile.js';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
+import BookingModal from './BookingModal.jsx';
 
 const RoomDetailModal = ({ room, onClose }) => {
   const { t } = useLanguage();
@@ -28,6 +30,7 @@ const RoomDetailModal = ({ room, onClose }) => {
   const [shareMessage, setShareMessage] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showBookingModal, setShowBookingModal] = useState(false);
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prev) => 
@@ -45,11 +48,17 @@ const RoomDetailModal = ({ room, onClose }) => {
     window.location.href = `tel:${room.contact}`;
   };
 
-  const handleWhatsApp = () => {
-    const message = encodeURIComponent(
-      `Hi! I found this room on Nivasi.space: ${room.title} (₹${room.rent}/month). ${t('checkOutRoom')}`
-    );
-    window.open(`https://wa.me/${room.contact.replace(/[^0-9]/g, '')}?text=${message}`, '_blank');
+  const handleBookNow = () => {
+    setShowBookingModal(true);
+  };
+
+  const handleBookingSuccess = (booking) => {
+    console.log('Booking successful:', booking);
+    // You can add additional success handling here
+  };
+
+  const handleCloseBookingModal = () => {
+    setShowBookingModal(false);
   };
 
   const handleViewOnMap = () => {
@@ -252,12 +261,11 @@ const RoomDetailModal = ({ room, onClose }) => {
                   {t('callNow')}
                 </Button>
                 <Button
-                  onClick={handleWhatsApp}
-                  className="contact-btn contact-btn-success flex items-center justify-center gap-2 py-3"
-                  style={{ background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)' }}
+                  onClick={handleBookNow}
+                  className="book-now-btn-high-contrast flex items-center justify-center gap-2 py-3"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  {t('whatsapp')}
+                  <Calendar className="w-5 h-5" />
+                  {t('bookNow') || 'Book Now'}
                 </Button>
               </div>
 
@@ -375,6 +383,14 @@ const RoomDetailModal = ({ room, onClose }) => {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={showBookingModal}
+        onClose={handleCloseBookingModal}
+        room={room}
+        onBookingSuccess={handleBookingSuccess}
+      />
     </div>
   );
 };

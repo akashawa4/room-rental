@@ -210,6 +210,8 @@ export const translations = {
     openWhatsApp: "Open WhatsApp",
     copyMessage: "Copy Message",
     messageCopied: "Message copied to clipboard!",
+    invalidPhoneNumber: "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9",
+    visitThisRoom: "Visit This Room",
     
     // Form Validation Messages
     pleaseEnterName: "Please enter your full name",
@@ -562,6 +564,8 @@ export const translations = {
     openWhatsApp: "WhatsApp खोलें",
     copyMessage: "संदेश कॉपी करें",
     messageCopied: "संदेश क्लिपबोर्ड पर कॉपी हो गया!",
+    invalidPhoneNumber: "कृपया 6, 7, 8, या 9 से शुरू होने वाला वैध 10-अंकीय फोन नंबर दर्ज करें",
+    visitThisRoom: "इस कमरे को देखें",
     
     // Form Validation Messages
     pleaseEnterName: "कृपया अपना पूरा नाम दर्ज करें",

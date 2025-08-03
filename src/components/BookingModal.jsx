@@ -57,10 +57,20 @@ const BookingModal = ({ isOpen, onClose, room, onBookingSuccess }) => {
   }, [isOpen, user]);
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
+    // Special handling for phone number to limit to 10 digits
+    if (field === 'userPhone') {
+      // Remove all non-digit characters and limit to 10 digits
+      const cleanValue = value.replace(/\D/g, '').slice(0, 10);
+      setFormData(prev => ({
+        ...prev,
+        [field]: cleanValue
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [field]: value
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -74,6 +84,14 @@ const BookingModal = ({ isOpen, onClose, room, onBookingSuccess }) => {
     
     if (!formData.userPhone.trim()) {
       alert(t('pleaseEnterPhone') || 'Please enter your phone number');
+      return;
+    }
+    
+    // Validate phone number (10 digits)
+    const phoneRegex = /^[6-9]\d{9}$/;
+    const cleanPhone = formData.userPhone.replace(/\D/g, '');
+    if (!phoneRegex.test(cleanPhone)) {
+      alert(t('invalidPhoneNumber') || 'Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9');
       return;
     }
     
@@ -221,6 +239,29 @@ const BookingModal = ({ isOpen, onClose, room, onBookingSuccess }) => {
                    {t('copyMessage') || 'Copy Message'}
                  </Button>
                  
+                                   <Button
+                    onClick={() => window.open(room.mapLink, '_blank')}
+                    className="w-full visit-room-btn-attractive relative overflow-hidden group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 group-hover:from-blue-700 group-hover:via-blue-600 group-hover:to-blue-700 transition-all duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <div className="relative flex items-center justify-center gap-3">
+                      <div className="relative">
+                        <svg className="w-6 h-6 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <div className="absolute inset-0 bg-white/20 rounded-full blur-sm animate-ping"></div>
+                      </div>
+                      <span className="text-white font-semibold text-lg drop-shadow-lg">
+                        {t('visitThisRoom') || 'Visit This Room'}
+                      </span>
+                      <svg className="w-5 h-5 text-white/80 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </div>
+                  </Button>
+                 
                  <Button
                    onClick={onClose}
                    variant="outline"
@@ -310,6 +351,7 @@ const BookingModal = ({ isOpen, onClose, room, onBookingSuccess }) => {
                        onChange={(e) => handleInputChange('userPhone', e.target.value)}
                        placeholder={t('enterPhoneNumber') || 'Enter your phone number'}
                        className={`pl-10 ${!formData.userPhone.trim() ? 'border-red-300 focus:border-red-500' : ''}`}
+                       maxLength={10}
                        required
                      />
                   </div>
