@@ -99,22 +99,6 @@ A modern, vibrant, and user-friendly room rental platform designed specifically 
 - **Secure Logout**: Clear admin privileges when logging out
 - **Demo Credentials**: Default password is `admin123` (change in production)
 
-### 📱 **PWA (Progressive Web App) Features**
-- **Install App Button**: Prominent install button in header and terms modal
-- **Native App Experience**: Install as a mobile app on home screen
-- **Offline Support**: Service worker for offline functionality
-- **Push Notifications**: Ready for push notification implementation
-- **Cross-Platform**: Works on iOS, Android, and desktop browsers
-- **Smart Installation**: 
-  - Automatic detection of install capability
-  - Platform-specific installation instructions
-  - Visual feedback for installation status
-  - Subtle pulse animation to draw attention
-- **Installation Locations**:
-  - Header navigation (mobile and desktop)
-  - Terms and Conditions modal
-  - Prominent purple gradient styling
-
 ### 🎨 Design Features
 - **Modern UI** with Tailwind CSS
 - **Smooth Animations** and hover effects

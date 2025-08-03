@@ -281,28 +281,6 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
   overflow: hidden !important;
-  animation: subtle-pulse 2s ease-in-out infinite !important;
-  min-width: 120px !important;
-}
-
-/* Mobile-specific install button styling */
-@media (max-width: 640px) {
-  .install-pwa-btn {
-    min-width: 100px !important;
-    padding: 10px 16px !important;
-    font-size: 14px !important;
-  }
-}
-
-@keyframes subtle-pulse {
-  0%, 100% { 
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    transform: scale(1);
-  }
-  50% { 
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-    transform: scale(1.02);
-  }
 }
 
 .install-pwa-btn::before {
