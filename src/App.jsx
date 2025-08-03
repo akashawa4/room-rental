@@ -1,10 +1,12 @@
 import { useState, useEffect, useMemo, lazy, Suspense, useCallback } from 'react';
-import { Phone, Shield, LogOut, Settings, Search, Users, User } from 'lucide-react';
+import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import RoomCard from './components/RoomCard.jsx';
 import Logo from './components/Logo.jsx';
 import LanguageSelector from './components/LanguageSelector.jsx';
 import TermsAndConditionsModal from './components/TermsAndConditionsModal.jsx';
+import Notification from './components/Notification.jsx';
+import InstallPWAButton from './components/InstallPWAButton.jsx';
 
 import { useLanguage } from './contexts/LanguageContext.jsx';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
@@ -56,6 +58,8 @@ const RoomDetailModal = lazy(() => import('./components/RoomDetailModal.jsx'));
 const AddRoomModal = lazy(() => import('./components/AddRoomModal.jsx'));
 const AdminLoginModal = lazy(() => import('./components/AdminLoginModal.jsx'));
 const GenderSelectionModal = lazy(() => import('./components/GenderSelectionModal.jsx'));
+const BookingModal = lazy(() => import('./components/BookingModal.jsx'));
+const BookingManagementModal = lazy(() => import('./components/BookingManagementModal.jsx'));
 
 // Loading component for lazy-loaded modals
 const ModalLoadingSpinner = () => (
@@ -101,6 +105,10 @@ function App() {
   const [category, setCategory] = useState('All');
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showBookingModal, setShowBookingModal] = useState(false);
+  const [selectedRoomForBooking, setSelectedRoomForBooking] = useState(null);
+  const [showBookingManagement, setShowBookingManagement] = useState(false);
+  const [notification, setNotification] = useState({ message: '', type: 'success', isVisible: false });
   
 
 
@@ -235,6 +243,24 @@ function App() {
     setShowGenderSelection(true);
   }, []);
 
+  const handleBookNow = useCallback((room) => {
+    setSelectedRoomForBooking(room);
+    setShowBookingModal(true);
+  }, []);
+
+  const handleBookingSuccess = useCallback((booking) => {
+    console.log('Booking submitted successfully:', booking);
+    setNotification({
+      message: t('bookingSubmittedMessage') || 'Your booking has been submitted successfully!',
+      type: 'success',
+      isVisible: true
+    });
+  }, [t]);
+
+  const handleShowBookingManagement = useCallback(() => {
+    setShowBookingManagement(true);
+  }, []);
+
 
 
   return (
@@ -245,6 +271,13 @@ function App() {
       
       <SignedIn>
         <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100">
+          {/* Notification */}
+          <Notification
+            message={notification.message}
+            type={notification.type}
+            isVisible={notification.isVisible}
+            onClose={() => setNotification(prev => ({ ...prev, isVisible: false }))}
+          />
           {/* Terms and Conditions Modal */}
           <TermsAndConditionsModal
             isOpen={showTermsModal}
@@ -255,93 +288,107 @@ function App() {
           
           {/* Enhanced Header */}
           <header className="header-gradient text-white shadow-2xl">
-            <div className="container mx-auto px-4 py-4 sm:py-6">
-              {/* Mobile Layout */}
-              <div className="sm:hidden">
-                {/* Top Row - Logo, Title, and Profile */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <Logo className="bg-white/20 backdrop-blur-sm" />
-                    <div>
-                      <h1 className="text-xl font-bold text-white leading-tight">
-                        {t('title')}
-                      </h1>
-                      <p className="text-white text-xs opacity-90">
-                        {t('tagline')}
-                      </p>
+            <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 lg:py-6">
+                              {/* Mobile Layout */}
+                <div className="sm:hidden">
+                  {/* Top Row - Logo, Title, and Profile */}
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <Logo className="bg-white/20 backdrop-blur-sm" />
+                      <div>
+                        <h1 className="text-lg font-bold text-white leading-tight">
+                          {t('title')}
+                        </h1>
+                        <p className="text-white text-xs opacity-90">
+                          {t('tagline')}
+                        </p>
+                      </div>
+                    </div>
+                    {/* User Profile - Top Right */}
+                    <div className="flex flex-col items-center gap-1">
+                      <UserButton 
+                        appearance={{
+                          elements: {
+                            avatarBox: "w-8 h-8",
+                            userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                          }
+                        }}
+                      />
+                      <span className="text-xs text-white/80 font-medium">Profile</span>
                     </div>
                   </div>
-                  {/* User Profile - Top Right */}
-                  <div className="flex flex-col items-center gap-1">
-                    <UserButton 
-                      appearance={{
-                        elements: {
-                          avatarBox: "w-8 h-8",
-                          userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
-                        }
-                      }}
-                    />
-                    <span className="text-xs text-white/80 font-medium">Profile</span>
+
+                  {/* Middle Row - Language and Gender */}
+                  <div className="flex items-center justify-between mb-3">
+                    <LanguageSelector />
+                    {selectedGender && (
+                      <Button
+                        onClick={handleChangeGender}
+                        variant="outline"
+                        size="sm"
+                        className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm text-xs"
+                      >
+                        <Settings className="w-4 h-4" />
+                        {t('changeGender')}
+                      </Button>
+                    )}
                   </div>
-                </div>
 
-                {/* Middle Row - Language and Gender */}
-                <div className="flex items-center justify-between mb-3">
-                  <LanguageSelector />
-                  {selectedGender && (
+                  {/* Bottom Row - Contact and Install App */}
+                  <div className="flex items-center gap-2 mb-2">
                     <Button
-                      onClick={handleChangeGender}
-                      variant="outline"
+                      onClick={handleContactUs}
                       size="sm"
-                      className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                      className="btn-primary hover-lift flex-1"
                     >
-                      <Settings className="w-4 h-4" />
-                      {t('changeGender')}
+                      <Phone className="w-4 h-4" />
+                      {t('contactUs')}
                     </Button>
-                  )}
-                </div>
-
-                {/* Bottom Row - Contact and Admin */}
-                <div className="flex items-center justify-between">
-                  <Button
-                    onClick={handleContactUs}
-                    size="sm"
-                    className="btn-primary hover-lift flex-1 mr-2"
-                  >
-                    <Phone className="w-4 h-4" />
-                    {t('contactUs')}
-                  </Button>
+                    <InstallPWAButton />
+                  </div>
+                  
+                  {/* Admin Buttons - Only show if admin */}
                   {isAdmin && (
-                    <Button
-                      variant="outline"
-                      onClick={handleAdminLogout}
-                      size="sm"
-                      className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
-                    >
-                      <LogOut className="w-4 h-4" />
-                      {t('logout')}
-                    </Button>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Button
+                        variant="outline"
+                        onClick={handleShowBookingManagement}
+                        size="sm"
+                        className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm flex-1"
+                      >
+                        <Calendar className="w-4 h-4" />
+                        {t('manageBookings') || 'Bookings'}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={handleAdminLogout}
+                        size="sm"
+                        className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm flex-1"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        {t('logout')}
+                      </Button>
+                    </div>
                   )}
-                </div>
 
-                {/* Status Indicators */}
-                <div className="flex items-center justify-center gap-2 mt-3">
-                  {selectedGender && (
-                    <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">
-                      {selectedGender === 'boy' ? t('forBoys') : t('forGirls')}
+                  {/* Status Indicators */}
+                  <div className="flex items-center justify-center gap-2">
+                    {selectedGender && (
+                      <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">
+                        {selectedGender === 'boy' ? t('forBoys') : t('forGirls')}
+                      </span>
+                    )}
+                    <span className="px-2 py-1 bg-white/10 rounded-full text-xs text-white">
+                      {currentLanguage.toUpperCase()}
                     </span>
-                  )}
-                  <span className="px-2 py-1 bg-white/10 rounded-full text-xs text-white">
-                    {currentLanguage.toUpperCase()}
-                  </span>
-                  {isAdmin && (
-                    <div className="status-badge status-admin animate-fade-scale text-xs">
-                      <Shield className="w-3 h-3" />
-                      {t('adminMode')}
-                    </div>
-                  )}
+                    {isAdmin && (
+                      <div className="status-badge status-admin animate-fade-scale text-xs">
+                        <Shield className="w-3 h-3" />
+                        {t('adminMode')}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
 
               {/* Desktop Layout */}
               <div className="hidden sm:flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center relative z-10 w-full">
@@ -379,10 +426,20 @@ function App() {
                     </Button>
                   )}
                   {isAdmin && (
-                    <div className="status-badge status-admin animate-fade-scale w-full sm:w-auto text-center">
-                      <Shield className="w-4 h-4" />
-                      {t('adminMode')}
-                    </div>
+                    <>
+                      <div className="status-badge status-admin animate-fade-scale w-full sm:w-auto text-center">
+                        <Shield className="w-4 h-4" />
+                        {t('adminMode')}
+                      </div>
+                      <Button
+                        variant="outline"
+                        onClick={handleShowBookingManagement}
+                        className="w-full sm:w-auto bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                      >
+                        <Calendar className="w-4 h-4" />
+                        {t('manageBookings') || 'Bookings'}
+                      </Button>
+                    </>
                   )}
                   
                   <Button
@@ -392,6 +449,8 @@ function App() {
                     <Phone className="w-4 h-4" />
                     {t('contactUs')}
                   </Button>
+                  
+                  <InstallPWAButton />
                   
                   {/* User Profile */}
                   <div className="flex flex-col items-center gap-1">
@@ -421,14 +480,14 @@ function App() {
           </header>
 
         {/* Enhanced Main Content */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         {/* Categories Bar and Search Bar */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 animate-slide-up">
-          <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4 animate-slide-up">
+          <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {categories.map(cat => (
               <button
                 key={cat.key}
-                className={`px-4 py-2 rounded-full border transition-all text-sm font-semibold ${category === cat.key ? 'bg-orange-800 text-white border-orange-800 shadow-lg' : 'bg-white text-orange-700 border-orange-400 hover:bg-orange-50 hover:text-orange-800'}`}
+                className={`px-3 sm:px-4 py-2 rounded-full border transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0 ${category === cat.key ? 'bg-orange-800 text-white border-orange-800 shadow-lg' : 'bg-white text-orange-700 border-orange-400 hover:bg-orange-50 hover:text-orange-800'}`}
                 onClick={useCallback(() => setCategory(cat.key), [cat.key])}
                 aria-pressed={category === cat.key}
               >
@@ -438,20 +497,48 @@ function App() {
           </div>
         </div>
 
+        {/* App Promotion Tagline */}
+        <div className="mb-8 text-center animate-slide-up">
+          <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-4 border border-orange-200">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <div className="w-6 h-6 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <span className="text-sm font-medium text-orange-800">{t('getNivasiApp')}</span>
+            </div>
+            <div className="flex items-center justify-center gap-4 text-xs text-orange-700">
+              <span className="flex items-center gap-1">
+                <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
+                {t('browseOffline')}
+              </span>
+              <span className="flex items-center gap-1">
+                <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
+                {t('instantNotifications')}
+              </span>
+              <span className="flex items-center gap-1">
+                <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
+                {t('fasterLoading')}
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Enhanced Room Count Section */}
         <div className="mb-8 text-center animate-slide-up">
-          <h2 className="text-4xl font-bold title-gradient mb-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold title-gradient mb-3">
             {t('availableRooms')}
             {selectedGender && (
-              <span className="text-2xl ml-2">
+              <span className="text-lg sm:text-xl lg:text-2xl ml-2">
                 {selectedGender === 'boy' ? t('forBoys') : t('forGirls')}
               </span>
             )}
           </h2>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-xs sm:text-sm text-gray-500 mt-2 px-4">
             {t('poweredBy')}
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mt-4 rounded-full"></div>
+          <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Enhanced Room Grid */}
@@ -461,7 +548,7 @@ function App() {
             <span className="ml-3 text-gray-600">{t('loadingRooms')}</span>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {filteredRooms.map((room, index) => (
               <div 
                 key={room.id} 
@@ -473,6 +560,7 @@ function App() {
                   onViewDetails={handleViewDetails}
                   isAdmin={isAdmin}
                   onEdit={handleEditRoom}
+                  onBookNow={handleBookNow}
                   isFirst={index < 3}
                 />
               </div>
@@ -675,6 +763,31 @@ function App() {
           <AdminLoginModal
             onClose={() => setShowAdminLogin(false)}
             onAdminLogin={handleAdminLogin}
+          />
+        </Suspense>
+      )}
+
+      {/* Booking Modal */}
+      {showBookingModal && selectedRoomForBooking && (
+        <Suspense fallback={<ModalLoadingSpinner />}>
+          <BookingModal
+            isOpen={showBookingModal}
+            onClose={() => {
+              setShowBookingModal(false);
+              setSelectedRoomForBooking(null);
+            }}
+            room={selectedRoomForBooking}
+            onBookingSuccess={handleBookingSuccess}
+          />
+        </Suspense>
+      )}
+
+      {/* Booking Management Modal */}
+      {showBookingManagement && (
+        <Suspense fallback={<ModalLoadingSpinner />}>
+          <BookingManagementModal
+            isOpen={showBookingManagement}
+            onClose={() => setShowBookingManagement(false)}
           />
         </Suspense>
       )}

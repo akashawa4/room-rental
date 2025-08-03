@@ -303,6 +303,161 @@ body {
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
 }
 
+/* Install App Button Styles */
+.install-app-btn {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
+  color: white !important;
+  border: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.install-app-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.install-app-btn:hover::before {
+  left: 100%;
+}
+
+.install-app-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4) !important;
+}
+
+.install-app-btn:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.install-app-btn.installed {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+}
+
+.install-app-btn.installed:hover {
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4) !important;
+}
+
+/* Attractive Install App Button Styles */
+.install-app-btn-attractive {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
+  color: white !important;
+  border: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  transform: translateY(0) !important;
+}
+
+.install-app-btn-attractive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.install-app-btn-attractive:hover::before {
+  left: 100%;
+}
+
+.install-app-btn-attractive:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5) !important;
+  background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%) !important;
+}
+
+.install-app-btn-attractive:disabled {
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.install-app-btn-attractive.installed {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+}
+
+.install-app-btn-attractive.installed:hover {
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5) !important;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+}
+
+/* Pulse animation for install button */
+@keyframes installPulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+  }
+}
+
+.install-app-btn-attractive:not(.installed):not(:disabled) {
+  animation: installPulse 2s infinite;
+}
+
+/* Installation Progress Styles */
+.installation-progress {
+  background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+  height: 4px;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.installation-step {
+  transition: all 0.3s ease;
+}
+
+.installation-step.completed {
+  background: #10b981 !important;
+  color: white !important;
+}
+
+.installation-step.active {
+  background: #3b82f6 !important;
+  color: white !important;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Hide scrollbar for category buttons */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
 .price-highlight {
   background: var(--accent-gradient);
   -webkit-background-clip: text;
@@ -356,6 +511,10 @@ body {
   animation: fadeInScale 0.4s ease-out;
 }
 
+.animate-slide-in {
+  animation: slideInUp 0.3s ease-out;
+}
+
 /* Enhanced Status Badges */
 .status-badge {
   padding: 6px 12px;
@@ -399,6 +558,62 @@ body {
   background: var(--dark-gradient) !important;
   color: white !important;
   box-shadow: 0 4px 15px rgba(210, 105, 30, 0.3);
+}
+
+/* Book Now Button - High Contrast for Accessibility */
+.book-now-btn,
+button.book-now-btn,
+[data-slot="button"].book-now-btn {
+  background: #ea580c !important; /* Darker orange for better contrast */
+  color: white !important;
+  border: none !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+.book-now-btn:hover,
+button.book-now-btn:hover,
+[data-slot="button"].book-now-btn:hover {
+  background: #dc2626 !important; /* Even darker on hover */
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Additional specificity for button elements */
+button[data-slot="button"].book-now-btn,
+button.book-now-btn,
+.book-now-btn[data-slot="button"] {
+  background: #ea580c !important;
+  color: white !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.4) !important;
+  border: none !important;
+}
+
+/* High Contrast Book Now Button - Maximum Specificity */
+.book-now-btn-high-contrast,
+button.book-now-btn-high-contrast,
+[data-slot="button"].book-now-btn-high-contrast,
+button[data-slot="button"].book-now-btn-high-contrast {
+  background: #ea580c !important;
+  color: white !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.4) !important;
+  border: none !important;
+  border-radius: 6px !important;
+}
+
+.book-now-btn-high-contrast:hover,
+button.book-now-btn-high-contrast:hover,
+[data-slot="button"].book-now-btn-high-contrast:hover,
+button[data-slot="button"].book-now-btn-high-contrast:hover {
+  background: #dc2626 !important;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5) !important;
+  transform: translateY(-1px) !important;
 }
 
 /* Enhanced Loading States */

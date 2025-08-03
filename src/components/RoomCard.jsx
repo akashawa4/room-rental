@@ -1,10 +1,10 @@
 import React, { useState, useCallback, memo } from 'react';
-import { MapPin, Phone, ExternalLink, Heart, Star, ChevronLeft, ChevronRight, X as XIcon } from 'lucide-react';
+import { MapPin, Phone, ExternalLink, Heart, Star, ChevronLeft, ChevronRight, X as XIcon, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import { Dialog, DialogContent } from '@/components/ui/dialog.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
 
-const RoomCard = memo(({ room, onViewDetails, isAdmin, onEdit, isFirst }) => {
+const RoomCard = memo(({ room, onViewDetails, isAdmin, onEdit, isFirst, onBookNow }) => {
   const { t } = useLanguage();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImageIdx, setModalImageIdx] = useState(0);
@@ -39,6 +39,12 @@ const RoomCard = memo(({ room, onViewDetails, isAdmin, onEdit, isFirst }) => {
   const handleEdit = useCallback(() => {
     onEdit(room);
   }, [onEdit, room]);
+
+  const handleBookNow = useCallback(() => {
+    if (onBookNow) {
+      onBookNow(room);
+    }
+  }, [onBookNow, room]);
 
   return (
     <div className="room-card p-6 hover-lift h-full flex flex-col">
@@ -173,6 +179,16 @@ const RoomCard = memo(({ room, onViewDetails, isAdmin, onEdit, isFirst }) => {
             {t('viewOnMap')}
           </Button>
         </div>
+
+        {/* Book Now Button */}
+        <Button
+          onClick={handleBookNow}
+          className="w-full book-now-btn-high-contrast flex items-center justify-center gap-2 mt-3"
+          size="sm"
+        >
+          <Calendar className="w-4 h-4" />
+          {t('bookNow') || 'Book Now'}
+        </Button>
 
         {/* Details Button */}
         <Button

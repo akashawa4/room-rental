@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button.jsx';
-import { Check, X, FileText, Shield, AlertTriangle } from 'lucide-react';
+import { Check, X, FileText, Shield, AlertTriangle, Download, Smartphone } from 'lucide-react';
 
 const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
   const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
+  const [showInstallGuide, setShowInstallGuide] = useState(false);
+  const [installationStep, setInstallationStep] = useState(0);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState(0);
+  const [error, setError] = useState(null);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -25,6 +30,91 @@ const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
       setHasScrolledToBottom(true);
     }
   };
+
+  const handleDownload = async () => {
+    try {
+      setIsDownloading(true);
+      setInstallationStep(1);
+      setDownloadProgress(0);
+
+      // Simulate download progress
+      const progressInterval = setInterval(() => {
+        setDownloadProgress(prev => {
+          if (prev >= 100) {
+            clearInterval(progressInterval);
+            return 100;
+          }
+          return prev + 10;
+        });
+      }, 200);
+
+      // Wait for download simulation
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      clearInterval(progressInterval);
+      setDownloadProgress(100);
+      setIsDownloading(false);
+      setInstallationStep(2);
+
+      // Trigger actual APK download
+      const link = document.createElement('a');
+      link.href = '/Nivasi Space App.apk';
+      link.download = 'Nivasi Space App.apk';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Track download event
+      if (window.gtag) {
+        window.gtag('event', 'download_started', {
+          app_name: 'Nivasi Space App',
+          file_type: 'apk',
+          source: 'terms_modal'
+        });
+      }
+
+    } catch (err) {
+      setError('Download failed. Please try again.');
+      setIsDownloading(false);
+      setInstallationStep(0);
+    }
+  };
+
+  const handleInstallationComplete = () => {
+    setShowInstallGuide(false);
+    setInstallationStep(0);
+    
+    // Track successful installation
+    if (window.gtag) {
+      window.gtag('event', 'installation_successful', {
+        app_name: 'Nivasi Space App',
+        source: 'terms_modal'
+      });
+    }
+  };
+
+  const getInstallationSteps = () => [
+    {
+      title: t('step1Title'),
+      description: t('step1Description'),
+      icon: <Download className="w-5 h-5" />
+    },
+    {
+      title: t('step2Title'),
+      description: t('step2Description'),
+      icon: <Smartphone className="w-5 h-5" />
+    },
+    {
+      title: t('step3Title'),
+      description: t('step3Description'),
+      icon: <Check className="w-5 h-5" />
+    },
+    {
+      title: t('step4Title'),
+      description: t('step4Description'),
+      icon: <Check className="w-5 h-5" />
+    }
+  ];
 
   if (!isOpen) return null;
 
@@ -198,6 +288,50 @@ const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
                  after a connection has been made.
                </p>
              </div>
+
+             {/* Nivasi Space App Promotion */}
+             <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-4 border border-orange-200">
+               <div className="flex items-center gap-3 mb-3">
+                 <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                   </svg>
+                 </div>
+                 <div>
+                   <h3 className="font-semibold text-orange-800">{t('installAppTitle')}</h3>
+                   <p className="text-sm text-orange-700">{t('enhancedExperience')}</p>
+                 </div>
+               </div>
+               <div className="space-y-2 text-sm text-orange-700">
+                 <div className="flex items-center gap-2">
+                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                   <span>{t('browseOffline')}</span>
+                 </div>
+                 <div className="flex items-center gap-2">
+                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                   <span>{t('instantNotifications')}</span>
+                 </div>
+                 <div className="flex items-center gap-2">
+                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                   <span>{t('fasterLoading')}</span>
+                 </div>
+                 <div className="flex items-center gap-2">
+                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                   <span>{t('nativeFeatures')}</span>
+                 </div>
+               </div>
+               <div className="mt-4">
+                 <button 
+                   className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-200 flex items-center gap-2"
+                   onClick={() => setShowInstallGuide(true)}
+                 >
+                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                   </svg>
+                   {t('downloadNow')}
+                 </button>
+               </div>
+             </div>
           </div>
         </div>
 
@@ -226,6 +360,122 @@ const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
           </div>
         </div>
       </div>
+
+      {/* Installation Guide Modal */}
+      {showInstallGuide && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                  <Smartphone className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900">{t('installAppTitle')}</h3>
+                  <p className="text-sm text-gray-600">Follow the steps to install the app</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {/* Progress Indicator */}
+                <div className="flex justify-between items-center">
+                  {getInstallationSteps().map((step, index) => (
+                    <div key={index} className="flex flex-col items-center">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        index < installationStep 
+                          ? 'bg-green-500 text-white' 
+                          : index === installationStep 
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-200 text-gray-500'
+                      }`}>
+                        {index < installationStep ? (
+                          <Check className="w-4 h-4" />
+                        ) : (
+                          step.icon
+                        )}
+                      </div>
+                      <span className="text-xs mt-1 text-center">{step.title}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Download Progress */}
+                {isDownloading && (
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span>{t('downloading')}</span>
+                      <span>{downloadProgress}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${downloadProgress}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {error && (
+                  <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-md">
+                    <AlertTriangle className="w-4 h-4 text-red-500" />
+                    <span className="text-sm text-red-700">{error}</span>
+                  </div>
+                )}
+
+                {/* Installation Guide */}
+                <div className="space-y-3">
+                  <h4 className="font-medium">{t('installationGuide')}</h4>
+                  <div className="space-y-2 text-sm">
+                    <p>{t('installationBenefits')}</p>
+                    <ul className="list-disc list-inside space-y-1 text-gray-600">
+                      <li>{t('benefit1')}</li>
+                      <li>{t('benefit2')}</li>
+                      <li>{t('benefit3')}</li>
+                      <li>{t('benefit4')}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2 pt-4">
+                  {installationStep === 0 && (
+                    <button
+                      onClick={handleDownload}
+                      className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-200 flex items-center justify-center gap-2"
+                    >
+                      <Download className="w-4 h-4" />
+                      {t('downloadNow')}
+                    </button>
+                  )}
+                  
+                  {installationStep >= 2 && (
+                    <button
+                      onClick={handleInstallationComplete}
+                      className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all duration-200 flex items-center justify-center gap-2"
+                    >
+                      <Check className="w-4 h-4" />
+                      {t('installationComplete')}
+                    </button>
+                  )}
+                  
+                  <button
+                    onClick={() => setShowInstallGuide(false)}
+                    className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-200"
+                  >
+                    {t('close')}
+                  </button>
+                </div>
+
+                {/* Help Text */}
+                <div className="text-xs text-gray-500 text-center">
+                  {t('needHelp')} <a href="mailto:support@nivasi.com" className="text-blue-500 underline">{t('contactSupport')}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
