@@ -9,6 +9,21 @@ const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [error, setError] = useState(null);
+  const [isWebViewApp, setIsWebViewApp] = useState(false);
+
+  // Web view detection
+  useEffect(() => {
+    const detectWebView = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isWebView = userAgent.includes('wv') || // Android WebView
+                       userAgent.includes('mobile') && userAgent.includes('safari') && !userAgent.includes('chrome') || // iOS WebView
+                       userAgent.includes('nivasi') || // Custom web view identifier
+                       window.ReactNativeWebView || // React Native WebView
+                       window.webkit && window.webkit.messageHandlers; // iOS WKWebView
+      setIsWebViewApp(isWebView);
+    };
+    detectWebView();
+  }, []);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -290,48 +305,82 @@ const TermsAndConditionsModal = ({ isOpen, onAccept, onDecline, t }) => {
              </div>
 
              {/* Nivasi Space App Promotion */}
-             <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-4 border border-orange-200">
-               <div className="flex items-center gap-3 mb-3">
-                 <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
-                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                   </svg>
+             {!isWebViewApp ? (
+               <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-4 border border-orange-200">
+                 <div className="flex items-center gap-3 mb-3">
+                   <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                     <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                     </svg>
+                   </div>
+                   <div>
+                     <h3 className="font-semibold text-orange-800">{t('installAppTitle')}</h3>
+                     <p className="text-sm text-orange-700">{t('enhancedExperience')}</p>
+                   </div>
                  </div>
-                 <div>
-                   <h3 className="font-semibold text-orange-800">{t('installAppTitle')}</h3>
-                   <p className="text-sm text-orange-700">{t('enhancedExperience')}</p>
+                 <div className="space-y-2 text-sm text-orange-700">
+                   <div className="flex items-center gap-2">
+                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                     <span>{t('browseOffline')}</span>
+                   </div>
+                   <div className="flex items-center gap-2">
+                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                     <span>{t('instantNotifications')}</span>
+                   </div>
+                   <div className="flex items-center gap-2">
+                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                     <span>{t('fasterLoading')}</span>
+                   </div>
+                   <div className="flex items-center gap-2">
+                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                     <span>{t('nativeFeatures')}</span>
+                   </div>
+                 </div>
+                 <div className="mt-4">
+                   <button 
+                     className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-200 flex items-center gap-2"
+                     onClick={() => setShowInstallGuide(true)}
+                   >
+                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                     </svg>
+                     {t('downloadNow')}
+                   </button>
                  </div>
                </div>
-               <div className="space-y-2 text-sm text-orange-700">
+             ) : (
+               <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
+                 <div className="flex items-center gap-3 mb-3">
+                   <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
+                     <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                     </svg>
+                   </div>
+                                    <div>
+                   <h3 className="font-semibold text-green-800">{t('welcomeToNivasiApp')}</h3>
+                   <p className="text-sm text-green-700">{t('usingEnhancedApp')}</p>
+                 </div>
+               </div>
+               <div className="space-y-2 text-sm text-green-700">
                  <div className="flex items-center gap-2">
-                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                   <span>{t('browseOffline')}</span>
+                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                   <span>{t('fasterBrowsing')}</span>
                  </div>
                  <div className="flex items-center gap-2">
-                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                    <span>{t('instantNotifications')}</span>
                  </div>
                  <div className="flex items-center gap-2">
-                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                   <span>{t('fasterLoading')}</span>
+                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                   <span>{t('offlineAccess')}</span>
                  </div>
                  <div className="flex items-center gap-2">
-                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                    <span>{t('nativeFeatures')}</span>
                  </div>
+                 </div>
                </div>
-               <div className="mt-4">
-                 <button 
-                   className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-200 flex items-center gap-2"
-                   onClick={() => setShowInstallGuide(true)}
-                 >
-                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                   </svg>
-                   {t('downloadNow')}
-                 </button>
-               </div>
-             </div>
+             )}
           </div>
         </div>
 

@@ -133,6 +133,12 @@ export const translations = {
     nativeFeatures: "Native app features",
     enhancedExperience: "Enhanced experience with offline access and notifications",
     
+    // Web View App Welcome
+    welcomeToNivasiApp: "Welcome to Nivasi Space App!",
+    usingEnhancedApp: "You're using our enhanced mobile app",
+    fasterBrowsing: "Faster browsing experience",
+    offlineAccess: "Offline access to saved rooms",
+    
     // Booking System
     bookNow: "Book Now",
     bookRoom: "Book Room",
@@ -524,6 +530,12 @@ export const translations = {
     nativeFeatures: "नेटिव ऐप सुविधाएं",
     enhancedExperience: "ऑफलाइन एक्सेस और नोटिफिकेशन के साथ बेहतर अनुभव",
     
+    // Web View App Welcome
+    welcomeToNivasiApp: "Nivasi Space ऐप में आपका स्वागत है!",
+    usingEnhancedApp: "आप हमारा बेहतर मोबाइल ऐप उपयोग कर रहे हैं",
+    fasterBrowsing: "तेज़ ब्राउज़िंग अनुभव",
+    offlineAccess: "सहेजे गए कमरों तक ऑफलाइन पहुंच",
+    
     // Booking System
     bookNow: "अभी बुक करें",
     bookRoom: "कमरा बुक करें",
@@ -797,6 +809,12 @@ export const translations = {
     installApp: "ऐप इंस्टॉल करा",
     install: "इंस्टॉल",
     appInstalled: "ऐप इंस्टॉल झाले",
+    
+    // Web View App Welcome
+    welcomeToNivasiApp: "Nivasi Space ऐप मध्ये तुमचे स्वागत आहे!",
+    usingEnhancedApp: "तुम्ही आमचा बेहतर मोबाइल ऐप वापरत आहात",
+    fasterBrowsing: "वेगवान ब्राउझिंग अनुभव",
+    offlineAccess: "सेव्ह केलेल्या खोल्यांना ऑफलाइन प्रवेश",
     
     // Contact
     contactUs: "संपर्क साधा",
