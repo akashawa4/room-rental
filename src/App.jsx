@@ -10,6 +10,7 @@ import Notification from './components/Notification.jsx';
 
 import { useLanguage } from './contexts/LanguageContext.jsx';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
+import { isWebView, getClerkAppearanceConfig } from './utils/webview.js';
 import './App.css';
 
 // Login Screen Component
@@ -30,7 +31,11 @@ const LoginScreen = ({ t }) => {
         </div>
 
         <div className="space-y-4">
-          <SignInButton mode="modal" className="w-full">
+          <SignInButton 
+            mode="modal" 
+            className="w-full"
+            appearance={getClerkAppearanceConfig()}
+          >
             <Button className="w-full bg-white border-2 border-gray-300 hover:bg-gray-50 text-gray-700 py-3 text-lg font-semibold flex items-center justify-center gap-3">
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -325,7 +330,8 @@ function App() {
                         appearance={{
                           elements: {
                             avatarBox: "w-8 h-8",
-                            userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                            userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm",
+                            ...getClerkAppearanceConfig().elements
                           }
                         }}
                       />
@@ -472,7 +478,8 @@ function App() {
                       appearance={{
                         elements: {
                           avatarBox: "w-8 h-8",
-                          userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                          userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm",
+                          ...getClerkAppearanceConfig().elements
                         }
                       }}
                     />
