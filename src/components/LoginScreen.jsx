@@ -14,32 +14,50 @@ const LoginScreen = ({ onLoginSuccess }) => {
     setError('');
     
     try {
-      // Try popup first with better error handling
-      const result = await signInWithPopup(auth, googleProvider);
-      // The AuthContext will handle the state change automatically
-      // No need to call onLoginSuccess as the auth state will update
+      // Check if we're in a WebView or mobile app environment
+      const isWebView = /WebView|wv|FB_IAB|FBAV|Instagram|Line|Twitter|LinkedInApp|WhatsApp/.test(navigator.userAgent);
+      const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      if (isWebView) {
+        // For WebView, always use redirect
+        console.log('Detected WebView environment, using redirect authentication');
+        await signInWithRedirect(auth, googleProvider);
+        return; // Don't set loading to false as we're redirecting
+      }
+      
+      // For regular browsers, try popup first
+      try {
+        const result = await signInWithPopup(auth, googleProvider);
+        // The AuthContext will handle the state change automatically
+      } catch (popupError) {
+        console.error('LoginScreen: Popup sign-in error:', popupError);
+        
+        // Handle specific popup error cases
+        if (popupError.code === 'auth/popup-blocked' || 
+            popupError.code === 'auth/popup-closed-by-user' ||
+            popupError.code === 'auth/cancelled-popup-request' ||
+            popupError.message?.includes('Cross-Origin-Opener-Policy') ||
+            popupError.message?.includes('disallowed_useragent')) {
+          // Fallback to redirect for popup issues or WebView
+          console.log('Falling back to redirect due to popup/WebView issues');
+          await signInWithRedirect(auth, googleProvider);
+          return; // Don't set loading to false as we're redirecting
+        } else {
+          throw popupError; // Re-throw other errors
+        }
+      }
     } catch (error) {
       console.error('LoginScreen: Google sign-in error:', error);
       
       // Handle specific error cases
-      if (error.code === 'auth/popup-blocked' || 
-          error.code === 'auth/popup-closed-by-user' ||
-          error.code === 'auth/cancelled-popup-request' ||
-          error.message?.includes('Cross-Origin-Opener-Policy')) {
-        // Fallback to redirect for COOP issues
-        try {
-          console.log('Falling back to redirect due to popup issues');
-          await signInWithRedirect(auth, googleProvider);
-        } catch (redirectError) {
-          console.error('LoginScreen: Redirect sign-in error:', redirectError);
-          setError('Authentication failed. Please try again or check your browser settings.');
-        }
-      } else if (error.code === 'auth/unauthorized-domain') {
+      if (error.code === 'auth/unauthorized-domain') {
         setError('This domain is not authorized for Google sign-in.');
       } else if (error.code === 'auth/network-request-failed') {
         setError('Network error. Please check your connection and try again.');
       } else if (error.code === 'auth/too-many-requests') {
         setError('Too many sign-in attempts. Please try again later.');
+      } else if (error.message?.includes('disallowed_useragent')) {
+        setError('Google Sign-In is not supported in this browser. Please use a different browser or open in external browser.');
       } else {
         setError(error.message || 'Failed to sign in with Google');
       }
@@ -83,6 +101,15 @@ const LoginScreen = ({ onLoginSuccess }) => {
             )}
             {isLoading ? 'Signing in...' : 'Continue with Google'}
           </Button>
+          
+          {/* WebView Notice */}
+          {/WebView|wv|FB_IAB|FBAV|Instagram|Line|Twitter|LinkedInApp|WhatsApp/.test(navigator.userAgent) && (
+            <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-blue-700 text-xs text-center">
+                🔗 You'll be redirected to your default browser for secure authentication
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Error Message */}
