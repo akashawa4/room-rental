@@ -10,7 +10,6 @@ import Notification from './components/Notification.jsx';
 
 import { useLanguage } from './contexts/LanguageContext.jsx';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
-import { isWebView, getClerkAppearanceConfig, safeIsWebView } from './utils/webview.js';
 import './App.css';
 
 // Login Screen Component
@@ -31,11 +30,7 @@ const LoginScreen = ({ t }) => {
         </div>
 
         <div className="space-y-4">
-          <SignInButton 
-            mode="modal" 
-            className="w-full"
-            appearance={getClerkAppearanceConfig()}
-          >
+          <SignInButton mode="modal" className="w-full">
             <Button className="w-full bg-white border-2 border-gray-300 hover:bg-gray-50 text-gray-700 py-3 text-lg font-semibold flex items-center justify-center gap-3">
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -81,7 +76,7 @@ function App() {
   const [rooms, setRooms] = useState([]);
   const [isLoadingRooms, setIsLoadingRooms] = useState(true);
   
-  // Load rooms data dynamically with timeout
+  // Load rooms data dynamically
   useEffect(() => {
     const loadRooms = async () => {
       try {
@@ -95,15 +90,7 @@ function App() {
       }
     };
     
-    // Add timeout to prevent infinite loading
-    const timeoutId = setTimeout(() => {
-      console.warn('Rooms loading timeout, forcing completion');
-      setIsLoadingRooms(false);
-    }, 10000); // 10 second timeout
-    
     loadRooms();
-    
-    return () => clearTimeout(timeoutId);
   }, [currentLanguage]);
   
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -223,17 +210,17 @@ function App() {
     setShowContactPopup(true);
   }, []);
 
-  // Detect if running in web view app with error handling
+  // Detect if running in web view app
   useEffect(() => {
     const detectWebView = () => {
-      try {
-        const isWebView = safeIsWebView();
-        setIsWebViewApp(isWebView);
-        console.log('WebView detection completed:', isWebView);
-      } catch (error) {
-        console.warn('Error detecting WebView:', error);
-        setIsWebViewApp(false);
-      }
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isWebView = userAgent.includes('wv') || // Android WebView
+                       userAgent.includes('mobile') && userAgent.includes('safari') && !userAgent.includes('chrome') || // iOS WebView
+                       userAgent.includes('nivasi') || // Custom web view identifier
+                       window.ReactNativeWebView || // React Native WebView
+                       window.webkit && window.webkit.messageHandlers; // iOS WKWebView
+      
+      setIsWebViewApp(isWebView);
     };
 
     detectWebView();
@@ -291,21 +278,6 @@ function App() {
 
 
 
-  // Show loading state while detecting WebView
-  if (isLoadingRooms && rooms.length === 0) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
-            <img src="/logo.svg" alt="Nivasi.space Logo" className="w-12 h-12 object-contain" />
-          </div>
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Nivasi.space...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
       <SignedOut>
@@ -353,8 +325,7 @@ function App() {
                         appearance={{
                           elements: {
                             avatarBox: "w-8 h-8",
-                            userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm",
-                            ...getClerkAppearanceConfig().elements
+                            userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
                           }
                         }}
                       />
@@ -501,8 +472,7 @@ function App() {
                       appearance={{
                         elements: {
                           avatarBox: "w-8 h-8",
-                          userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm",
-                          ...getClerkAppearanceConfig().elements
+                          userButtonTrigger: "bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
                         }
                       }}
                     />
