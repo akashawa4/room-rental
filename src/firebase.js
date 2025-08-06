@@ -6,13 +6,13 @@ import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, listAll } f
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyDfPdQcmQksnlMr5oIMGkXzoc6y7N_6qjI",
+  authDomain: "nivasispace-7ed76.firebaseapp.com",
+  projectId: "nivasispace-7ed76",
+  storageBucket: "nivasispace-7ed76.firebasestorage.app",
+  messagingSenderId: "98552673378",
+  appId: "1:98552673378:web:a8086a34cd1fb82a198d3b",
+  measurementId: "G-634HFYP25V"
 };
 
 // Initialize Firebase
