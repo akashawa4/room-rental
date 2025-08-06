@@ -6,9 +6,10 @@ import Logo from './components/Logo.jsx';
 import LanguageSelector from './components/LanguageSelector.jsx';
 import TermsAndConditionsModal from './components/TermsAndConditionsModal.jsx';
 import Notification from './components/Notification.jsx';
-
+import LoginScreen from './components/LoginScreen.jsx';
 
 import { useLanguage } from './contexts/LanguageContext.jsx';
+import { useAuth } from './contexts/AuthContext.jsx';
 import './App.css';
 
 // Lazy load modal components to reduce initial bundle size
@@ -31,26 +32,10 @@ const ModalLoadingSpinner = () => (
 
 function App() {
   const { t, currentLanguage } = useLanguage();
+  const { user, loading, logout, isAuthenticated } = useAuth();
+  
   const [rooms, setRooms] = useState([]);
   const [isLoadingRooms, setIsLoadingRooms] = useState(true);
-  
-  // Load rooms data dynamically
-  useEffect(() => {
-    const loadRooms = async () => {
-      try {
-        const { sampleRooms, getTranslatedRooms } = await import('./data/rooms.js');
-        setRooms(getTranslatedRooms(currentLanguage));
-      } catch (error) {
-        console.error('Failed to load rooms data:', error);
-        setRooms([]);
-      } finally {
-        setIsLoadingRooms(false);
-      }
-    };
-    
-    loadRooms();
-  }, [currentLanguage]);
-  
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const [showAdminLogin, setShowAdminLogin] = useState(false);
@@ -71,7 +56,22 @@ function App() {
   const [showContactPopup, setShowContactPopup] = useState(false);
   const [isWebViewApp, setIsWebViewApp] = useState(false);
   
-
+  // Load rooms data dynamically
+  useEffect(() => {
+    const loadRooms = async () => {
+      try {
+        const { sampleRooms, getTranslatedRooms } = await import('./data/rooms.js');
+        setRooms(getTranslatedRooms(currentLanguage));
+      } catch (error) {
+        console.error('Failed to load rooms data:', error);
+        setRooms([]);
+      } finally {
+        setIsLoadingRooms(false);
+      }
+    };
+    
+    loadRooms();
+  }, [currentLanguage]);
 
   // Room type categories - use useMemo to update when language changes
   const categories = useMemo(() => [
@@ -84,7 +84,7 @@ function App() {
   ], [t]);
 
   // Helper function to get the original English key for a category
-  const getCategoryKey = (categoryKey) => {
+  const getCategoryKey = useCallback((categoryKey) => {
     const categoryMap = {
       'All': 'All',
       'Single Room': 'Single Room',
@@ -94,10 +94,10 @@ function App() {
       '2 BHK': '2 BHK'
     };
     return categoryMap[categoryKey] || categoryKey;
-  };
+  }, []);
 
   // Helper function to check if a room matches a category (handles both English and translated values)
-  const roomMatchesCategory = (room, category) => {
+  const roomMatchesCategory = useCallback((room, category) => {
     if (category === 'All') return true;
     
     const originalCategory = getCategoryKey(category);
@@ -116,7 +116,7 @@ function App() {
     
     return (room.roomType === originalCategory || room.roomType === translatedCategory ||
             room.rooms === originalCategory || room.rooms === translatedCategory);
-  };
+  }, [t, getCategoryKey]);
 
   // Enhanced filtering with memoization
   const filteredRooms = useMemo(() => {
@@ -130,7 +130,7 @@ function App() {
       const matchesSearch = room.title && room.title.toLowerCase().includes(search.toLowerCase());
       return matchesGender && matchesCategory && matchesSearch;
     });
-  }, [rooms, selectedGender, category, search]);
+  }, [rooms, selectedGender, category, search, roomMatchesCategory]);
 
   const handleViewDetails = useCallback((room) => {
     setSelectedRoom(room);
@@ -234,30 +234,42 @@ function App() {
     setShowBookingManagement(true);
   }, []);
 
+  // Show loading screen while auth is initializing
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
+  // Show login screen if not authenticated
+  if (!isAuthenticated) {
+    return <LoginScreen onLoginSuccess={() => {}} />;
+  }
 
   return (
-    <>
-      {/* Remove LoginScreen component and its usage */}
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100">
+      {/* Notification */}
+      <Notification
+        message={notification.message}
+        type={notification.type}
+        isVisible={notification.isVisible}
+        onClose={() => setNotification(prev => ({ ...prev, isVisible: false }))}
+      />
+      {/* Terms and Conditions Modal */}
+      <TermsAndConditionsModal
+        isOpen={showTermsModal}
+        onAccept={handleTermsAccept}
+        onDecline={handleTermsDecline}
+        t={t}
+      />
       
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100">
-          {/* Notification */}
-          <Notification
-            message={notification.message}
-            type={notification.type}
-            isVisible={notification.isVisible}
-            onClose={() => setNotification(prev => ({ ...prev, isVisible: false }))}
-          />
-          {/* Terms and Conditions Modal */}
-          <TermsAndConditionsModal
-            isOpen={showTermsModal}
-            onAccept={handleTermsAccept}
-            onDecline={handleTermsDecline}
-            t={t}
-          />
-          
-          {/* Enhanced Header */}
-          <header className="header-gradient text-white shadow-2xl">
+      {/* Enhanced Header */}
+      <header className="header-gradient text-white shadow-2xl">
             <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 lg:py-6">
                               {/* Mobile Layout - Optimized */}
                 <div className="sm:hidden">
@@ -328,6 +340,33 @@ function App() {
                       For Room Registration Contact Us
                     </Button>
                     
+                    {/* User Profile and Logout */}
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-1">
+                        {user?.photoURL ? (
+                          <img 
+                            src={user.photoURL} 
+                            alt={user.displayName || 'User'} 
+                            className="w-6 h-6 rounded-full border border-white/30"
+                          />
+                        ) : (
+                          <User className="w-6 h-6 text-white" />
+                        )}
+                        <span className="text-xs text-white/80 font-medium">
+                          {user?.displayName || 'User'}
+                        </span>
+                      </div>
+                      <Button
+                        variant="outline"
+                        onClick={logout}
+                        size="sm"
+                        className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        {t('logout')}
+                      </Button>
+                    </div>
+                    
                     {/* Admin Buttons - Only show if admin */}
                     {isAdmin && (
                       <div className="flex items-center gap-2">
@@ -346,8 +385,8 @@ function App() {
                           size="sm"
                           className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm flex-1"
                         >
-                          <LogOut className="w-4 h-4" />
-                          {t('logout')}
+                          <Shield className="w-4 h-4" />
+                          {t('adminLogout')}
                         </Button>
                       </div>
                     )}
@@ -416,17 +455,38 @@ function App() {
                   
                   {/* User Profile */}
                   <div className="flex flex-col items-center gap-1">
-                    <User className="w-8 h-8 text-white" />
-                    <span className="text-xs text-white/80 font-medium">Profile</span>
+                    {user?.photoURL ? (
+                      <img 
+                        src={user.photoURL} 
+                        alt={user.displayName || 'User'} 
+                        className="w-8 h-8 rounded-full border-2 border-white/30"
+                      />
+                    ) : (
+                      <User className="w-8 h-8 text-white" />
+                    )}
+                    <span className="text-xs text-white/80 font-medium">
+                      {user?.displayName || 'Profile'}
+                    </span>
                   </div>
+                  
+                  {/* Logout Button */}
+                  <Button
+                    variant="outline"
+                    onClick={logout}
+                    className="w-full sm:w-auto bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    {t('logout')}
+                  </Button>
+                  
                   {isAdmin && (
                     <Button
                       variant="outline"
                       onClick={handleAdminLogout}
                       className="w-full sm:w-auto bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
                     >
-                      <LogOut className="w-4 h-4" />
-                      {t('logout')}
+                      <Shield className="w-4 h-4" />
+                      {t('adminLogout')}
                     </Button>
                   )}
                 </div>
@@ -443,7 +503,7 @@ function App() {
               <button
                 key={cat.key}
                 className={`px-3 sm:px-4 py-2 rounded-full border transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0 ${category === cat.key ? 'bg-orange-800 text-white border-orange-800 shadow-lg' : 'bg-white text-orange-700 border-orange-400 hover:bg-orange-50 hover:text-orange-800'}`}
-                onClick={useCallback(() => setCategory(cat.key), [cat.key])}
+                onClick={() => setCategory(cat.key)}
                 aria-pressed={category === cat.key}
               >
                 {cat.label}
@@ -1050,8 +1110,7 @@ function App() {
           </div>
         </div>
       )}
-        </div>
-    </>
+    </div>
   );
 }
 
