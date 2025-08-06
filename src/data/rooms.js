@@ -371,7 +371,7 @@ export const sampleRooms = [
     id: 15,
     title: "BADAM SALOKHE'S HOUSE",
     rent: 2000,
-    note: "Including light and water bill , 4 boys can stay in this room.",
+    note: "Including light and water bill , 9 BOYS needed to stay in this room.",
     contact: "+91 9822673489",
     address: "Salokhenagar , Kalamba",
     location: "100m away from DYPSN College Gate, Near Trimurti House.",
@@ -479,7 +479,7 @@ export const sampleRooms = [
       "/Pankaj Waghmare/pankaj 10_converted.avif",
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory. ",
-    features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "SELF COOKING ALLOW", "NEAR BY MESS", "TERRACE ACCESS", "PARKING",  "BEDS", "shoes stand" , "Parets allowed for stay"]
+    features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "SELF COOKING ALLOW", "NEAR BY MESS", "TERRACE ACCESS", "PARKING",   "shoes stand" , "Parets allowed for stay"]
   },
   {
     id: 19,
@@ -596,7 +596,34 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory. ",
     features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "SELF COOKING ALLOW", "NEAR BY MESS", "TERRACE ACCESS", "STUDY TABLE FOR STUDENTS", "PARKING",  "BEDS", "shoes stand" , "Parets allowed for stay"]
   },
-  
+  {
+    id: 23,
+    title: "HAIBHAU SAVARATKAR'S HOUSE",
+    rent: 2000,
+    note: "Including light and water bill , 2/3 STUDENTS can stay in this room.",
+    contact: "+91 9730456081" ,
+    address: "Survey Nagar , Kalamba",
+    location: "450m away from DYPSN College Gate.",
+    mapLink: "https://maps.app.goo.gl/EQZqAZwxrhii4SwUA?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Haribhau Savaratkar/hari 0_converted.avif",
+      "/Haribhau Savaratkar/hari 1_converted.avif",
+      "/Haribhau Savaratkar/hari 2_converted.avif",
+      "/Haribhau Savaratkar/hari 3_converted.avif",
+      "/Haribhau Savaratkar/hari 4_converted.avif",
+      "/Haribhau Savaratkar/hari 5_converted.avif",
+      "/Haribhau Savaratkar/hari 6_converted.avif",
+      "/Haribhau Savaratkar/hari 7_converted.avif",
+
+        
+    
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , If there are two student in room then the electricity and water bill will be paid by students, Garbage Management by students,Electric Induction not allowed for cooking,Good Behaviour is required",
+    features: ["WIFI(If Student want they can have it by their own)","HOT WATER", "WATER SUPPLY","Parking", "SELF COOKING ALLOW", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay","Near by mess"]
+  },
   
 
   
