@@ -10,7 +10,7 @@ import Notification from './components/Notification.jsx';
 
 import { useLanguage } from './contexts/LanguageContext.jsx';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
-import { isWebView, getClerkAppearanceConfig } from './utils/webview.js';
+import { isWebView, getClerkAppearanceConfig, safeIsWebView } from './utils/webview.js';
 import './App.css';
 
 // Login Screen Component
@@ -81,7 +81,7 @@ function App() {
   const [rooms, setRooms] = useState([]);
   const [isLoadingRooms, setIsLoadingRooms] = useState(true);
   
-  // Load rooms data dynamically
+  // Load rooms data dynamically with timeout
   useEffect(() => {
     const loadRooms = async () => {
       try {
@@ -95,7 +95,15 @@ function App() {
       }
     };
     
+    // Add timeout to prevent infinite loading
+    const timeoutId = setTimeout(() => {
+      console.warn('Rooms loading timeout, forcing completion');
+      setIsLoadingRooms(false);
+    }, 10000); // 10 second timeout
+    
     loadRooms();
+    
+    return () => clearTimeout(timeoutId);
   }, [currentLanguage]);
   
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -215,17 +223,17 @@ function App() {
     setShowContactPopup(true);
   }, []);
 
-  // Detect if running in web view app
+  // Detect if running in web view app with error handling
   useEffect(() => {
     const detectWebView = () => {
-      const userAgent = navigator.userAgent.toLowerCase();
-      const isWebView = userAgent.includes('wv') || // Android WebView
-                       userAgent.includes('mobile') && userAgent.includes('safari') && !userAgent.includes('chrome') || // iOS WebView
-                       userAgent.includes('nivasi') || // Custom web view identifier
-                       window.ReactNativeWebView || // React Native WebView
-                       window.webkit && window.webkit.messageHandlers; // iOS WKWebView
-      
-      setIsWebViewApp(isWebView);
+      try {
+        const isWebView = safeIsWebView();
+        setIsWebViewApp(isWebView);
+        console.log('WebView detection completed:', isWebView);
+      } catch (error) {
+        console.warn('Error detecting WebView:', error);
+        setIsWebViewApp(false);
+      }
     };
 
     detectWebView();
@@ -282,6 +290,21 @@ function App() {
   }, []);
 
 
+
+  // Show loading state while detecting WebView
+  if (isLoadingRooms && rooms.length === 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <img src="/logo.svg" alt="Nivasi.space Logo" className="w-12 h-12 object-contain" />
+          </div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading Nivasi.space...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
