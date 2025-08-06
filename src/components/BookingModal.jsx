@@ -7,13 +7,11 @@ import { Label } from '@/components/ui/label.jsx';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { addBooking, bookingTypes, bookingStatuses } from '../data/bookings.js';
-import { useUser } from '@clerk/clerk-react';
 import { openWhatsAppWithBooking, copyBookingMessage } from '../utils/whatsapp.js';
 
 const BookingModal = ({ isOpen, onClose, room, onBookingSuccess }) => {
   const { t } = useLanguage();
-  const { user } = useUser();
-  
+
   const [formData, setFormData] = useState({
     type: bookingTypes.INQUIRY,
     message: '',
@@ -23,22 +21,10 @@ const BookingModal = ({ isOpen, onClose, room, onBookingSuccess }) => {
     userEmail: '',
     userPhone: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submittedBooking, setSubmittedBooking] = useState(null);
-
-  // Initialize form with user data if available
-  useEffect(() => {
-    if (user) {
-      setFormData(prev => ({
-        ...prev,
-        userName: user.fullName || '',
-        userEmail: user.primaryEmailAddress?.emailAddress || '',
-        userPhone: user.phoneNumbers?.[0]?.phoneNumber || ''
-      }));
-    }
-  }, [user]);
 
   // Reset form when modal opens/closes
   useEffect(() => {
@@ -48,13 +34,13 @@ const BookingModal = ({ isOpen, onClose, room, onBookingSuccess }) => {
         message: '',
         requestedDate: '',
         requestedTime: '',
-        userName: user?.fullName || '',
-        userEmail: user?.primaryEmailAddress?.emailAddress || '',
-        userPhone: user?.phoneNumbers?.[0]?.phoneNumber || ''
+        userName: '',
+        userEmail: '',
+        userPhone: ''
       });
       setSubmitStatus(null);
     }
-  }, [isOpen, user]);
+  }, [isOpen]);
 
   const handleInputChange = (field, value) => {
     // Special handling for phone number to limit to 10 digits
@@ -108,7 +94,7 @@ const BookingModal = ({ isOpen, onClose, room, onBookingSuccess }) => {
     try {
       const bookingData = {
         roomId: room.id,
-        userId: user?.id || 'anonymous',
+        userId: 'anonymous', // Removed Clerk user ID
         userName: formData.userName.trim(),
         userEmail: formData.userEmail.trim(),
         userPhone: formData.userPhone.trim(),
