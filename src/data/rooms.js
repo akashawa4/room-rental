@@ -374,7 +374,7 @@ export const sampleRooms = [
     note: "Including light and water bill , 9 BOYS needed to stay in this room.",
     contact: "+91 9822673489",
     address: "Salokhenagar , Kalamba",
-    location: "100m away from DYPSN College Gate, Near Trimurti House.",
+    location: "100m away from DYPSN College Gate, Near Gurukrupa Mess.",
     mapLink: "hhttps://maps.app.goo.gl/8Xs7bWKifv9cf6vo8?g_st=aw",
     gender: "boys", // Available for boys
     roomType: "Cot Basis",
@@ -624,8 +624,53 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , If there are two student in room then the electricity and water bill will be paid by students, Garbage Management by students,Electric Induction not allowed for cooking,Good Behaviour is required",
     features: ["WIFI(If Student want they can have it by their own)","HOT WATER", "WATER SUPPLY","Parking", "SELF COOKING ALLOW", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay","Near by mess"]
   },
-  
-
+  {
+    id: 24,
+    title: "Morya Mess",
+    rent: 1800,
+    note: "Including light and water bill , 5/6 BOYS needed to stay in this room.",
+    contact: "+91 9673820526",
+    address: "Salokhenagar , Kalamba",
+    location: "50m away from DYPSN College Gate.",
+    mapLink: "https://maps.app.goo.gl/sm5JZRbvKpb7pqUT6?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Morya Mess/morya 0_converted.avif",
+      "/Morya Mess/morya 1_converted.avif",
+      "/Morya Mess/morya 2_converted.avif",
+      "/Morya Mess/morya 3_converted.avif",
+      "/Morya Mess/morya 4_converted.avif",
+      "/Morya Mess/morya 5_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 5th of each month ,After 10pm no entry, 2000 Rs. Advance , No drinking and smoking allowed in room, STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , Garbage Management by students",
+    features: ["WIFI(50% Recharge by Student)","HOT WATER", "WATER SUPPLY","Parking", "Beds","Mattress", "Owner's  MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay","CUBERT","Clenaing Fluids are Provided by Room Owner when needed"]
+  },
+  {
+    id: 25,
+    title: "Hemant Kamble's House",
+    rent: 1600,
+    note: "Including light and water bill , 5 GIRLS needed to stay in this room.",
+    contact: "+91 9623135707",
+    address: "Salokhenagar , Kalamba",
+    location: "70m away from DYPSN College Gate, Near GuruKrupa Mess.", 
+    mapLink: "https://maps.app.goo.gl/N6JB1pJWAj9gevMb8?g_st=aw",
+    gender: "girls", // Available for girls
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Hemant Amble/amble 0_converted.avif",
+      "/Hemant Amble/amble 1_converted.avif",
+      "/Hemant Amble/amble 2_converted.avif",
+      "/Hemant Amble/amble 3_converted.avif",
+      "/Hemant Amble/amble 4_converted.avif",
+      "/Hemant Amble/amble 5_converted.avif",
+      "/Hemant Amble/amble 6_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry    , Self Cleaning , Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
+  },
   
 ];
 
