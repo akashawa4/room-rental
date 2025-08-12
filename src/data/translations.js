@@ -567,7 +567,7 @@ export const translations = {
     submitBooking: "बुकिंग जमा करें",
     submitting: "जमा कर रहे हैं...",
     bookingSubmitted: "बुकिंग जमा हो गई!",
-    bookingSubmittedMessage: "आपका अनुरोध कमरे के मालिक को भेज दिया गया है। WhatsApp पर रीडायरेक्ट हो रहा है...",
+    bookingSubmittedMessage: "आपका अनुरोध कमरे के मालिक को भेज दिया गया है। व्हॉट्सअॅपवर पुनर्निर्देशित होत आहे...",
     bookingError: "बुकिंग त्रुटि",
     bookingErrorMessage: "आपकी बुकिंग जमा करने में त्रुटि हुई। कृपया पुनः प्रयास करें।",
     tryAgain: "पुनः प्रयास करें",

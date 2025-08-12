@@ -649,7 +649,7 @@ export const sampleRooms = [
   },
   {
     id: 25,
-    title: "Hemant Kamble's House",
+    title: "Hemant Amble's House",
     rent: 1600,
     note: "Including light and water bill , 5 GIRLS needed to stay in this room.",
     contact: "+91 9623135707",
@@ -715,7 +715,24 @@ const translateRoomTitle = (title, t) => {
   translatedTitle = translatedTitle.replace(/SHREE SWAMI SAMARTH GIRLS HOSTEL/g, t('shreeSwamiSamarthGirlsHostel'));
   translatedTitle = translatedTitle.replace(/RUPALI NIKAM'S/g, t('rupaliNikams'));
   
-  return translatedTitle;
+  // Add missing translations for other rooms
+  translatedTitle = translatedTitle.replace(/Morya Mess/g, t('moryaMess'));
+  translatedTitle = translatedTitle.replace(/Hemant Amble's House/g, t('hemantAmbelsHouse'));
+  translatedTitle = translatedTitle.replace(/HAIBHAU SAVARATKAR'S HOUSE/g, t('haibhauSavaratkarsHouse'));
+  translatedTitle = translatedTitle.replace(/Vaibhav Patil's House/g, t('vaibhavPatilsHouse'));
+  translatedTitle = translatedTitle.replace(/Matoshree House/g, t('matoshreeHouse'));
+  translatedTitle = translatedTitle.replace(/Abhiya Parkar's House/g, t('abhiyaParkarsHouse'));
+  translatedTitle = translatedTitle.replace(/SUREKHA GAVLI'S HOUSE\(GAVLI MESS\)/g, t('surekhaGavlisHouse'));
+  translatedTitle = translatedTitle.replace(/PANKAJ WAGHMARE'S HOUSE/g, t('pankajWaghmaresHouse'));
+  translatedTitle = translatedTitle.replace(/SANJAY GANAPATI JADHAV'S HOUSE/g, t('sanjayGanapatiJadhavsHouse'));
+  translatedTitle = translatedTitle.replace(/KIRAN KARAGJAR'S HOUSE/g, t('kiranKaragjarsHouse'));
+  translatedTitle = translatedTitle.replace(/BADAM SALOKHE'S HOUSE/g, t('badamSalokhesHouse'));
+  translatedTitle = translatedTitle.replace(/DIPAK CHOUGALE'S HOUSE/g, t('dipakChougalesHouse'));
+  translatedTitle = translatedTitle.replace(/SWAMI SAMARTH HOUSE \(ROHIT RANJIT BENDARE\)/g, t('swamiSamarthHouse'));
+  translatedTitle = translatedTitle.replace(/SURYAKANT SANGPAL HOUSE/g, t('suryakantSangpalHouse'));
+  translatedTitle = translatedTitle.replace(/Trimurti House/g, t('trimurtiHouse'));
+  
+  return translatedTitle
 };
 
 const translateAddress = (address, t) => {
@@ -748,6 +765,13 @@ const translateLocation = (location, t) => {
   translatedLocation = translatedLocation.replace(/320m/g, t('threeHundredTwentyMeters'));
   translatedLocation = translatedLocation.replace(/600m/g, t('sixHundredMeters'));
   translatedLocation = translatedLocation.replace(/72m/g, t('seventyTwoMeters'));
+  translatedLocation = translatedLocation.replace(/70m/g, t('seventyMeters'));
+  translatedLocation = translatedLocation.replace(/90m/g, t('ninetyMeters'));
+  translatedLocation = translatedLocation.replace(/100m/g, t('hundredMeters'));
+  translatedLocation = translatedLocation.replace(/110m/g, t('hundredTenMeters'));
+  translatedLocation = translatedLocation.replace(/450m/g, t('fourHundredFiftyMeters'));
+  translatedLocation = translatedLocation.replace(/900m/g, t('nineHundredMeters'));
+  translatedLocation = translatedLocation.replace(/1\.5km/g, t('onePointFiveKm'));
   
   // Translate common location patterns
   translatedLocation = translatedLocation.replace(/away from College Gate/g, t('awayFromCollegeGate'));
@@ -758,6 +782,9 @@ const translateLocation = (location, t) => {
   translatedLocation = translatedLocation.replace(/Near Trimurti House/g, t('nearTrimurtiHouse'));
   translatedLocation = translatedLocation.replace(/Near Karvir Chicken Shop/g, t('nearKarvirChicken'));
   translatedLocation = translatedLocation.replace(/Behind Gavli Mess/g, t('behindGavliMess'));
+  translatedLocation = translatedLocation.replace(/Near GuruKrupa Mess/g, t('nearGuruKrupaMess'));
+  translatedLocation = translatedLocation.replace(/Near Vimal Hospital/g, t('nearVimalHospital'));
+  translatedLocation = translatedLocation.replace(/Near Kalamba Lake Waterfall/g, t('nearKalambaLakeWaterfall'));
   
   return translatedLocation;
 };
