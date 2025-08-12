@@ -131,7 +131,7 @@ export const sampleRooms = [
   {
     id: 6,
     title: "RUPALI NIKAM'S 1RK",
-    rent: 2000,
+    rent: 1800,
     note: "Including light and water bill , 4/5 GIRLS can stay in this room.",
     contact: "+91 8855883164",
     address: "MORE MANE NAGAR ,Klamaba.",
@@ -209,7 +209,7 @@ export const sampleRooms = [
   {
     id: 9,
     title: "SARIKA LAXMAN KOPARDEKAR'S 1RK",
-    rent: 2000,
+    rent: 1800,
     note: "Including light and water bill , 5 GIRLS can stay in this room.",
     contact: "+91 9763539136",
     address: "More Mane Nagar , Kalamba",
@@ -671,7 +671,59 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry    , Self Cleaning , Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
   },
-  
+  {
+    id: 26,
+    title: "Raosaheb Naik's House",
+    rent: 1800,
+    note: "Including light and water bill ,8 Boys needed to stay in this room.",
+    contact: "+91 9423825260",
+    address: "Salokhenagar , Kalamba",
+    location: "50m away from DYPSN College Gate, Infront Of Vijaya Canteen.", 
+    mapLink: "https://maps.app.goo.gl/18DGno4JqcGt245x8?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "1 BHK",
+    images: [
+      "/Raosaheb Naik/naik 0_converted.avif",
+      "/Raosaheb Naik/naik 1_converted.avif",
+      "/Raosaheb Naik/naik 2_converted.avif",
+      "/Raosaheb Naik/naik 3_converted.avif",
+      "/Raosaheb Naik/naik 4_converted.avif",
+      "/Raosaheb Naik/naik 5_converted.avif",
+      "/Raosaheb Naik/naik 6_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1800 Rs. Advance ,  After 10pm no entry ,STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning    , Self Cleaning , Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay","Near by mess"]
+  },
+  {
+    id: 27,
+    title: "Alka Naik's House",
+    rent: 1800,
+    note: "Including light and water bill , 7 Boys needed to stay in this room.",
+    contact: "+91 9423825260",
+    address: "Salokhenagar , Kalamba",
+    location: "50m away from DYPSN College Gate,", 
+    mapLink: "https://maps.app.goo.gl/z9aE94LYzoDba1d26?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "1 BHK",
+    images: [
+      "/Alka Naik/Alka 0_converted.avif",
+      "/Alka Naik/Alka 1_converted.avif",
+      "/Alka Naik/Alka 2_converted.avif",
+      "/Alka Naik/Alka 3_converted.avif",
+      "/Alka Naik/Alka 4_converted.avif",
+      "/Alka Naik/Alka 5_converted.avif",
+      "/Alka Naik/Alka 6_converted.avif",
+      "/Alka Naik/Alka 7_converted.avif",
+      "/Alka Naik/Alka 8_converted.avif",
+      "/Alka Naik/Alka 9_converted.avif",
+      "/Alka Naik/Alka 10_converted.avif",
+      "/Alka Naik/Alka 11_converted.avif"
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1800 Rs. Advance ,  After 10pm no entry ,STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning    , Self Cleaning , Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay","Near by mess"]
+  },
 ];
 
 // Function to get translated room data
@@ -730,9 +782,11 @@ const translateRoomTitle = (title, t) => {
   translatedTitle = translatedTitle.replace(/DIPAK CHOUGALE'S HOUSE/g, t('dipakChougalesHouse'));
   translatedTitle = translatedTitle.replace(/SWAMI SAMARTH HOUSE \(ROHIT RANJIT BENDARE\)/g, t('swamiSamarthHouse'));
   translatedTitle = translatedTitle.replace(/SURYAKANT SANGPAL HOUSE/g, t('suryakantSangpalHouse'));
-  translatedTitle = translatedTitle.replace(/Trimurti House/g, t('trimurtiHouse'));
-  
-  return translatedTitle
+      translatedTitle = translatedTitle.replace(/Trimurti House/g, t('trimurtiHouse'));
+    translatedTitle = translatedTitle.replace(/Raosaheb Naik's House/g, t('raosahebNaiksHouse'));
+    translatedTitle = translatedTitle.replace(/Alka Naik's House/g, t('alkaNaiksHouse'));
+    
+    return translatedTitle
 };
 
 const translateAddress = (address, t) => {
@@ -785,6 +839,7 @@ const translateLocation = (location, t) => {
   translatedLocation = translatedLocation.replace(/Near GuruKrupa Mess/g, t('nearGuruKrupaMess'));
   translatedLocation = translatedLocation.replace(/Near Vimal Hospital/g, t('nearVimalHospital'));
   translatedLocation = translatedLocation.replace(/Near Kalamba Lake Waterfall/g, t('nearKalambaLakeWaterfall'));
+  translatedLocation = translatedLocation.replace(/Infront Of Vijaya Canteen/g, t('infrontOfVijayaCanteen'));
   
   return translatedLocation;
 };
@@ -806,6 +861,9 @@ const translateRoomNote = (note, t) => {
   translatedNote = translatedNote.replace(/4\/5 boys can stay in this room\./g, `4/5 ${t('boysCanStayPlural')}`);
   translatedNote = translatedNote.replace(/5 GIRLS can stay in this room\./g, `5 ${t('girlsCanStayPlural')}`);
   translatedNote = translatedNote.replace(/4\/5 GIRLS can stay in this room\./g, `4/5 ${t('girlsCanStayPlural')}`);
+  
+  // Add translation for STUDENT'S addhar card pattern
+  translatedNote = translatedNote.replace(/STUDENT'S addhar card, photo and parent phone number is mandatory/g, t('studentAddharPhotoParentMandatory'));
   
   return translatedNote;
 };
@@ -832,6 +890,7 @@ const translateRoomDescription = (description, t) => {
   translatedDescription = translatedDescription.replace(/addhar card and photo of student is mandatory/g, t('aadharCardPhoto'));
   translatedDescription = translatedDescription.replace(/addhar car and student photo is mandatory/g, t('aadharCardPhoto'));
   translatedDescription = translatedDescription.replace(/STUDENTS'S addhar card, photo and parent phone number is mandatory\./g, t('studentAadharPhotoParentMandatory'));
+  translatedDescription = translatedDescription.replace(/STUDENT'S addhar card, photo and parent phone number is mandatory/g, t('studentAddharPhotoParentMandatory'));
   translatedDescription = translatedDescription.replace(/addhar card and student photo and parent phone number is mandatory/g, t('aadharCardPhotoParentMandatory'));
   translatedDescription = translatedDescription.replace(/Self Cleaning/g, t('selfCleaning'));
   translatedDescription = translatedDescription.replace(/Self cooking not allowed/g, t('selfCookingNotAllowedNote'));

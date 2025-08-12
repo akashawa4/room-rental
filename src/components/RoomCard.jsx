@@ -62,7 +62,8 @@ const RoomCard = memo(({ room, onViewDetails, isAdmin, onEdit, isFirst, onBookNo
                 loading={isFirst ? "eager" : 'lazy'}
                 decoding="sync"
                 onError={e => { 
-                  console.warn(`Failed to load image: ${room.images[0]}`);
+                  console.error(`Failed to load image: ${room.images[0]}`, e);
+                  console.error('Room data:', room);
                   e.target.style.display = 'none'; 
                 }}
                 onLoad={() => {

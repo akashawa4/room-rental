@@ -107,6 +107,8 @@ export const roomTranslations = {
     swamiSamarthHouse: "SWAMI SAMARTH HOUSE (ROHIT RANJIT BENDARE)",
     suryakantSangpalHouse: "SURYAKANT SANGPAL HOUSE",
     trimurtiHouse: "Trimurti House",
+    raosahebNaiksHouse: "Raosaheb Naik's House",
+    alkaNaiksHouse: "Alka Naik's House",
     
     // Distance measurements
     fiftyMeters: "50m",
@@ -125,6 +127,10 @@ export const roomTranslations = {
     nearTrimurtiHouse: "Near Trimurti House",
     nearKarvirChicken: "Near Karvir Chicken Shop",
     behindGavliMess: "Behind Gavli Mess",
+    nearGuruKrupaMess: "Near GuruKrupa Mess",
+    nearVimalHospital: "Near Vimal Hospital",
+    nearKalambaLakeWaterfall: "Near Kalamba Lake Waterfall",
+    infrontOfVijayaCanteen: "Infront Of Vijaya Canteen",
     
     // Additional notes
     studentAddharCard: "Student Aadhar card, photo and parent phone number is mandatory",
@@ -213,6 +219,7 @@ export const roomTranslations = {
     after10pmNoEntry: "After 10pm no entry",
     advanceRequiredRs1500: "Advance required Rs 1500",
     studentAadharPhotoParentMandatory: "STUDENT'S aadhar card, photo and parent phone number is mandatory",
+    studentAddharPhotoParentMandatory: "STUDENT'S addhar card, photo and parent phone number is mandatory",
     after10pmNoEntryNote: "After 10pm no entry",
     advanceRequiredRs1500Note: "Advance required Rs 1500",
     studentAadharPhotoParentMandatoryNote: "STUDENT'S aadhar card, photo and parent phone number is mandatory",
@@ -369,6 +376,8 @@ export const roomTranslations = {
     swamiSamarthHouse: "स्वामी समर्थ हाउस (रोहित रणजीत बेंदरे)",
     suryakantSangpalHouse: "सूर्यकांत संगपाल हाउस",
     trimurtiHouse: "त्रिमूर्ति हाउस",
+    raosahebNaiksHouse: "रावसाहेब नाईक का घर",
+    alkaNaiksHouse: "अलका नाईक का घर",
     
     // Distance measurements
     fiftyMeters: "50 मीटर",
@@ -387,6 +396,10 @@ export const roomTranslations = {
     nearTrimurtiHouse: "त्रिमूर्ति हाउस के पास",
     nearKarvirChicken: "करवीर चिकन शॉप के पास",
     behindGavliMess: "गवली मेस के पीछे",
+    nearGuruKrupaMess: "गुरुकृपा मेस के पास",
+    nearVimalHospital: "विमल हॉस्पिटल के पास",
+    nearKalambaLakeWaterfall: "कलंबा लेक वॉटरफॉल के पास",
+    infrontOfVijayaCanteen: "विजया कैंटीन के सामने",
     
     // Additional notes
     studentAddharCard: "छात्र का आधार कार्ड, फोटो और माता-पिता का फोन नंबर अनिवार्य",
@@ -475,6 +488,7 @@ export const roomTranslations = {
     after10pmNoEntry: "रात 10 बजे के बाद प्रवेश नहीं",
     advanceRequiredRs1500: "अग्रिम भुगतान आवश्यक रु 1500",
     studentAadharPhotoParentMandatory: "छात्र का आधार कार्ड, फोटो और माता-पिता का फोन नंबर अनिवार्य",
+    studentAddharPhotoParentMandatory: "छात्र का आधार कार्ड, फोटो और माता-पिता का फोन नंबर अनिवार्य",
     after10pmNoEntryNote: "रात 10 बजे के बाद प्रवेश नहीं",
     advanceRequiredRs1500Note: "अग्रिम भुगतान आवश्यक रु 1500",
     studentAadharPhotoParentMandatoryNote: "छात्र का आधार कार्ड, फोटो और माता-पिता का फोन नंबर अनिवार्य",
@@ -631,6 +645,8 @@ export const roomTranslations = {
     swamiSamarthHouse: "स्वामी समर्थ हाऊस (रोहित रणजीत बेंदरे)",
     suryakantSangpalHouse: "सूर्यकांत संगपाळ हाऊस",
     trimurtiHouse: "त्रिमूर्ती हाऊस",
+    raosahebNaiksHouse: "रावसाहेब नाईक यांचे घर",
+    alkaNaiksHouse: "अलका नाईक यांचे घर",
     
     // Distance measurements
     fiftyMeters: "50 मीटर",
@@ -649,6 +665,10 @@ export const roomTranslations = {
     nearTrimurtiHouse: "त्रिमूर्ती हाऊसजवळ",
     nearKarvirChicken: "करवीर चिकन शॉपजवळ",
     behindGavliMess: "गवळी मेसच्या मागे",
+    nearGuruKrupaMess: "गुरुकृपा मेसजवळ",
+    nearVimalHospital: "विमल हॉस्पिटलजवळ",
+    nearKalambaLakeWaterfall: "कलंबा लेक वॉटरफॉलजवळ",
+    infrontOfVijayaCanteen: "विजया कॅन्टीनसमोर",
     
     // Additional notes
     studentAddharCard: "विद्यार्थ्याचे आधार कार्ड, फोटो आणि पालकांचा फोन नंबर अनिवार्य",
@@ -737,6 +757,7 @@ export const roomTranslations = {
     after10pmNoEntry: "रात्री 10 वाजल्यानंतर प्रवेश नाही",
     advanceRequiredRs1500: "आगाऊ पैसे आवश्यक रु 1500",
     studentAadharPhotoParentMandatory: "विद्यार्थ्याचे आधार कार्ड, फोटो आणि पालकांचा फोन नंबर अनिवार्य",
+    studentAddharPhotoParentMandatory: "विद्यार्थ्याचे आधार कार्ड, फोटो आणि पालकांचा फोन नंबर अनिवार्य",
     after10pmNoEntryNote: "रात्री 10 वाजल्यानंतर प्रवेश नाही",
     advanceRequiredRs1500Note: "आगाऊ पैसे आवश्यक रु 1500",
     studentAadharPhotoParentMandatoryNote: "विद्यार्थ्याचे आधार कार्ड, फोटो आणि पालकांचा फोन नंबर अनिवार्य",
