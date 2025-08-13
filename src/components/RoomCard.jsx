@@ -8,6 +8,9 @@ const RoomCard = memo(({ room, onViewDetails, isAdmin, onEdit, isFirst, onBookNo
   const { t } = useLanguage();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImageIdx, setModalImageIdx] = useState(0);
+  
+  // Debug logging for room data
+  console.log('RoomCard rendering for room:', room.id, room.title, room.images);
 
   const handleCallClick = useCallback(() => {
     window.location.href = `tel:${room.contact}`;
