@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button.jsx';
 import { Input } from '@/components/ui/input.jsx';
 import { Badge } from '@/components/ui/badge.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
-import { getBookingsFromStorage, updateBooking, deleteBooking, bookingStatuses, bookingTypes } from '../data/bookings.js';
+import { getAllBookings, updateBooking, deleteBooking, bookingStatuses, bookingTypes } from '../data/bookings.js';
 import { sampleRooms } from '../data/rooms.js';
 
 const BookingManagementModal = ({ isOpen, onClose }) => {
@@ -51,9 +51,17 @@ const BookingManagementModal = ({ isOpen, onClose }) => {
     setFilteredBookings(filtered);
   }, [bookings, searchTerm, statusFilter, typeFilter]);
 
-  const loadBookings = () => {
-    const storedBookings = getBookingsFromStorage();
-    setBookings(storedBookings);
+  const loadBookings = async () => {
+    try {
+      setIsLoading(true);
+      const storedBookings = await getAllBookings();
+      setBookings(storedBookings);
+    } catch (error) {
+      console.error('Error loading bookings:', error);
+      setBookings([]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleStatusUpdate = async (bookingId, newStatus) => {

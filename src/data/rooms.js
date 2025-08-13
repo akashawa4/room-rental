@@ -1,3 +1,4 @@
+import { Bed } from 'lucide-react';
 import { roomTranslations } from './roomTranslations.js';
 
 export const sampleRooms = [
@@ -651,8 +652,8 @@ export const sampleRooms = [
   {
     id: 25,
     title: "Hemant Amble's House",
-    rent: 1600,
-    note: "Including light and water bill , 5 GIRLS needed to stay in this room.",
+    rent: 1700,
+    note: "Including light and water bill , 4 GIRLS needed to stay in this room.",
     contact: "+91 9623135707",
     address: "Salokhenagar , Kalamba",
     location: "70m away from DYPSN College Gate, Near GuruKrupa Mess.", 
@@ -670,7 +671,7 @@ export const sampleRooms = [
       "/Hemant Amble/amble 6_converted.avif",
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry    , Self Cleaning , Good Behaviour is required",
-    features: ["WIFI(if student want they can have it by their own)","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
   },
   {
     id: 26,
