@@ -646,7 +646,7 @@ export const sampleRooms = [
       "/Morya Mess/morya 4_converted.avif",
       "/Morya Mess/morya 5_converted.avif",
     ],
-    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 5th of each month ,After 10pm no entry, 2000 Rs. Advance , No drinking and smoking allowed in room, STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , Garbage Management by students",
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 5th of each month , 2000 Rs. Advance , No drinking and smoking allowed in room, STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , Garbage Management by students",
     features: ["WIFI(50% Recharge by Student)","HOT WATER", "WATER SUPPLY","Parking", "Beds","Mattress", "Owner's  MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay","CUBERT","Clenaing Fluids are Provided by Room Owner when needed"]
   },
   {
@@ -670,7 +670,7 @@ export const sampleRooms = [
       "/Hemant Amble/amble 5_converted.avif",
       "/Hemant Amble/amble 6_converted.avif",
     ],
-    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry    , Self Cleaning , Good Behaviour is required",
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
   },
   {
@@ -695,7 +695,7 @@ export const sampleRooms = [
       "/Raosaheb Naik/naik 6_converted.avif",
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1800 Rs. Advance ,  After 10pm no entry ,STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning    , Self Cleaning , Good Behaviour is required",
-    features: ["WIFI(if student want they can have it by their own)","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay","Near by mess"]
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay","Near by mess"]
   },
   {
     id: 27,
@@ -725,6 +725,31 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1800 Rs. Advance ,  After 10pm no entry ,STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning    , Self Cleaning , Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay","Near by mess"]
+  },
+  {
+    id: 28,
+    title: "Vijay Jadhav's House",
+    rent: 2000,
+    note: "Including light and water bill , 4 Boys can stay in this room.",
+    contact: "+91 9379767676",
+    address: "Prathamesh Nagar , Near Blossom School",
+    location: "1.5km away from DYPSN College Gate, Near Trimurti House.",
+    mapLink: "https://maps.app.goo.gl/oxd6jxXUy5jqKwS48",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Vijay Jadhav/vijay 0_converted.avif",
+      "/Vijay Jadhav/vijay 1_converted.avif",
+      "/Vijay Jadhav/vijay 2_converted.avif",
+      "/Vijay Jadhav/vijay 3_converted.avif",
+      "/Vijay Jadhav/vijay 4_converted.avif",
+      "/Vijay Jadhav/vijay 5_converted.avif",
+      "/Vijay Jadhav/vijay 6_converted.avif",
+      "/Vijay Jadhav/vijay 7_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 5th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory,  Friends are not allowed in room  , Self Cleaning , Good Behaviour is required , Grabage Management by students",
+    features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "SELF COOKING ALLOW", "NEAR BY MESS", "TERRACE ACCESS", "PARKING",  "BEDS", "shoes stand" , "Parets allowed for stay"]
   },
 ];
 
@@ -787,6 +812,7 @@ const translateRoomTitle = (title, t) => {
       translatedTitle = translatedTitle.replace(/Trimurti House/g, t('trimurtiHouse'));
     translatedTitle = translatedTitle.replace(/Raosaheb Naik's House/g, t('raosahebNaiksHouse'));
     translatedTitle = translatedTitle.replace(/Alka Naik's House/g, t('alkaNaiksHouse'));
+    translatedTitle = translatedTitle.replace(/Vijay Jadhav's House/g, t('vijayJadhavsHouse'));
     
     return translatedTitle
 };
