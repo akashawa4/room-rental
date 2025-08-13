@@ -1,3 +1,6 @@
+// Firebase collection reference
+import { db, collection, addDoc, updateDoc, deleteDoc, doc, getDoc, getDocs, query, where, orderBy, serverTimestamp, onSnapshot } from '../firebase.js';
+
 // Booking Types
 export const bookingTypes = {
   INQUIRY: 'inquiry',
@@ -13,7 +16,7 @@ export const bookingStatuses = {
   COMPLETED: 'completed'
 };
 
-// Sample bookings data
+// Sample bookings data (for initial setup)
 export const sampleBookings = [
   {
     id: '1',
@@ -32,84 +35,193 @@ export const sampleBookings = [
   }
 ];
 
-// Local Storage Keys
-const BOOKINGS_STORAGE_KEY = 'nivasi_bookings';
+const BOOKINGS_COLLECTION = 'bookings';
 
-// Get bookings from localStorage
-export const getBookingsFromStorage = () => {
+// Add a new booking to Firebase
+export const addBooking = async (bookingData) => {
   try {
-    const stored = localStorage.getItem(BOOKINGS_STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
+    const newBooking = {
+      ...bookingData,
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
+    };
+    
+    const docRef = await addDoc(collection(db, BOOKINGS_COLLECTION), newBooking);
+    
+    // Return the booking with the generated ID
+    return {
+      id: docRef.id,
+      ...newBooking
+    };
   } catch (error) {
-    console.error('Error reading bookings from storage:', error);
-    return [];
+    console.error('Error adding booking to Firebase:', error);
+    throw new Error('Failed to create booking');
   }
 };
 
-// Save bookings to localStorage
-export const saveBookingsToStorage = (bookings) => {
+// Update an existing booking in Firebase
+export const updateBooking = async (bookingId, updates) => {
   try {
-    localStorage.setItem(BOOKINGS_STORAGE_KEY, JSON.stringify(bookings));
-  } catch (error) {
-    console.error('Error saving bookings to storage:', error);
-  }
-};
-
-// Add a new booking
-export const addBooking = (bookingData) => {
-  const bookings = getBookingsFromStorage();
-  const newBooking = {
-    ...bookingData,
-    id: Date.now().toString(),
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
-  };
-  
-  bookings.push(newBooking);
-  saveBookingsToStorage(bookings);
-  return newBooking;
-};
-
-// Update an existing booking
-export const updateBooking = (bookingId, updates) => {
-  const bookings = getBookingsFromStorage();
-  const index = bookings.findIndex(booking => booking.id === bookingId);
-  
-  if (index !== -1) {
-    bookings[index] = {
-      ...bookings[index],
+    const bookingRef = doc(db, BOOKINGS_COLLECTION, bookingId);
+    const updateData = {
+      ...updates,
+      updatedAt: serverTimestamp()
+    };
+    
+    await updateDoc(bookingRef, updateData);
+    
+    // Return the updated booking data
+    return {
+      id: bookingId,
       ...updates,
       updatedAt: new Date().toISOString()
     };
-    saveBookingsToStorage(bookings);
-    return bookings[index];
+  } catch (error) {
+    console.error('Error updating booking in Firebase:', error);
+    throw new Error('Failed to update booking');
   }
-  
-  return null;
 };
 
-// Delete a booking
-export const deleteBooking = (bookingId) => {
-  const bookings = getBookingsFromStorage();
-  const filteredBookings = bookings.filter(booking => booking.id !== bookingId);
-  saveBookingsToStorage(filteredBookings);
-  return true;
+// Delete a booking from Firebase
+export const deleteBooking = async (bookingId) => {
+  try {
+    const bookingRef = doc(db, BOOKINGS_COLLECTION, bookingId);
+    await deleteDoc(bookingRef);
+    return true;
+  } catch (error) {
+    console.error('Error deleting booking from Firebase:', error);
+    throw new Error('Failed to delete booking');
+  }
 };
 
-// Get bookings by room ID
-export const getBookingsByRoom = (roomId) => {
-  const bookings = getBookingsFromStorage();
-  return bookings.filter(booking => booking.roomId === roomId);
+// Get all bookings from Firebase
+export const getAllBookings = async () => {
+  try {
+    const q = query(collection(db, BOOKINGS_COLLECTION), orderBy('createdAt', 'desc'));
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+  } catch (error) {
+    console.error('Error getting bookings from Firebase:', error);
+    throw new Error('Failed to fetch bookings');
+  }
 };
 
-// Get bookings by user ID
-export const getBookingsByUser = (userId) => {
-  const bookings = getBookingsFromStorage();
-  return bookings.filter(booking => booking.userId === userId);
+// Get bookings by room ID from Firebase
+export const getBookingsByRoom = async (roomId) => {
+  try {
+    const q = query(
+      collection(db, BOOKINGS_COLLECTION), 
+      where('roomId', '==', roomId),
+      orderBy('createdAt', 'desc')
+    );
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+  } catch (error) {
+    console.error('Error getting bookings by room from Firebase:', error);
+    throw new Error('Failed to fetch room bookings');
+  }
 };
 
-// Get a specific booking by ID
-export const getBookingById = (bookingId) => {
-  const bookings = getBookingsFromStorage();
-  return bookings.find(booking => booking.id === bookingId);
+// Get bookings by user ID from Firebase
+export const getBookingsByUser = async (userId) => {
+  try {
+    const q = query(
+      collection(db, BOOKINGS_COLLECTION), 
+      where('userId', '==', userId),
+      orderBy('createdAt', 'desc')
+    );
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+  } catch (error) {
+    console.error('Error getting bookings by user from Firebase:', error);
+    throw new Error('Failed to fetch user bookings');
+  }
+};
+
+// Get a specific booking by ID from Firebase
+export const getBookingById = async (bookingId) => {
+  try {
+    const bookingRef = doc(db, BOOKINGS_COLLECTION, bookingId);
+    const bookingDoc = await getDoc(bookingRef);
+    
+    if (bookingDoc.exists()) {
+      return {
+        id: bookingDoc.id,
+        ...bookingDoc.data()
+      };
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error('Error getting booking by ID from Firebase:', error);
+    throw new Error('Failed to fetch booking');
+  }
+};
+
+// Real-time listener for bookings (useful for admin dashboard)
+export const subscribeToBookings = (callback) => {
+  try {
+    const q = query(collection(db, BOOKINGS_COLLECTION), orderBy('createdAt', 'desc'));
+    
+    return onSnapshot(q, (querySnapshot) => {
+      const bookings = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      callback(bookings);
+    }, (error) => {
+      console.error('Error listening to bookings:', error);
+      callback([]);
+    });
+  } catch (error) {
+    console.error('Error setting up bookings listener:', error);
+    return null;
+  }
+};
+
+// Get bookings by status from Firebase
+export const getBookingsByStatus = async (status) => {
+  try {
+    const q = query(
+      collection(db, BOOKINGS_COLLECTION), 
+      where('status', '==', status),
+      orderBy('createdAt', 'desc')
+    );
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+  } catch (error) {
+    console.error('Error getting bookings by status from Firebase:', error);
+    throw new Error('Failed to fetch bookings by status');
+  }
+};
+
+// Get pending bookings count (useful for admin dashboard)
+export const getPendingBookingsCount = async () => {
+  try {
+    const q = query(
+      collection(db, BOOKINGS_COLLECTION), 
+      where('status', '==', bookingStatuses.PENDING)
+    );
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.size;
+  } catch (error) {
+    console.error('Error getting pending bookings count:', error);
+    return 0;
+  }
 }; 

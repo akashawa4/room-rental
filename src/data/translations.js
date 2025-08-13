@@ -54,6 +54,7 @@ export const translations = {
     
     // Room Cards
     perStudent: "per student",
+    perRoom: "per room",
     noImageAvailable: "No image available",
     addToFavorites: "Add to favorites",
     callNow: "Call Now",
@@ -451,6 +452,7 @@ export const translations = {
     
     // Room Cards
     perStudent: "प्रति छात्र",
+    perRoom: "पूरे कमरे के लिए",
     noImageAvailable: "कोई छवि उपलब्ध नहीं",
     addToFavorites: "पसंदीदा में जोड़ें",
     callNow: "अभी कॉल करें",
@@ -743,6 +745,7 @@ export const translations = {
     
     // Room Cards
     perStudent: "प्रति विद्यार्थी",
+    perRoom: "पूर्ण खोलीसाठी",
     noImageAvailable: "कोणतीही प्रतिमा उपलब्ध नाही",
     addToFavorites: "आवडीत जोडा",
     callNow: "आता कॉल करा",

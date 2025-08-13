@@ -4,7 +4,8 @@ export const sampleRooms = [
   {
     id: 1,
     title: "Mulla's 1RK",
-    rent: 2000,
+    rent: 5000,
+    pricingType: 'perRoom',
     note: "without including light and water bill , 2/3 Students can stay in this 1RK.",
     contact: "+91 9890491855",
     address: "Salokhe Nagar, Kalamba",
@@ -812,20 +813,39 @@ const translateLocation = (location, t) => {
   
   let translatedLocation = location;
   
-  // Translate distance measurements
-  translatedLocation = translatedLocation.replace(/50m/g, t('fiftyMeters'));
-  translatedLocation = translatedLocation.replace(/150m/g, t('hundredFiftyMeters'));
-  translatedLocation = translatedLocation.replace(/300m/g, t('threeHundredMeters'));
-  translatedLocation = translatedLocation.replace(/320m/g, t('threeHundredTwentyMeters'));
-  translatedLocation = translatedLocation.replace(/600m/g, t('sixHundredMeters'));
-  translatedLocation = translatedLocation.replace(/72m/g, t('seventyTwoMeters'));
-  translatedLocation = translatedLocation.replace(/70m/g, t('seventyMeters'));
-  translatedLocation = translatedLocation.replace(/90m/g, t('ninetyMeters'));
-  translatedLocation = translatedLocation.replace(/100m/g, t('hundredMeters'));
-  translatedLocation = translatedLocation.replace(/110m/g, t('hundredTenMeters'));
-  translatedLocation = translatedLocation.replace(/450m/g, t('fourHundredFiftyMeters'));
-  translatedLocation = translatedLocation.replace(/900m/g, t('nineHundredMeters'));
-  translatedLocation = translatedLocation.replace(/1\.5km/g, t('onePointFiveKm'));
+  // Translate distance measurements with proper fallback
+  const translateDistance = (pattern, translationKey, t) => {
+    const translation = t(translationKey);
+    // If translation fails or returns the key itself, use the original pattern
+    // Also check if the translation is actually a valid distance value
+    if (translation && translation !== translationKey && translation.match(/^\d+[mkm]/)) {
+      return translation;
+    }
+    // Fallback to original pattern if translation fails
+    return pattern;
+  };
+  
+  // Special handling for 450m to ensure it always works
+  if (translatedLocation.includes('450m')) {
+    const translation = t('fourHundredFiftyMeters');
+    if (translation && translation !== 'fourHundredFiftyMeters') {
+      translatedLocation = translatedLocation.replace(/450m/g, translation);
+    }
+  }
+  
+  translatedLocation = translatedLocation.replace(/50m/g, translateDistance('50m', 'fiftyMeters', t));
+  translatedLocation = translatedLocation.replace(/150m/g, translateDistance('150m', 'hundredFiftyMeters', t));
+  translatedLocation = translatedLocation.replace(/300m/g, translateDistance('300m', 'threeHundredMeters', t));
+  translatedLocation = translatedLocation.replace(/320m/g, translateDistance('320m', 'threeHundredTwentyMeters', t));
+  translatedLocation = translatedLocation.replace(/600m/g, translateDistance('600m', 'sixHundredMeters', t));
+  translatedLocation = translatedLocation.replace(/72m/g, translateDistance('72m', 'seventyTwoMeters', t));
+  translatedLocation = translatedLocation.replace(/70m/g, translateDistance('70m', 'seventyMeters', t));
+  translatedLocation = translatedLocation.replace(/90m/g, translateDistance('90m', 'ninetyMeters', t));
+  translatedLocation = translatedLocation.replace(/100m/g, translateDistance('100m', 'hundredMeters', t));
+  translatedLocation = translatedLocation.replace(/110m/g, translateDistance('110m', 'hundredTenMeters', t));
+  translatedLocation = translatedLocation.replace(/450m/g, translateDistance('450m', 'fourHundredFiftyMeters', t));
+  translatedLocation = translatedLocation.replace(/900m/g, translateDistance('900m', 'nineHundredMeters', t));
+  translatedLocation = translatedLocation.replace(/1\.5km/g, translateDistance('1.5km', 'onePointFiveKm', t));
   
   // Translate common location patterns
   translatedLocation = translatedLocation.replace(/away from College Gate/g, t('awayFromCollegeGate'));
@@ -840,6 +860,12 @@ const translateLocation = (location, t) => {
   translatedLocation = translatedLocation.replace(/Near Vimal Hospital/g, t('nearVimalHospital'));
   translatedLocation = translatedLocation.replace(/Near Kalamba Lake Waterfall/g, t('nearKalambaLakeWaterfall'));
   translatedLocation = translatedLocation.replace(/Infront Of Vijaya Canteen/g, t('infrontOfVijayaCanteen'));
+  
+  // Final safety check - ensure we never return empty or undefined
+  if (!translatedLocation || translatedLocation.trim() === '') {
+    console.warn('Translation resulted in empty location, using original:', location);
+    return location;
+  }
   
   return translatedLocation;
 };

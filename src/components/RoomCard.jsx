@@ -133,7 +133,7 @@ const RoomCard = memo(({ room, onViewDetails, isAdmin, onEdit, isFirst, onBookNo
             {room.title}
           </h3>
           <div className="price-highlight text-2xl font-bold">
-            ₹{room.rent.toLocaleString()}/month <span className="text-base font-semibold">{t('perStudent')}</span>
+            ₹{room.rent.toLocaleString()}/month <span className="text-base font-semibold">{room.pricingType === 'perRoom' ? t('perRoom') : t('perStudent')}</span>
           </div>
           {room.note && (
             <div className="text-base font-bold text-gray-700 mt-1">

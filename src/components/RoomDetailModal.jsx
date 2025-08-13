@@ -208,7 +208,7 @@ const RoomDetailModal = ({ room, onClose }) => {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <div className="price-highlight text-4xl font-bold mb-4">
-                ₹{room.rent.toLocaleString()}/month <span className="text-lg font-semibold">{t('perStudent')}</span>
+                ₹{room.rent.toLocaleString()}/month <span className="text-lg font-semibold">{room.pricingType === 'perRoom' ? t('perRoom') : t('perStudent')}</span>
               </div>
               {room.note && (
                 <div className="text-lg font-bold text-gray-700 mb-4">
