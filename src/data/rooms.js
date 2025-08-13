@@ -700,7 +700,7 @@ export const sampleRooms = [
     title: "Alka Naik's House",
     rent: 1800,
     note: "Including light and water bill , 7 Boys needed to stay in this room.",
-    contact: "+91 9423825260",
+    contact: "+91 9423271691",
     address: "Salokhenagar , Kalamba",
     location: "50m away from DYPSN College Gate,", 
     mapLink: "https://maps.app.goo.gl/z9aE94LYzoDba1d26?g_st=aw",
