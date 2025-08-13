@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, lazy, Suspense, useCallback } from 'react';
-import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, Download, X } from 'lucide-react';
+import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, Download, X, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import RoomCard from './components/RoomCard.jsx';
 import Logo from './components/Logo.jsx';
@@ -19,6 +19,7 @@ const AdminLoginModal = lazy(() => import('./components/AdminLoginModal.jsx'));
 const GenderSelectionModal = lazy(() => import('./components/GenderSelectionModal.jsx'));
 const BookingModal = lazy(() => import('./components/BookingModal.jsx'));
 const BookingManagementModal = lazy(() => import('./components/BookingManagementModal.jsx'));
+const FeatureFilterModal = lazy(() => import('./components/FeatureFilterModal.jsx'));
 
 // Loading component for lazy-loaded modals
 const ModalLoadingSpinner = () => (
@@ -55,6 +56,8 @@ function App() {
   const [showInstallGuide, setShowInstallGuide] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
   const [isWebViewApp, setIsWebViewApp] = useState(false);
+  const [showFeatureFilter, setShowFeatureFilter] = useState(false);
+  const [featureFilters, setFeatureFilters] = useState({});
   
   // Load rooms data dynamically
   useEffect(() => {
@@ -131,9 +134,19 @@ function App() {
         : true;
       const matchesCategory = roomMatchesCategory(room, category);
       const matchesSearch = room.title && room.title.toLowerCase().includes(search.toLowerCase());
-      return matchesGender && matchesCategory && matchesSearch;
+      
+      // Feature filtering
+      const matchesFeatures = Object.keys(featureFilters).length === 0 || 
+        Object.entries(featureFilters).every(([feature, isSelected]) => {
+          if (!isSelected) return true; // Skip unselected features
+          return room.features && room.features.some(roomFeature => 
+            roomFeature.toLowerCase().includes(feature.toLowerCase())
+          );
+        });
+      
+      return matchesGender && matchesCategory && matchesSearch && matchesFeatures;
     });
-  }, [rooms, selectedGender, category, search, roomMatchesCategory]);
+  }, [rooms, selectedGender, category, search, featureFilters, roomMatchesCategory]);
 
   const handleViewDetails = useCallback((room) => {
     setSelectedRoom(room);
@@ -169,6 +182,18 @@ function App() {
 
   const handleContactUs = useCallback(() => {
     setShowContactPopup(true);
+  }, []);
+
+  const handleShowFeatureFilter = useCallback(() => {
+    setShowFeatureFilter(true);
+  }, []);
+
+  const handleApplyFeatureFilters = useCallback((filters) => {
+    setFeatureFilters(filters);
+  }, []);
+
+  const handleClearFeatureFilters = useCallback(() => {
+    setFeatureFilters({});
   }, []);
 
   // Detect if running in web view app
@@ -512,6 +537,34 @@ function App() {
                 {cat.label}
               </button>
             ))}
+            
+            {/* Feature Filter Button */}
+            <button
+              className={`px-3 sm:px-4 py-2 rounded-full border transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${
+                Object.keys(featureFilters).length > 0 
+                  ? 'bg-orange-800 text-white border-orange-800 shadow-lg' 
+                  : 'bg-white text-orange-700 border-orange-400 hover:bg-orange-50 hover:text-orange-800'
+              }`}
+              onClick={handleShowFeatureFilter}
+            >
+              <Filter className="w-4 h-4" />
+              {t('filterByFeatures') || 'Filter'}
+              {Object.keys(featureFilters).length > 0 && (
+                <span className="bg-white text-orange-800 text-xs px-1.5 py-0.5 rounded-full">
+                  {Object.values(featureFilters).filter(Boolean).length}
+                </span>
+              )}
+            </button>
+            
+            {/* Clear Filters Button */}
+            {Object.keys(featureFilters).length > 0 && (
+              <button
+                className="px-3 sm:px-4 py-2 rounded-full border border-red-400 bg-white text-red-600 hover:bg-red-50 hover:text-red-700 transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0"
+                onClick={handleClearFeatureFilters}
+              >
+                {t('clearAll') || 'Clear'}
+              </button>
+            )}
           </div>
         </div>
 
@@ -1112,6 +1165,18 @@ function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Feature Filter Modal */}
+      {showFeatureFilter && (
+        <Suspense fallback={<ModalLoadingSpinner />}>
+          <FeatureFilterModal
+            isOpen={showFeatureFilter}
+            onClose={() => setShowFeatureFilter(false)}
+            onApplyFilters={handleApplyFeatureFilters}
+            currentFilters={featureFilters}
+          />
+        </Suspense>
       )}
     </div>
   );

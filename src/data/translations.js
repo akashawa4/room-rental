@@ -1,252 +1,295 @@
 export const translations = {
-  en: {
-    // Header
-    title: "Nivasi.space",
-    tagline: "College Room Rental - Find your perfect room near campus",
-    changeGender: "For Boys or Girls",
-    addRoom: "Add Room",
-    logout: "Logout",
-    adminMode: "Admin Mode",
-    
-    // Categories
-    all: "All",
-    singleRoom: "Single Room",
-    cotBasis: "Cot Basis",
-    oneRK: "1 RK",
-    oneBHK: "1 BHK",
-    twoBHK: "2 BHK",
-    
-    // Room Count
-    availableRooms: "Available Rooms on Nivasi.space",
-    forBoys: "for Boys",
-    forGirls: "for Girls",
-    roomsAvailable: "room available for rent",
-    roomsAvailablePlural: "rooms available for rent",
-    poweredBy: "Powered by Nivasi.space - Your trusted college room rental platform",
-    
-    // Empty States
-    welcomeToNivase: "Welcome to Nivasi.space",
-    collegeRoomRental: "College Room Rental - Please select your gender to see available rooms",
-    selectGender: "Select Gender",
-    noRoomsForGender: "No rooms available for",
-    beFirstToAdd: "Be the first to add a room listing for",
-    onNivase: "on Nivasi.space!",
-    addFirstRoom: "Add First Room",
-    noRoomsAvailable: "No rooms available",
-    beFirstToAddGeneral: "Be the first to add a room listing!",
-    
-    // Footer
-    copyright: "Nivasi.space. All rights reserved.",
-    contact: "Contact:",
-    privacyPolicy: "Privacy Policy",
-    termsOfService: "Terms of Service",
-    
-    // Loading
-    loadingRooms: "Loading rooms...",
-    
-    // Gender Selection Modal
-    welcomeToCollegeRoomRental: "Welcome to Nivasi.space",
-    selectGenderToSeeRooms: "College Room Rental - Please select your gender to see available rooms",
-    selectYourGender: "Please select your gender to see available rooms",
-    boys: "Boys",
-    girls: "Girls",
-    changeSelectionLater: "You can change this selection later in settings",
-    
-    // Room Cards
-    perStudent: "per student",
-    perRoom: "per room",
-    noImageAvailable: "No image available",
-    addToFavorites: "Add to favorites",
+en: {
+  // Header
+  title: "Nivasi.space",
+  tagline: "College Room Rental - Find your perfect room near campus",
+  changeGender: "For Boys or Girls",
+  addRoom: "Add Room",
+  logout: "Logout",
+  adminMode: "Admin Mode",
+  
+  // Categories
+  all: "All",
+  singleRoom: "Single Room",
+  cotBasis: "Cot Basis",
+  oneRK: "1 RK",
+  oneBHK: "1 BHK",
+  twoBHK: "2 BHK",
+  
+  // Room Count
+  availableRooms: "Available Rooms on Nivasi.space",
+  forBoys: "for Boys",
+  forGirls: "for Girls",
+  roomsAvailable: "room available for rent",
+  roomsAvailablePlural: "rooms available for rent",
+  poweredBy: "Powered by Nivasi.space - Your trusted college room rental platform",
+  
+  // Empty States
+  welcomeToNivase: "Welcome to Nivasi.space",
+  collegeRoomRental: "College Room Rental - Please select your gender to see available rooms",
+  selectGender: "Select Gender",
+  noRoomsForGender: "No rooms available for",
+  beFirstToAdd: "Be the first to add a room listing for",
+  onNivase: "on Nivasi.space!",
+  addFirstRoom: "Add First Room",
+  noRoomsAvailable: "No rooms available",
+  beFirstToAddGeneral: "Be the first to add a room listing!",
+  
+  // Footer
+  copyright: "Nivasi.space. All rights reserved.",
+  contact: "Contact:",
+  privacyPolicy: "Privacy Policy",
+  termsOfService: "Terms of Service",
+  
+  // Loading
+  loadingRooms: "Loading rooms...",
+  
+  // Gender Selection Modal
+  welcomeToCollegeRoomRental: "Welcome to Nivasi.space",
+  selectGenderToSeeRooms: "College Room Rental - Please select your gender to see available rooms",
+  selectYourGender: "Please select your gender to see available rooms",
+  boys: "Boys",
+  girls: "Girls",
+  changeSelectionLater: "You can change this selection later in settings",
+  
+  // Room Cards
+  perStudent: "per student",
+  perRoom: "per room",
+  noImageAvailable: "No image available",
+  addToFavorites: "Add to favorites",
+  callNow: "Call Now",
+  viewOnMap: "View on Map",
+  viewDetails: "View Details",
+  update: "Update",
+  
+  // Room Detail Modal
+  checkOutRoom: "Check out this room on Nivasi.space:",
+  foundOnNivasi: "Found on Nivasi.space",
     callNow: "Call Now",
-    viewOnMap: "View on Map",
-    viewDetails: "View Details",
-    update: "Update",
-    
-    // Room Detail Modal
-    checkOutRoom: "Check out this room on Nivasi.space:",
-    foundOnNivasi: "Found on Nivasi.space",
-    callNow: "Call Now",
-    whatsapp: "WhatsApp",
-    viewOnGoogleMaps: "View on Google Maps",
-    shareRoom: "Share Room",
-    linkCopied: "Link copied to clipboard!",
-    sharedSuccessfully: "Shared successfully!",
-    rooms: "Rooms:",
-    conditions: "Conditions",
-    location: "Location",
-    features: "Features",
-    
-    // Add Room Modal
-    roomTitle: "Room Title",
-    roomTitlePlaceholder: "e.g., 2BHK Near Gate 2",
+  whatsapp: "WhatsApp",
+  viewOnGoogleMaps: "View on Google Maps",
+  shareRoom: "Share Room",
+  linkCopied: "Link copied to clipboard!",
+  sharedSuccessfully: "Shared successfully!",
+  rooms: "Rooms:",
+  conditions: "Conditions",
+  location: "Location",
+  features: "Features",
+  
+  // Add Room Modal
+  roomTitle: "Room Title",
+  roomTitlePlaceholder: "e.g., 2BHK Near Gate 2",
+  rent: "Rent",
+  rentPlaceholder: "e.g., 2000",
+  contact: "Contact",
+  contactPlaceholder: "e.g., +91 9876543210",
+  address: "Address",
+  addressPlaceholder: "Full address of the room",
+  location: "Location",
+  locationPlaceholder: "e.g., Near College Gate",
+  mapLink: "Map Link",
+  mapLinkPlaceholder: "Google Maps link",
+  description: "Description",
+  descriptionPlaceholder: "Room conditions and rules",
+  features: "Features",
+  featuresPlaceholder: "e.g., WiFi, Parking, Geyser",
+  gender: "Gender",
+  boy: "Boy",
+  girl: "Girl",
+  images: "Images",
+  addImages: "Add Images",
+  
+  // Filter Modal
+  filterByFeatures: "Filter by Features",
+  selectAll: "Select All",
+  clearAll: "Clear All",
+  applyFilters: "Apply Filters",
+  cancel: "Cancel",
+  submit: "Submit",
+  
+  // Install App Button
+  installApp: "Install App",
+  openApp: "Open App",
+  downloading: "Downloading...",
+  installing: "Installing...",
+  installAppTitle: "Install Nivasi Space App",
+  downloadNow: "Download Now",
+  installationComplete: "Installation Complete",
+  close: "Close",
+  step1Title: "Download",
+  step1Description: "Download the APK file",
+  step2Title: "Install",
+  step2Description: "Tap the downloaded file",
+  step3Title: "Allow",
+  step3Description: "Enable unknown sources if prompted",
+  step4Title: "Complete",
+  step4Description: "Installation completed",
+  installationGuide: "Installation Guide",
+  installationBenefits: "Get the Nivasi Space App for the best experience:",
+  benefit1: "Browse rooms offline",
+  benefit2: "Get instant notifications",
+  benefit3: "Faster loading times",
+  benefit4: "Native app features",
+  needHelp: "Need help?",
+  contactSupport: "Contact Support",
+  
+  // App Promotion
+  getNivasiApp: "Get the Nivasi Space App for the best experience!",
+  browseOffline: "Browse offline",
+  instantNotifications: "Instant notifications",
+  fasterLoading: "Faster loading",
+  nativeFeatures: "Native app features",
+  enhancedExperience: "Enhanced experience with offline access and notifications",
+  
+  // Web View App Welcome
+  welcomeToNivasiApp: "Welcome to Nivasi Space App!",
+  usingEnhancedApp: "You're using our enhanced mobile app",
+  fasterBrowsing: "Faster browsing experience",
+  offlineAccess: "Offline access to saved rooms",
+  
+  // Booking System
+  bookNow: "Book Now",
+  bookRoom: "Book Room",
+  bookingType: "Booking Type",
+  inquiry: "Inquiry",
+  booking: "Booking",
+  viewing: "Viewing",
+  inquiryDescription: "Ask questions about the room",
+  bookingDescription: "Request to book this room",
+  viewingDescription: "Schedule a room viewing",
+  fullName: "Full Name",
+  enterFullName: "Enter your full name",
+  phoneNumber: "Phone Number",
+  enterPhoneNumber: "Enter your phone number",
+  emailAddress: "Email Address",
+  enterEmail: "Enter your email address",
+  preferredDate: "Preferred Date",
+  message: "Message",
+  enterMessage: "Tell the room owner about your requirements...",
+  roomDetails: "Room Details",
     rent: "Rent",
-    rentPlaceholder: "e.g., 2000",
-    contact: "Contact",
-    contactPlaceholder: "e.g., +91 9876543210",
-    address: "Address",
-    addressPlaceholder: "Full address of the room",
     location: "Location",
-    locationPlaceholder: "e.g., Near College Gate",
-    mapLink: "Map Link",
-    mapLinkPlaceholder: "Google Maps link",
-    description: "Description",
-    descriptionPlaceholder: "Room conditions and rules",
-    features: "Features",
-    featuresPlaceholder: "e.g., WiFi, Parking, Geyser",
-    gender: "Gender",
-    boy: "Boy",
-    girl: "Girl",
-    images: "Images",
-    addImages: "Add Images",
-    submit: "Submit",
-    
-    // Install App Button
-    installApp: "Install App",
-    openApp: "Open App",
-    downloading: "Downloading...",
-    installing: "Installing...",
-    installAppTitle: "Install Nivasi Space App",
-    downloadNow: "Download Now",
-    installationComplete: "Installation Complete",
+    contact: "Contact",
+  roomType: "Room Type",
+  importantNotice: "Important Notice",
+  bookingNotice: "This platform connects you with room owners. All agreements and payments are made directly between you and the room owner. We are not responsible for any transactions.",
+  allFieldsRequired: "All fields marked with * are required",
+  cancel: "Cancel",
+  submitBooking: "Submit Booking",
+  submitting: "Submitting...",
+  bookingSubmitted: "Booking Submitted!",
+  bookingSubmittedMessage: "Your request has been sent to the room owner. They will contact you soon.",
+  bookingError: "Booking Error",
+  bookingErrorMessage: "There was an error submitting your booking. Please try again.",
+  tryAgain: "Try Again",
+  
+  // Booking Management
+  manageBookings: "Manage Bookings",
+  bookingManagement: "Booking Management",
+  manageAllBookings: "View and manage all room bookings",
+  searchBookings: "Search bookings...",
+  allStatuses: "All Statuses",
+  allTypes: "All Types",
+  totalBookings: "Total",
+  noBookingsFound: "No bookings found",
+  noBookingsMessage: "No bookings match your current filters.",
+  pending: "Pending",
+  confirmed: "Confirmed",
+  cancelled: "Cancelled",
+  completed: "Completed",
+  view: "View",
+  delete: "Delete",
+  confirmDeleteBooking: "Are you sure you want to delete this booking?",
+  showingResults: "Showing",
+  of: "of",
+  bookings: "bookings",
     close: "Close",
-    step1Title: "Download",
-    step1Description: "Download the APK file",
-    step2Title: "Install",
-    step2Description: "Tap the downloaded file",
-    step3Title: "Allow",
-    step3Description: "Enable unknown sources if prompted",
-    step4Title: "Complete",
-    step4Description: "Installation completed",
-    installationGuide: "Installation Guide",
-    installationBenefits: "Get the Nivasi Space App for the best experience:",
-    benefit1: "Browse rooms offline",
-    benefit2: "Get instant notifications",
-    benefit3: "Faster loading times",
-    benefit4: "Native app features",
-    needHelp: "Need help?",
-    contactSupport: "Contact Support",
-    
-    // App Promotion
-    getNivasiApp: "Get the Nivasi Space App for the best experience!",
-    browseOffline: "Browse offline",
-    instantNotifications: "Instant notifications",
-    fasterLoading: "Faster loading",
-    nativeFeatures: "Native app features",
-    enhancedExperience: "Enhanced experience with offline access and notifications",
-    
-    // Web View App Welcome
-    welcomeToNivasiApp: "Welcome to Nivasi Space App!",
-    usingEnhancedApp: "You're using our enhanced mobile app",
-    fasterBrowsing: "Faster browsing experience",
-    offlineAccess: "Offline access to saved rooms",
-    
-    // Booking System
-    bookNow: "Book Now",
-    bookRoom: "Book Room",
-    bookingType: "Booking Type",
-    inquiry: "Inquiry",
-    booking: "Booking",
-    viewing: "Viewing",
-    inquiryDescription: "Ask questions about the room",
-    bookingDescription: "Request to book this room",
-    viewingDescription: "Schedule a room viewing",
-    fullName: "Full Name",
-    enterFullName: "Enter your full name",
-    phoneNumber: "Phone Number",
-    enterPhoneNumber: "Enter your phone number",
-    emailAddress: "Email Address",
-    enterEmail: "Enter your email address",
-    preferredDate: "Preferred Date",
-    message: "Message",
-    enterMessage: "Tell the room owner about your requirements...",
-    roomDetails: "Room Details",
-    rent: "Rent",
-    location: "Location",
-    contact: "Contact",
-    roomType: "Room Type",
-    importantNotice: "Important Notice",
-    bookingNotice: "This platform connects you with room owners. All agreements and payments are made directly between you and the room owner. We are not responsible for any transactions.",
-    allFieldsRequired: "All fields marked with * are required",
+  bookingDetails: "Booking Details",
+  bookingId: "Booking ID",
+  status: "Status",
+  type: "Type",
+  room: "Room",
+  email: "Email",
+  phone: "Phone",
+  date: "Date",
+  userInformation: "User Information",
+  name: "Name",
+  userId: "User ID",
+  timeline: "Timeline",
+  created: "Created",
+  updated: "Updated",
+  requestedDate: "Requested Date",
+  
+  // WhatsApp Integration
+  openWhatsApp: "Open WhatsApp",
+  copyMessage: "Copy Message",
+  messageCopied: "Message copied to clipboard!",
+  invalidPhoneNumber: "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9",
+  visitThisRoom: "Visit This Room",
+  
+  // Form Validation Messages
+  pleaseEnterName: "Please enter your full name",
+  pleaseEnterPhone: "Please enter your phone number",
+  pleaseEnterEmail: "Please enter your email address",
+  pleaseEnterMessage: "Please enter a message",
+  
+  // Footer translations
+  aboutUs: "About Us",
+  ourMission: "Our Mission",
+  ourVision: "Our Vision",
+  aboutUsDescription: "We are dedicated to helping students find the perfect room near their college campus. Our platform is designed to be transparent, easy to use, and focused on student needs.",
+  missionDescription: "To simplify the room rental process for students and property owners, making it safe, reliable, and accessible for everyone.",
+  visionDescription: "To become the most trusted and student-friendly room rental platform, empowering students to make informed choices and fostering a supportive community.",
+  quickLinks: "Quick Links",
+  legal: "Legal",
+  termsConditions: "Terms & Conditions",
+  refundPolicy: "Refund Policy",
+  safetyGuidelines: "Safety Guidelines",
+  allRightsReserved: "© 2025 Nivasi.space. All rights reserved.",
+  designDevelopedBy: "Design & Develop by:",
+  akashSolutions: "Akash.Solutions",
+  trustedPlatform: "India's trusted college room rental platform connecting students with perfect accommodations since 2025. We blend technology with student needs to help you find your ideal room near campus.",
+  collegeAddress: "Dr. DY Patil Pratishthan's College of Engineering, Salokhenaga, Kolhapur, Maharashtra, 416007 India",
+    update: "Update",
+  roomAddedSuccessfully: "Room added successfully!",
+  roomUpdatedSuccessfully: "Room updated successfully!",
+  errorAddingRoom: "Error adding room. Please try again.",
+  
+  // Admin Login
+  adminLogin: "Admin Login",
+  password: "Password",
+  login: "Login",
     cancel: "Cancel",
-    submitBooking: "Submit Booking",
-    submitting: "Submitting...",
-    bookingSubmitted: "Booking Submitted!",
-    bookingSubmittedMessage: "Your request has been sent to the room owner. They will contact you soon.",
-    bookingError: "Booking Error",
-    bookingErrorMessage: "There was an error submitting your booking. Please try again.",
-    tryAgain: "Try Again",
-    
-    // Booking Management
-    manageBookings: "Manage Bookings",
-    bookingManagement: "Booking Management",
-    manageAllBookings: "View and manage all room bookings",
-    searchBookings: "Search bookings...",
-    allStatuses: "All Statuses",
-    allTypes: "All Types",
-    totalBookings: "Total",
-    noBookingsFound: "No bookings found",
-    noBookingsMessage: "No bookings match your current filters.",
-    pending: "Pending",
-    confirmed: "Confirmed",
-    cancelled: "Cancelled",
-    completed: "Completed",
-    view: "View",
-    delete: "Delete",
-    confirmDeleteBooking: "Are you sure you want to delete this booking?",
-    showingResults: "Showing",
-    of: "of",
-    bookings: "bookings",
-    close: "Close",
-    bookingDetails: "Booking Details",
-    bookingId: "Booking ID",
-    status: "Status",
-    type: "Type",
-    room: "Room",
-    email: "Email",
-    phone: "Phone",
-    date: "Date",
-    userInformation: "User Information",
-    name: "Name",
-    userId: "User ID",
-    timeline: "Timeline",
-    created: "Created",
-    updated: "Updated",
-    requestedDate: "Requested Date",
-    
-    // WhatsApp Integration
-    openWhatsApp: "Open WhatsApp",
-    copyMessage: "Copy Message",
-    messageCopied: "Message copied to clipboard!",
-    invalidPhoneNumber: "Please enter a valid 10-digit phone number starting with 6, 7, 8, or 9",
-    visitThisRoom: "Visit This Room",
-    
-    // Form Validation Messages
-    pleaseEnterName: "Please enter your full name",
-    pleaseEnterPhone: "Please enter your phone number",
-    pleaseEnterEmail: "Please enter your email address",
-    pleaseEnterMessage: "Please enter a message",
-    
-    // Footer translations
-    aboutUs: "About Us",
+  invalidPassword: "Invalid admin password. Please try again.",
+  
+  // Mission & Vision
     ourMission: "Our Mission",
+  missionText: "To simplify the room rental process for students and property owners, making it safe, reliable, and accessible for everyone.",
     ourVision: "Our Vision",
-    aboutUsDescription: "We are dedicated to helping students find the perfect room near their college campus. Our platform is designed to be transparent, easy to use, and focused on student needs.",
-    missionDescription: "To simplify the room rental process for students and property owners, making it safe, reliable, and accessible for everyone.",
-    visionDescription: "To become the most trusted and student-friendly room rental platform, empowering students to make informed choices and fostering a supportive community.",
-    quickLinks: "Quick Links",
-    legal: "Legal",
-    termsConditions: "Terms & Conditions",
-    refundPolicy: "Refund Policy",
-    safetyGuidelines: "Safety Guidelines",
-    allRightsReserved: "© 2025 Nivasi.space. All rights reserved.",
-    designDevelopedBy: "Design & Develop by:",
-    akashSolutions: "Akash.Solutions",
-    trustedPlatform: "India's trusted college room rental platform connecting students with perfect accommodations since 2025. We blend technology with student needs to help you find your ideal room near campus.",
-    collegeAddress: "Dr. DY Patil Pratishthan's College of Engineering, Salokhenaga, Kolhapur, Maharashtra, 416007 India",
-    update: "Update",
-    roomAddedSuccessfully: "Room added successfully!",
-    roomUpdatedSuccessfully: "Room updated successfully!",
-    errorAddingRoom: "Error adding room. Please try again.",
+  visionText: "To become the most trusted and student-friendly room rental platform, empowering students to make informed choices and fostering a supportive community.",
+  
+  // PWA Install
+    installApp: "Install App",
+  install: "Install",
+  appInstalled: "App Installed",
+  
+  // Contact
+  contactUs: "Contact Us",
+  
+  // Form validation messages
+  roomTitleRequired: "Room title is required",
+  validRentAmount: "Please enter a valid rent amount",
+  contactRequired: "Contact number is required",
+  validContactNumber: "Please enter a valid contact number",
+  addressRequired: "Address is required",
+  locationRequired: "Location area is required",
+  mapLinkRequired: "Google Maps link is required",
+  validMapLink: "Please enter a valid Google Maps link",
+  descriptionRequired: "Description is required",
+  genderRequired: "Please select gender availability",
+  imagesRequired: "At least one image is required",
+  editRoom: "Edit Room",
+  addNewRoom: "Add New Room",
     
     // Admin Login
     adminLogin: "Admin Login",
@@ -254,75 +297,39 @@ export const translations = {
     login: "Login",
     cancel: "Cancel",
     invalidPassword: "Invalid admin password. Please try again.",
-    
-    // Mission & Vision
-    ourMission: "Our Mission",
-    missionText: "To simplify the room rental process for students and property owners, making it safe, reliable, and accessible for everyone.",
-    ourVision: "Our Vision",
-    visionText: "To become the most trusted and student-friendly room rental platform, empowering students to make informed choices and fostering a supportive community.",
-    
-    // PWA Install
-    installApp: "Install App",
-    install: "Install",
-    appInstalled: "App Installed",
-    
-    // Contact
-    contactUs: "Contact Us",
-    
-    // Form validation messages
-    roomTitleRequired: "Room title is required",
-    validRentAmount: "Please enter a valid rent amount",
-    contactRequired: "Contact number is required",
-    validContactNumber: "Please enter a valid contact number",
-    addressRequired: "Address is required",
-    locationRequired: "Location area is required",
-    mapLinkRequired: "Google Maps link is required",
-    validMapLink: "Please enter a valid Google Maps link",
-    descriptionRequired: "Description is required",
-    genderRequired: "Please select gender availability",
-    imagesRequired: "At least one image is required",
-    editRoom: "Edit Room",
-    addNewRoom: "Add New Room",
-    
-    // Admin Login
-    adminLogin: "Admin Login",
-    password: "Password",
-    login: "Login",
-    cancel: "Cancel",
-    invalidPassword: "Invalid admin password. Please try again.",
-    
-    // Gender descriptions
-    maleStudentsOnly: "Male students only",
-    femaleStudentsOnly: "Female students only",
-    
-    // Additional
-    successStories: "Success Stories",
-    
-    // Authentication
-    signIn: "Sign In",
-    signUp: "Sign Up",
-    signOut: "Sign Out",
+  
+  // Gender descriptions
+  maleStudentsOnly: "Male students only",
+  femaleStudentsOnly: "Female students only",
+  
+  // Additional
+  successStories: "Success Stories",
+  
+  // Authentication
+  signIn: "Sign In",
+  signUp: "Sign Up",
+  signOut: "Sign Out",
     email: "Email",
     password: "Password",
-    firstName: "First Name",
-    lastName: "Last Name",
-    confirmPassword: "Confirm Password",
-    settings: "Settings",
+  firstName: "First Name",
+  lastName: "Last Name",
+  confirmPassword: "Confirm Password",
+  settings: "Settings",
     enterEmail: "Enter your email",
     enterPassword: "Enter your password",
-    enterFirstName: "First name",
-    enterLastName: "Last name",
-    signInDescription: "Welcome back to Nivasi.space",
-    signUpDescription: "Join Nivasi.space today",
-    dontHaveAccount: "Don't have an account?",
-    alreadyHaveAccount: "Already have an account?",
-    signingIn: "Signing in...",
-    signingUp: "Signing up...",
-    signInFailed: "Sign in failed. Please try again.",
-    signUpFailed: "Sign up failed. Please try again.",
-    passwordsDoNotMatch: "Passwords do not match",
-    passwordTooShort: "Password must be at least 8 characters long",
-    
+  enterFirstName: "First name",
+  enterLastName: "Last name",
+  signInDescription: "Welcome back to Nivasi.space",
+  signUpDescription: "Join Nivasi.space today",
+  dontHaveAccount: "Don't have an account?",
+  alreadyHaveAccount: "Already have an account?",
+  signingIn: "Signing in...",
+  signingUp: "Signing up...",
+  signInFailed: "Sign in failed. Please try again.",
+  signUpFailed: "Sign up failed. Please try again.",
+  passwordsDoNotMatch: "Passwords do not match",
+  passwordTooShort: "Password must be at least 8 characters long",
+  
     // Booking System
     bookNow: "Book Now",
     bookRoom: "Book Room",
@@ -398,31 +405,31 @@ export const translations = {
   },
   
   hi: {
-    // Header
+  // Header
     title: "Nivasi.space",
     tagline: "कॉलेज रूम रेंटल - अपना सही कमरा कैंपस के पास खोजें",
     changeGender: "लड़का है या लड़की",
     addRoom: "कमरा जोड़ें",
     logout: "लॉगआउट",
     adminMode: "एडमिन मोड",
-    
-    // Categories
+  
+  // Categories
     all: "सभी",
     singleRoom: "एकल कमरा",
     cotBasis: "खाट आधार",
     oneRK: "एक आरके",
     oneBHK: "एक बीएचके",
     twoBHK: "दो बीएचके",
-    
-    // Room Count
+  
+  // Room Count
     availableRooms: "Nivasi.space पर उपलब्ध कमरे",
     forBoys: "लड़कों के लिए",
     forGirls: "लड़कियों के लिए",
     roomsAvailable: "कमरा किराए के लिए उपलब्ध",
     roomsAvailablePlural: "कमरे किराए के लिए उपलब्ध",
     poweredBy: "Nivasi.space द्वारा संचालित - आपका विश्वसनीय कॉलेज रूम रेंटल प्लेटफॉर्म",
-    
-    // Empty States
+  
+  // Empty States
     welcomeToNivase: "Nivasi.space में आपका स्वागत है",
     collegeRoomRental: "कॉलेज रूम रेंटल - कृपया उपलब्ध कमरे देखने के लिए अपना लिंग चुनें",
     selectGender: "लिंग चुनें",
@@ -432,25 +439,25 @@ export const translations = {
     addFirstRoom: "पहला कमरा जोड़ें",
     noRoomsAvailable: "कोई कमरा उपलब्ध नहीं",
     beFirstToAddGeneral: "पहला कमरा लिस्टिंग जोड़ने वाले बनें!",
-    
-    // Footer
+  
+  // Footer
     copyright: "Nivasi.space. सर्वाधिकार सुरक्षित।",
     contact: "संपर्क:",
     privacyPolicy: "गोपनीयता नीति",
     termsOfService: "सेवा की शर्तें",
-    
-    // Loading
+  
+  // Loading
     loadingRooms: "कमरे लोड हो रहे हैं...",
-    
-    // Gender Selection Modal
+  
+  // Gender Selection Modal
     welcomeToCollegeRoomRental: "Nivasi.space में आपका स्वागत है",
     selectGenderToSeeRooms: "कॉलेज रूम रेंटल - कृपया उपलब्ध कमरे देखने के लिए अपना लिंग चुनें",
     selectYourGender: "कृपया उपलब्ध कमरे देखने के लिए अपना लिंग चुनें",
     boys: "लड़के",
     girls: "लड़कियां",
     changeSelectionLater: "आप बाद में सेटिंग्स में यह चयन बदल सकते हैं",
-    
-    // Room Cards
+  
+  // Room Cards
     perStudent: "प्रति छात्र",
     perRoom: "पूरे कमरे के लिए",
     noImageAvailable: "कोई छवि उपलब्ध नहीं",
@@ -459,8 +466,8 @@ export const translations = {
     viewOnMap: "मानचित्र पर देखें",
     viewDetails: "विवरण देखें",
     update: "अपडेट करें",
-    
-    // Room Detail Modal
+  
+  // Room Detail Modal
     checkOutRoom: "Nivasi.space पर इस कमरे को देखें:",
     foundOnNivasi: "Nivasi.space पर मिला",
     callNow: "अभी कॉल करें",
@@ -473,8 +480,8 @@ export const translations = {
     conditions: "शर्तें",
     location: "स्थान",
     features: "सुविधाएं",
-    
-    // Add Room Modal
+  
+  // Add Room Modal
     roomTitle: "कमरे का शीर्षक",
     roomTitlePlaceholder: "जैसे, गेट 2 के पास 2BHK",
     rent: "किराया",
@@ -496,9 +503,16 @@ export const translations = {
     girl: "लड़की",
     images: "छवियां",
     addImages: "छवियां जोड़ें",
-    submit: "जमा करें",
     
-    // Install App Button
+    // Filter Modal
+    filterByFeatures: "सुविधाओं के अनुसार फ़िल्टर करें",
+    selectAll: "सभी चुनें",
+    clearAll: "सभी साफ़ करें",
+    applyFilters: "फ़िल्टर लागू करें",
+    cancel: "रद्द करें",
+    submit: "जमा करें",
+  
+  // Install App Button
     installApp: "ऐप इंस्टॉल करें",
     openApp: "ऐप खोलें",
     downloading: "डाउनलोड हो रहा...",
@@ -523,22 +537,22 @@ export const translations = {
     benefit4: "नेटिव ऐप सुविधाएं",
     needHelp: "मदद चाहिए?",
     contactSupport: "सहायता से संपर्क करें",
-    
-    // App Promotion
+  
+  // App Promotion
     getNivasiApp: "सर्वोत्तम अनुभव के लिए Nivasi Space ऐप प्राप्त करें!",
     browseOffline: "ऑफलाइन ब्राउज़ करें",
     instantNotifications: "तत्काल नोटिफिकेशन",
     fasterLoading: "तेज़ लोडिंग",
     nativeFeatures: "नेटिव ऐप सुविधाएं",
     enhancedExperience: "ऑफलाइन एक्सेस और नोटिफिकेशन के साथ बेहतर अनुभव",
-    
-    // Web View App Welcome
+  
+  // Web View App Welcome
     welcomeToNivasiApp: "Nivasi Space ऐप में आपका स्वागत है!",
     usingEnhancedApp: "आप हमारा बेहतर मोबाइल ऐप उपयोग कर रहे हैं",
     fasterBrowsing: "तेज़ ब्राउज़िंग अनुभव",
     offlineAccess: "सहेजे गए कमरों तक ऑफलाइन पहुंच",
-    
-    // Booking System
+  
+  // Booking System
     bookNow: "अभी बुक करें",
     bookRoom: "कमरा बुक करें",
     bookingType: "बुकिंग प्रकार",
@@ -573,15 +587,15 @@ export const translations = {
     bookingError: "बुकिंग त्रुटि",
     bookingErrorMessage: "आपकी बुकिंग जमा करने में त्रुटि हुई। कृपया पुनः प्रयास करें।",
     tryAgain: "पुनः प्रयास करें",
-    
-    // WhatsApp Integration
+  
+  // WhatsApp Integration
     openWhatsApp: "WhatsApp खोलें",
     copyMessage: "संदेश कॉपी करें",
     messageCopied: "संदेश क्लिपबोर्ड पर कॉपी हो गया!",
     invalidPhoneNumber: "कृपया 6, 7, 8, या 9 से शुरू होने वाला वैध 10-अंकीय फोन नंबर दर्ज करें",
     visitThisRoom: "इस कमरे को देखें",
-    
-    // Form Validation Messages
+  
+  // Form Validation Messages
     pleaseEnterName: "कृपया अपना पूरा नाम दर्ज करें",
     pleaseEnterPhone: "कृपया अपना फोन नंबर दर्ज करें",
     pleaseEnterEmail: "कृपया अपना ईमेल पता दर्ज करें",
@@ -627,29 +641,29 @@ export const translations = {
     roomAddedSuccessfully: "कमरा सफलतापूर्वक जोड़ा गया!",
     roomUpdatedSuccessfully: "कमरा सफलतापूर्वक अपडेट किया गया!",
     errorAddingRoom: "कमरा जोड़ने में त्रुटि। कृपया पुनः प्रयास करें।",
-    
-    // Admin Login
+  
+  // Admin Login
     adminLogin: "एडमिन लॉगिन",
     password: "पासवर्ड",
     login: "लॉगिन",
     cancel: "रद्द करें",
     invalidPassword: "अमान्य एडमिन पासवर्ड। कृपया पुनः प्रयास करें।",
-    
-    // Mission & Vision
+  
+  // Mission & Vision
     ourMission: "हमारा मिशन",
     missionText: "छात्रों और संपत्ति मालिकों के लिए कमरा किराया प्रक्रिया को सरल बनाना, इसे सुरक्षित, विश्वसनीय और सभी के लिए सुलभ बनाना।",
     ourVision: "हमारा विजन",
     visionText: "सबसे विश्वसनीय और छात्र-अनुकूल कमरा किराया प्लेटफॉर्म बनना, छात्रों को सूचित विकल्प बनाने में सशक्त बनाना और एक सहायक समुदाय को बढ़ावा देना।",
-    
-    // PWA Install
+  
+  // PWA Install
     installApp: "ऐप इंस्टॉल करें",
     install: "इंस्टॉल",
     appInstalled: "ऐप इंस्टॉल हो गया",
-    
-    // Contact
+  
+  // Contact
     contactUs: "संपर्क करें",
-    
-    // Form validation messages
+  
+  // Form validation messages
     roomTitleRequired: "कमरे का शीर्षक आवश्यक है",
     validRentAmount: "कृपया एक वैध किराया राशि दर्ज करें",
     contactRequired: "संपर्क नंबर आवश्यक है",
@@ -663,12 +677,12 @@ export const translations = {
     imagesRequired: "कम से कम एक छवि आवश्यक है",
     editRoom: "कमरा संपादित करें",
     addNewRoom: "नया कमरा जोड़ें",
-    
-    // Gender descriptions
+  
+  // Gender descriptions
     maleStudentsOnly: "केवल पुरुष छात्र",
     femaleStudentsOnly: "केवल महिला छात्र",
-    
-    // Additional
+  
+  // Additional
     successStories: "सफलता की कहानियां",
     
     // Footer translations
@@ -691,31 +705,31 @@ export const translations = {
   },
   
   mr: {
-    // Header
+  // Header
     title: "Nivasi.space",
     tagline: "कॉलेज रूम रेंटल - तुमचा योग्य खोली कॅम्पसाजवळ शोधा",
     changeGender: "मुले किंवा मुली",
     addRoom: "खोली जोडा",
     logout: "लॉगआउट",
     adminMode: "अॅडमिन मोड",
-    
-    // Categories
+  
+  // Categories
     all: "सर्व",
     singleRoom: "एकल खोली",
     cotBasis: "खाट आधार",
     oneRK: "एक आरके",
     oneBHK: "एक बीएचके",
     twoBHK: "दोन बीएचके",
-    
-    // Room Count
+  
+  // Room Count
     availableRooms: "Nivasi.space वर उपलब्ध खोल्या",
     forBoys: "मुलांसाठी",
     forGirls: "मुलींसाठी",
     roomsAvailable: "खोली भाड्याने उपलब्ध",
     roomsAvailablePlural: "खोल्या भाड्याने उपलब्ध",
     poweredBy: "Nivasi.space द्वारे संचालित - तुमचे विश्वसनीय कॉलेज रूम रेंटल प्लॅटफॉर्म",
-    
-    // Empty States
+  
+  // Empty States
     welcomeToNivase: "Nivasi.space मध्ये तुमचे स्वागत आहे",
     collegeRoomRental: "कॉलेज रूम रेंटल - कृपया उपलब्ध खोल्या पाहण्यासाठी तुमचे लिंग निवडा",
     selectGender: "लिंग निवडा",
@@ -725,25 +739,25 @@ export const translations = {
     addFirstRoom: "पहिली खोली जोडा",
     noRoomsAvailable: "कोणतीही खोली उपलब्ध नाही",
     beFirstToAddGeneral: "पहिली खोली लिस्टिंग जोडणारे व्हा!",
-    
-    // Footer
+  
+  // Footer
     copyright: "Nivasi.space. सर्व हक्क राखीव.",
     contact: "संपर्क:",
     privacyPolicy: "गोपनीयता धोरण",
     termsOfService: "सेवेच्या अटी",
-    
-    // Loading
+  
+  // Loading
     loadingRooms: "खोल्या लोड होत आहेत...",
-    
-    // Gender Selection Modal
+  
+  // Gender Selection Modal
     welcomeToCollegeRoomRental: "Nivasi.space मध्ये तुमचे स्वागत आहे",
     selectGenderToSeeRooms: "कॉलेज रूम रेंटल - कृपया उपलब्ध खोल्या पाहण्यासाठी तुमचे लिंग निवडा",
     selectYourGender: "कृपया उपलब्ध खोल्या पाहण्यासाठी तुमचे लिंग निवडा",
     boys: "मुले",
     girls: "मुली",
     changeSelectionLater: "तुम्ही नंतर सेटिंग्जमध्ये हा निवड बदलू शकता",
-    
-    // Room Cards
+  
+  // Room Cards
     perStudent: "प्रति विद्यार्थी",
     perRoom: "पूर्ण खोलीसाठी",
     noImageAvailable: "कोणतीही प्रतिमा उपलब्ध नाही",
@@ -752,8 +766,8 @@ export const translations = {
     viewOnMap: "नकाशावर पहा",
     viewDetails: "तपशील पहा",
     update: "अपडेट करा",
-    
-    // Room Detail Modal
+  
+  // Room Detail Modal
     checkOutRoom: "Nivasi.space वर ही खोली पहा:",
     foundOnNivasi: "Nivasi.space वर सापडले",
     callNow: "आता कॉल करा",
@@ -766,8 +780,8 @@ export const translations = {
     conditions: "अटी",
     location: "स्थान",
     features: "सुविधा",
-    
-    // Add Room Modal
+  
+  // Add Room Modal
     roomTitle: "खोलीचे शीर्षक",
     roomTitlePlaceholder: "जसे, गेट 2 जवळ 2BHK",
     rent: "भाडे",
@@ -789,26 +803,33 @@ export const translations = {
     girl: "मुलगी",
     images: "प्रतिमा",
     addImages: "प्रतिमा जोडा",
+    
+    // Filter Modal
+    filterByFeatures: "सुविधांनुसार फिल्टर करा",
+    selectAll: "सर्व निवडा",
+    clearAll: "सर्व साफ करा",
+    applyFilters: "फिल्टर लागू करा",
+    cancel: "रद्द करा",
     submit: "सबमिट करा",
     update: "अपडेट करा",
     roomAddedSuccessfully: "खोली यशस्वीरित्या जोडली गेली!",
     roomUpdatedSuccessfully: "खोली यशस्वीरित्या अपडेट केली गेली!",
     errorAddingRoom: "खोली जोडताना त्रुटी. कृपया पुन्हा प्रयत्न करा.",
-    
-    // Admin Login
+  
+  // Admin Login
     adminLogin: "अॅडमिन लॉगिन",
     password: "पासवर्ड",
     login: "लॉगिन",
     cancel: "रद्द करा",
     invalidPassword: "अवैध अॅडमिन पासवर्ड. कृपया पुन्हा प्रयत्न करा.",
-    
-    // Mission & Vision
+  
+  // Mission & Vision
     ourMission: "आमचे ध्येय",
     missionText: "विद्यार्थी आणि मालमत्ता मालकांसाठी खोली भाडे प्रक्रिया सुलभ करणे, ती सुरक्षित, विश्वसनीय आणि सर्वांसाठी सुलभ बनवणे.",
     ourVision: "आमचे दृष्टीकोन",
     visionText: "सर्वात विश्वसनीय आणि विद्यार्थी-अनुकूल खोली भाडे प्लॅटफॉर्म बनणे, विद्यार्थ्यांना माहितीपूर्ण निवडी करण्यास सक्षम बनवणे आणि सहाय्यक समुदायाला प्रोत्साहन देणे.",
-    
-    // PWA Install
+  
+  // PWA Install
     installApp: "ऐप इंस्टॉल करा",
     install: "इंस्टॉल",
     appInstalled: "ऐप इंस्टॉल झाले",
@@ -818,11 +839,11 @@ export const translations = {
     usingEnhancedApp: "तुम्ही आमचा बेहतर मोबाइल ऐप वापरत आहात",
     fasterBrowsing: "वेगवान ब्राउझिंग अनुभव",
     offlineAccess: "सेव्ह केलेल्या खोल्यांना ऑफलाइन प्रवेश",
-    
-    // Contact
+  
+  // Contact
     contactUs: "संपर्क साधा",
-    
-    // Form validation messages
+  
+  // Form validation messages
     roomTitleRequired: "खोलीचे शीर्षक आवश्यक आहे",
     validRentAmount: "कृपया एक वैध भाडे रक्कम प्रविष्ट करा",
     contactRequired: "संपर्क क्रमांक आवश्यक आहे",
@@ -836,12 +857,12 @@ export const translations = {
     imagesRequired: "किमान एक प्रतिमा आवश्यक आहे",
     editRoom: "खोली संपादित करा",
     addNewRoom: "नवीन खोली जोडा",
-    
-    // Gender descriptions
+  
+  // Gender descriptions
     maleStudentsOnly: "फक्त पुरुष विद्यार्थी",
     femaleStudentsOnly: "फक्त महिला विद्यार्थी",
-    
-    // Additional
+  
+  // Additional
     successStories: "यशस्वी कथा",
     
     // Footer translations
