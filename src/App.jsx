@@ -61,7 +61,10 @@ function App() {
     const loadRooms = async () => {
       try {
         const { sampleRooms, getTranslatedRooms } = await import('./data/rooms.js');
-        setRooms(getTranslatedRooms(currentLanguage));
+        const translatedRooms = getTranslatedRooms(currentLanguage);
+        console.log('Loaded rooms:', translatedRooms.length);
+        console.log('Rooms with IDs 28 and 29:', translatedRooms.filter(r => r.id === 28 || r.id === 29));
+        setRooms(translatedRooms);
       } catch (error) {
         console.error('Failed to load rooms data:', error);
         setRooms([]);

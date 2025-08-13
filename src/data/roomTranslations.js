@@ -109,6 +109,8 @@ export const roomTranslations = {
     trimurtiHouse: "Trimurti House",
     raosahebNaiksHouse: "Raosaheb Naik's House",
     alkaNaiksHouse: "Alka Naik's House",
+    sanjayKalesHouse: "Sanjay Kale's House",
+    jayshreePardhisHouse: "Jayshree Pardhi's House",
     
     // Distance measurements
     fiftyMeters: "50m",
@@ -385,6 +387,9 @@ export const roomTranslations = {
     trimurtiHouse: "त्रिमूर्ति हाउस",
     raosahebNaiksHouse: "रावसाहेब नाईक का घर",
     alkaNaiksHouse: "अलका नाईक का घर",
+    sanjayKalesHouse: "संजय काले का घर",
+    jayshreePardhisHouse: "जयश्री पारधी का घर",
+    hemantAmbelsHouse: "हेमंत एम्बल का घर",
     
     // Distance measurements
     fiftyMeters: "50 मीटर",
@@ -661,6 +666,10 @@ export const roomTranslations = {
     trimurtiHouse: "त्रिमूर्ती हाऊस",
     raosahebNaiksHouse: "रावसाहेब नाईक यांचे घर",
     alkaNaiksHouse: "अलका नाईक यांचे घर",
+    sanjayKalesHouse: "संजय काले यांचे घर",
+    jayshreePardhisHouse: "जयश्री पारधी यांचे घर",
+    
+    
     
     // Distance measurements
     fiftyMeters: "50 मीटर",

@@ -733,8 +733,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4 Boys can stay in this room.",
     contact: "+91 9379767676",
     address: "Prathamesh Nagar , Near Blossom School",
-    location: "1.5km away from DYPSN College Gate, Near Trimurti House.",
-    mapLink: "https://maps.app.goo.gl/oxd6jxXUy5jqKwS48",
+    location: "300m away from DYPSN College Gate.",
+    mapLink: "https://maps.app.goo.gl/gyjQXpGUezrS5cKw5?g_st=aw",
     gender: "boys", // Available for boys
     roomType: "Cot Basis",
     rooms: "1 RK",
@@ -751,6 +751,54 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 5th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory,  Friends are not allowed in room  , Self Cleaning , Good Behaviour is required , Grabage Management by students",
     features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "SELF COOKING ALLOW", "NEAR BY MESS", "TERRACE ACCESS", "PARKING",  "BEDS", "shoes stand" , "Parets allowed for stay"]
   },
+  {
+    id: 29,
+    title: "Sanjay Kale's House",
+    rent: 1700,
+    note: "Including light and water bill , 4 GIRLS needed to stay in this room.",
+    contact: "+91 9423858882",
+      address: "More Mane Nagar , Kalamba",
+    location: "150m away from DYPSN College Gate", 
+    mapLink: "https://maps.app.goo.gl/iczXk8Gjy7R3hfeN7?g_st=aw",
+    gender: "girls", // Available for girls
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Sanjay Kale/kale 0_converted.avif",
+      "/Sanjay Kale/kale 1_converted.avif",
+      "/Sanjay Kale/kale 2_converted.avif",
+      "/Sanjay Kale/kale 3_converted.avif",
+      "/Sanjay Kale/kale 4_converted.avif",
+      "/Sanjay Kale/kale 5_converted.avif",
+      "/Sanjay Kale/kale 6_converted.avif",
+      "/Sanjay Kale/kale 7_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
+  },
+  {
+    id: 30,
+    title: "Jayshree Pardhi's House",
+    rent: 1800,
+    note: "Including light and water bill , 3 GIRLS needed to stay in this room.",
+    contact: "+91 9960525255",
+    address: "Salokhenagar , Kalamba",
+    location: "70m away from DYPSN College Gate, Near DakshinMukhi Hanuman Mandir.", 
+    mapLink: "https://maps.app.goo.gl/LmwXf7hiTRSC3zHN8?g_st=aw",
+    gender: "girls", // Available for girls
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Jayshree Pardhi/jay 0_converted.avif",
+      "/Jayshree Pardhi/jay 1_converted.avif",
+      "/Jayshree Pardhi/jay 2_converted.avif",
+      "/Jayshree Pardhi/jay 3_converted.avif",
+      "/Jayshree Pardhi/jay 4_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
+  },
+
 ];
 
 // Function to get translated room data
@@ -809,10 +857,13 @@ const translateRoomTitle = (title, t) => {
   translatedTitle = translatedTitle.replace(/DIPAK CHOUGALE'S HOUSE/g, t('dipakChougalesHouse'));
   translatedTitle = translatedTitle.replace(/SWAMI SAMARTH HOUSE \(ROHIT RANJIT BENDARE\)/g, t('swamiSamarthHouse'));
   translatedTitle = translatedTitle.replace(/SURYAKANT SANGPAL HOUSE/g, t('suryakantSangpalHouse'));
-      translatedTitle = translatedTitle.replace(/Trimurti House/g, t('trimurtiHouse'));
-    translatedTitle = translatedTitle.replace(/Raosaheb Naik's House/g, t('raosahebNaiksHouse'));
-    translatedTitle = translatedTitle.replace(/Alka Naik's House/g, t('alkaNaiksHouse'));
-    translatedTitle = translatedTitle.replace(/Vijay Jadhav's House/g, t('vijayJadhavsHouse'));
+  translatedTitle = translatedTitle.replace(/Trimurti House/g, t('trimurtiHouse'));
+  translatedTitle = translatedTitle.replace(/Raosaheb Naik's House/g, t('raosahebNaiksHouse'));
+  translatedTitle = translatedTitle.replace(/Alka Naik's House/g, t('alkaNaiksHouse'));
+  translatedTitle = translatedTitle.replace(/Sanjay Kale's House/g, t('sanjayKalesHouse'));
+  translatedTitle = translatedTitle.replace(/Jayshree Pardhi's House/g, t('jayshreePardhisHouse'));
+
+
     
     return translatedTitle
 };
