@@ -5,7 +5,7 @@ export const sampleRooms = [
   {
     id: 1,
     title: "Mulla's 1RK",
-    rent: 5000,
+    rent: 6000,
     pricingType: 'perRoom',
     note: "without including light and water bill , 2/3 Students can stay in this 1RK.",
     contact: "+91 9890491855",
@@ -802,7 +802,7 @@ export const sampleRooms = [
     id: 31,
     title: "Vrushali Gadge's House",
     rent: 2100,
-    note: "Including water bill , 1 Boy needed to stay in this room.",
+    note: "Including water bill, 1 Boy needed to stay in this room.",
     contact: "+91 9272505991",
     address: "Salokhenagar , Kalamba",
     location: "10m away from DYPSN College Gate, Infront of DYPSN College Gate.",
@@ -822,8 +822,8 @@ export const sampleRooms = [
       "/Vrushali Gadge/gadge 8_converted.avif",
       "/Vrushali Gadge/gadge 9_converted.avif"
     ],
-    description: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1700 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
-    features: ["WIFI","BEDS","New Room","HOT WATER", "Self Cooking Allowed","Group Studies Allowed","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay", "Mattress","Study Table for Students"]
+    description: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2100 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
+    features: ["WIFI","BEDS","New Room","HOT WATER", "Self Cooking Allowed","Group Studies Allowed","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay", "Mattress","Study Table for Students","Near College Gate"]
   },
 
 ];
