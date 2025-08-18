@@ -3,7 +3,7 @@ en: {
   // Header
   title: "Nivasi.space",
   tagline: "College Room Rental - Find your perfect room near campus",
-  changeGender: "Change Gender",
+  changeGender: "Change Location or Gender",
   addRoom: "Add Room",
   logout: "Logout",
   adminMode: "Admin Mode",
@@ -418,7 +418,7 @@ en: {
   // Header
     title: "Nivasi.space",
     tagline: "कॉलेज रूम रेंटल - अपना सही कमरा कैंपस के पास खोजें",
-    changeGender: "लिंग बदलें",
+    changeGender: "स्थान या लिंग बदलें",
     addRoom: "कमरा जोड़ें",
     logout: "लॉगआउट",
     adminMode: "एडमिन मोड",
@@ -728,7 +728,7 @@ en: {
   // Header
     title: "Nivasi.space",
     tagline: "कॉलेज रूम रेंटल - तुमचा योग्य खोली कॅम्पसाजवळ शोधा",
-    changeGender: "लिंग बदला",
+    changeGender: "स्थान किंवा लिंग बदला",
     addRoom: "खोली जोडा",
     logout: "लॉगआउट",
     adminMode: "अॅडमिन मोड",
