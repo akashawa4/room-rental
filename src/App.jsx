@@ -16,6 +16,7 @@ import './App.css';
 const RoomDetailModal = lazy(() => import('./components/RoomDetailModal.jsx'));
 const AddRoomModal = lazy(() => import('./components/AddRoomModal.jsx'));
 const AdminLoginModal = lazy(() => import('./components/AdminLoginModal.jsx'));
+const LocationSelectionModal = lazy(() => import('./components/LocationSelectionModal.jsx'));
 const GenderSelectionModal = lazy(() => import('./components/GenderSelectionModal.jsx'));
 const BookingModal = lazy(() => import('./components/BookingModal.jsx'));
 const BookingManagementModal = lazy(() => import('./components/BookingManagementModal.jsx'));
@@ -44,6 +45,8 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [editRoom, setEditRoom] = useState(null);
   const [selectedGender, setSelectedGender] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [showLocationSelection, setShowLocationSelection] = useState(false);
   const [showGenderSelection, setShowGenderSelection] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(true);
   const [hasAcceptedTerms, setHasAcceptedTerms] = useState(false);
@@ -228,12 +231,18 @@ function App() {
   const handleTermsAccept = useCallback(() => {
     setHasAcceptedTerms(true);
     setShowTermsModal(false);
-    setShowGenderSelection(true);
+    setShowLocationSelection(true);
   }, []);
 
   const handleTermsDecline = useCallback(() => {
     setShowTermsModal(false);
     // User declined terms, could redirect to logout or show message
+  }, []);
+
+  const handleLocationSelect = useCallback((location) => {
+    setSelectedLocation(location);
+    setShowLocationSelection(false);
+    setShowGenderSelection(true);
   }, []);
 
   const handleGenderSelect = useCallback(async (gender) => {
@@ -242,16 +251,17 @@ function App() {
     setIsLoading(true);
     
     try {
-      // If user is changing gender (not first time), update in Firebase
-      if (selectedGender && selectedGender !== gender) {
-        const { updateUserGender } = await import('./services/userService.js');
-        await updateUserGender(auth.currentUser?.uid, gender);
-      }
+      // Save user to Firebase with both location and gender
+      const { saveUserOnGenderSelection } = await import('./services/userService.js');
+      await saveUserOnGenderSelection(gender, {
+        city: selectedLocation?.city,
+        college: selectedLocation?.college
+      });
     } catch (error) {
-      console.error('Error updating gender:', error);
+      console.error('Error saving user data:', error);
       // Show notification for error
       setNotification({
-        message: 'Failed to update gender selection. Please try again.',
+        message: 'Failed to save your selection. Please try again.',
         type: 'error',
         isVisible: true
       });
@@ -259,10 +269,10 @@ function App() {
     
     // Simulate loading for better UX
     setTimeout(() => setIsLoading(false), 500);
-  }, [selectedGender]);
+  }, [selectedLocation]);
 
   const handleChangeGender = useCallback(() => {
-    setShowGenderSelection(true);
+    setShowLocationSelection(true);
   }, []);
 
   const handleBookNow = useCallback((room) => {
@@ -867,6 +877,13 @@ function App() {
             </div>
           </div>
         </footer>
+
+        {/* Location Selection Modal */}
+      {showLocationSelection && hasAcceptedTerms && (
+        <Suspense fallback={<ModalLoadingSpinner />}>
+          <LocationSelectionModal onLocationSelect={handleLocationSelect} />
+        </Suspense>
+      )}
 
         {/* Gender Selection Modal */}
       {showGenderSelection && hasAcceptedTerms && (

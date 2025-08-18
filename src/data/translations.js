@@ -3,7 +3,7 @@ en: {
   // Header
   title: "Nivasi.space",
   tagline: "College Room Rental - Find your perfect room near campus",
-  changeGender: "For Boys or Girls",
+  changeGender: "Change Gender",
   addRoom: "Add Room",
   logout: "Logout",
   adminMode: "Admin Mode",
@@ -54,6 +54,13 @@ en: {
   saving: "Saving...",
   userStats: "User Statistics",
   userStatsDescription: "Gender selection analytics",
+  selectYourLocation: "Select Your Location",
+  selectCityAndCollege: "Please select your city and college to continue",
+  city: "City",
+  college: "College",
+  selectCollege: "Select College",
+  continue: "Continue",
+  locationSelectionNote: "You can change this selection later in settings",
   
   // Room Cards
   perStudent: "per student",
@@ -411,7 +418,7 @@ en: {
   // Header
     title: "Nivasi.space",
     tagline: "कॉलेज रूम रेंटल - अपना सही कमरा कैंपस के पास खोजें",
-    changeGender: "लड़का है या लड़की",
+    changeGender: "लिंग बदलें",
     addRoom: "कमरा जोड़ें",
     logout: "लॉगआउट",
     adminMode: "एडमिन मोड",
@@ -462,6 +469,13 @@ en: {
     saving: "सहेज रहा है...",
     userStats: "उपयोगकर्ता आंकड़े",
     userStatsDescription: "लिंग चयन विश्लेषण",
+    selectYourLocation: "अपना स्थान चुनें",
+    selectCityAndCollege: "कृपया जारी रखने के लिए अपना शहर और कॉलेज चुनें",
+    city: "शहर",
+    college: "कॉलेज",
+    selectCollege: "कॉलेज चुनें",
+    continue: "जारी रखें",
+    locationSelectionNote: "आप बाद में सेटिंग्स में यह चयन बदल सकते हैं",
   
   // Room Cards
     perStudent: "प्रति छात्र",
@@ -714,7 +728,7 @@ en: {
   // Header
     title: "Nivasi.space",
     tagline: "कॉलेज रूम रेंटल - तुमचा योग्य खोली कॅम्पसाजवळ शोधा",
-    changeGender: "मुले किंवा मुली",
+    changeGender: "लिंग बदला",
     addRoom: "खोली जोडा",
     logout: "लॉगआउट",
     adminMode: "अॅडमिन मोड",
@@ -765,6 +779,13 @@ en: {
     saving: "जतन करत आहे...",
     userStats: "वापरकर्ता आकडेवारी",
     userStatsDescription: "लिंग निवड विश्लेषण",
+    selectYourLocation: "तुमचे स्थान निवडा",
+    selectCityAndCollege: "कृपया सुरू ठेवण्यासाठी तुमचे शहर आणि कॉलेज निवडा",
+    city: "शहर",
+    college: "कॉलेज",
+    selectCollege: "कॉलेज निवडा",
+    continue: "सुरू ठेवा",
+    locationSelectionNote: "तुम्ही नंतर सेटिंग्जमध्ये हा निवड बदलू शकता",
   
   // Room Cards
     perStudent: "प्रति विद्यार्थी",

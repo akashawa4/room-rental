@@ -21,20 +21,38 @@ export const saveUserOnGenderSelection = async (gender, additionalData = {}) => 
     // Check if user already exists
     const existingUser = await getUserByUid(currentUser.uid);
     
-    if (existingUser) {
-      // Update existing user with new gender selection
-      return await updateUserGender(currentUser.uid, gender);
-    } else {
-      // Create new user
-      const userData = {
-        uid: currentUser.uid,
-        email: currentUser.email,
-        displayName: currentUser.displayName || 'Anonymous User',
-        gender: gender,
-        selectedAt: serverTimestamp(),
-        lastActive: serverTimestamp(),
-        ...additionalData
-      };
+         if (existingUser) {
+       // Update existing user with new gender selection
+       const userRef = doc(db, USERS_COLLECTION, existingUser.id);
+       await updateDoc(userRef, {
+         gender: gender,
+         genderSelectedAt: serverTimestamp(),
+         lastUpdated: serverTimestamp(),
+         lastActive: serverTimestamp(),
+         ...additionalData
+       });
+
+       console.log('User gender updated successfully');
+       
+       return {
+         ...existingUser,
+         gender: gender,
+         genderSelectedAt: new Date(),
+         lastUpdated: new Date(),
+         lastActive: new Date(),
+         ...additionalData
+       };
+     } else {
+       // Create new user
+       const userData = {
+         uid: currentUser.uid,
+         email: currentUser.email,
+         displayName: currentUser.displayName || 'Anonymous User',
+         gender: gender,
+         genderSelectedAt: serverTimestamp(),
+         lastActive: serverTimestamp(),
+         ...additionalData
+       };
 
       const docRef = await addDoc(collection(db, USERS_COLLECTION), userData);
       
@@ -132,6 +150,70 @@ export const getUsersByGender = async (gender) => {
 };
 
 /**
+ * Save user location data to Firebase
+ * @param {Object} locationData - Location data (city, college)
+ * @returns {Promise<Object>} - Updated user document
+ */
+export const saveUserLocation = async (locationData) => {
+  try {
+    const currentUser = auth.currentUser;
+    
+    if (!currentUser) {
+      throw new Error('No authenticated user found');
+    }
+
+    // Check if user already exists
+    const existingUser = await getUserByUid(currentUser.uid);
+    
+    if (existingUser) {
+      // Update existing user with location data
+      const userRef = doc(db, USERS_COLLECTION, existingUser.id);
+      await updateDoc(userRef, {
+        city: locationData.city,
+        college: locationData.college,
+        locationSelectedAt: serverTimestamp(),
+        lastUpdated: serverTimestamp(),
+        lastActive: serverTimestamp()
+      });
+
+      console.log('User location updated successfully');
+      
+      return {
+        ...existingUser,
+        city: locationData.city,
+        college: locationData.college,
+        locationSelectedAt: new Date(),
+        lastUpdated: new Date(),
+        lastActive: new Date()
+      };
+    } else {
+      // Create new user with location data
+      const userData = {
+        uid: currentUser.uid,
+        email: currentUser.email,
+        displayName: currentUser.displayName || 'Anonymous User',
+        city: locationData.city,
+        college: locationData.college,
+        locationSelectedAt: serverTimestamp(),
+        lastActive: serverTimestamp()
+      };
+
+      const docRef = await addDoc(collection(db, USERS_COLLECTION), userData);
+      
+      console.log('User location saved successfully with ID:', docRef.id);
+      
+      return {
+        id: docRef.id,
+        ...userData
+      };
+    }
+  } catch (error) {
+    console.error('Error saving user location:', error);
+    throw error;
+  }
+};
+
+/**
  * Get user statistics
  * @returns {Promise<Object>} - User statistics
  */
@@ -140,10 +222,24 @@ export const getUserStatistics = async () => {
     const usersSnapshot = await getDocs(collection(db, USERS_COLLECTION));
     const users = usersSnapshot.docs.map(doc => doc.data());
     
+    // Calculate city and college statistics
+    const cityStats = {};
+    const collegeStats = {};
+    users.forEach(user => {
+      if (user.city) {
+        cityStats[user.city] = (cityStats[user.city] || 0) + 1;
+      }
+      if (user.college) {
+        collegeStats[user.college] = (collegeStats[user.college] || 0) + 1;
+      }
+    });
+    
     const stats = {
       total: users.length,
       boys: users.filter(user => user.gender === 'boy').length,
       girls: users.filter(user => user.gender === 'girl').length,
+      cities: cityStats,
+      colleges: collegeStats,
       lastUpdated: new Date()
     };
     

@@ -111,16 +111,43 @@ const UserStatisticsModal = ({ onClose }) => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl border border-pink-200">
-                  <div className="flex items-center gap-3">
-                    <User className="w-8 h-8 text-pink-600" />
-                    <div>
-                      <p className="text-pink-600 text-sm font-medium">Girls</p>
-                      <p className="text-2xl font-bold text-pink-800">{stats?.girls || 0}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                                 <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl border border-pink-200">
+                   <div className="flex items-center gap-3">
+                     <User className="w-8 h-8 text-pink-600" />
+                     <div>
+                       <p className="text-pink-600 text-sm font-medium">Girls</p>
+                       <p className="text-2xl font-bold text-pink-800">{stats?.girls || 0}</p>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+               {/* Location Statistics */}
+               {stats?.cities && Object.keys(stats.cities).length > 0 && (
+                 <div className="bg-gray-50 p-6 rounded-xl">
+                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Location Distribution</h3>
+                   <div className="space-y-3">
+                     {Object.entries(stats.cities).map(([city, count]) => (
+                       <div key={city} className="flex items-center justify-between">
+                         <span className="text-sm font-medium text-gray-700">{city}</span>
+                         <div className="flex items-center gap-2">
+                           <div className="w-32 bg-gray-200 rounded-full h-2">
+                             <div 
+                               className="bg-green-600 h-2 rounded-full transition-all duration-500"
+                               style={{ 
+                                 width: stats?.total ? `${(count / stats.total) * 100}%` : '0%' 
+                               }}
+                             ></div>
+                           </div>
+                           <span className="text-sm font-medium text-gray-900 w-12 text-right">
+                             {stats?.total ? Math.round((count / stats.total) * 100) : 0}%
+                           </span>
+                         </div>
+                       </div>
+                     ))}
+                   </div>
+                 </div>
+               )}
 
               {/* Gender Distribution Chart */}
               <div className="bg-gray-50 p-6 rounded-xl">
