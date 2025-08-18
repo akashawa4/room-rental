@@ -139,7 +139,7 @@ export const sampleRooms = [
     address: "MORE MANE NAGAR ,Klamaba.",
     location: "300m away from DYPSN College Gate, Near Trimurti House.",
     mapLink: "https://maps.google.com/?q=987+Budget+Street+Student+Area",
-    gender: "girls", // Available for girls
+    gender: "girl", // Available for girls
     roomType: "Cot Basis",
     rooms: "1 RK",
     images: [
@@ -314,7 +314,7 @@ export const sampleRooms = [
       "/Rohit Bendare/rohit 5_converted.avif",
       "/Rohit Bendare/rohit 6_converted.avif",
       "/Rohit Bendare/rohit 7_converted.avif",
-      "/Rohit Bendare/rohit 8_converted.avif",``
+      "/Rohit Bendare/rohit 8_converted.avif"
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry.",
     features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "OWNER'S MESS", "NEAR BY MESS", "TERRACE ACCESS", "PARKING",  "BEDS" , "Mattress","Parets allowed for stay", "Charging Bulb for ELECTRICITY issue"]
@@ -377,7 +377,7 @@ export const sampleRooms = [
     contact: "+91 9822673489",
     address: "Salokhenagar , Kalamba",
     location: "100m away from DYPSN College Gate, Near Gurukrupa Mess.",
-    mapLink: "hhttps://maps.app.goo.gl/8Xs7bWKifv9cf6vo8?g_st=aw",
+    mapLink: "https://maps.app.goo.gl/8Xs7bWKifv9cf6vo8?g_st=aw",
     gender: "boys", // Available for boys
     roomType: "Cot Basis",
     rooms: "Single Room",
@@ -645,6 +645,9 @@ export const sampleRooms = [
       "/Morya Mess/morya 3_converted.avif",
       "/Morya Mess/morya 4_converted.avif",
       "/Morya Mess/morya 5_converted.avif",
+      "/Morya Mess/morya 6_converted.avif?v=2",
+      "/Morya Mess/morya 7_converted.avif?v=2",
+      "/Morya Mess/morya 8_converted.avif?v=2"
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 5th of each month , 2000 Rs. Advance , No drinking and smoking allowed in room, STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , Garbage Management by students",
     features: ["WIFI(50% Recharge by Student)","HOT WATER", "WATER SUPPLY","Parking", "Beds","Mattress", "Owner's  MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay","CUBERT","Clenaing Fluids are Provided by Room Owner when needed"]
@@ -825,6 +828,28 @@ export const sampleRooms = [
     description: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2100 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
     features: ["WIFI","BEDS","New Room","HOT WATER", "Self Cooking Allowed","Group Studies Allowed","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay", "Mattress","Study Table for Students","Near College Gate"]
   },
+  {
+    id: 32,
+    title: "Sangita Mithari's House",
+    rent: 1500,
+    note: "Including  water bill ,1 Girl needed to stay and 4 GIRLS can stay in this room.",
+    contact: "+91 9421202731",
+    address: "Salokhenagar , Kalamba",
+    location: "70m away from DYPSN College Gate.", 
+    mapLink: "https://maps.app.goo.gl/Kw9qMDPCJMwHGvyq8?g_st=aw",
+    gender: "girls", // Available for girls
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Sangita Mithari/mith 0_converted.avif",
+      "/Sangita Mithari/mith 1_converted.avif",
+      "/Sangita Mithari/mith 2_converted.avif",
+      "/Sangita Mithari/mith 3_converted.avif",
+
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  ,Self Cooking not allowed, Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "STUDY TABLE FOR STUDENTS","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets(ONLY LADIES) allowed for stay"]
+  },
 
 ];
 
@@ -890,6 +915,7 @@ const translateRoomTitle = (title, t) => {
   translatedTitle = translatedTitle.replace(/Sanjay Kale's House/g, t('sanjayKalesHouse'));
   translatedTitle = translatedTitle.replace(/Jayshree Pardhi's House/g, t('jayshreePardhisHouse'));
   translatedTitle = translatedTitle.replace(/Vrushali Gadge's House/g, t('vrushaliGadgesHouse'));
+  translatedTitle = translatedTitle.replace(/Sangita Mithari's House/g, t('sangitaMitharisHouse'));
 
 
     

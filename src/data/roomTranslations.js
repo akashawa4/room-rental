@@ -40,6 +40,8 @@ export const roomTranslations = {
     gasGeyser: "GAS GEYSER",
     wifi: "WIFI",
     waterSupply: "WATER SUPPLY",
+    newRoom: "New Room",
+    shoesStand: "Shoes Stand",
     chargingBulb: "Charging Bulb for Electricity issue",
     parking: "PARKING",
     studyTable: "Study Table for Students",
@@ -112,6 +114,7 @@ export const roomTranslations = {
     sanjayKalesHouse: "Sanjay Kale's House",
     jayshreePardhisHouse: "Jayshree Pardhi's House",
     vrushaliGadgesHouse: "Vrushali Gadge's House",
+    sangitaMitharisHouse: "Sangita Mithari's House",
     
     // Distance measurements
     fiftyMeters: "50m",
@@ -319,6 +322,8 @@ export const roomTranslations = {
     gasGeyser: "गैस गीजर",
     wifi: "वाईफाई",
     waterSupply: "पानी की आपूर्ति",
+    newRoom: "नया कमरा",
+    shoesStand: "जूते रखने का स्टैंड",
     chargingBulb: "लाइट के लिए चार्जिंग बल्ब",
     parking: "पार्किंग",
     studyTable: "छात्रों के लिए स्टडी टेबल",
@@ -391,6 +396,7 @@ export const roomTranslations = {
     sanjayKalesHouse: "संजय काले का घर",
     jayshreePardhisHouse: "जयश्री पारधी का घर",
     vrushaliGadgesHouse: "वृशाली गडगे का घर",
+    sangitaMitharisHouse: "संगीता मिथारी का घर",
     hemantAmbelsHouse: "हेमंत एम्बल का घर",
     
     // Distance measurements
@@ -599,6 +605,8 @@ export const roomTranslations = {
     gasGeyser: "गॅस गीझर",
     wifi: "वायफाय",
     waterSupply: "पाणी पुरवठा",
+    newRoom: "नवीन खोली",
+    shoesStand: "बूट ठेवण्याचा स्टँड",
     chargingBulb: "दिव्यासाठी चार्जिंग बल्ब",
     parking: "पार्किंग",
     studyTable: "विद्यार्थ्यांसाठी अभ्यास टेबल",
@@ -671,6 +679,7 @@ export const roomTranslations = {
     sanjayKalesHouse: "संजय काले यांचे घर",
     jayshreePardhisHouse: "जयश्री पारधी यांचे घर",
     vrushaliGadgesHouse: "वृशाली गडगे यांचे घर",
+    sangitaMitharisHouse: "संगीता मिथारी यांचे घर",
     
     
     
@@ -688,6 +697,7 @@ export const roomTranslations = {
     fourHundredFiftyMeters: "450 मीटर",
     nineHundredMeters: "900 मीटर",
     onePointFiveKm: "1.5 किलोमीटर",
+    tenMeters: "10 मीटर",
     
     // Distance descriptions
     awayFromCollegeGate: "कॉलेज गेटपासून दूर",
@@ -932,6 +942,7 @@ export const roomTranslations = {
     advanceRequiredRs1500: "1500 Rs. Advance",
     advanceRequiredRs2000: "2000 Rs. Advance",
     advanceRequiredRs5000: "5000 Rs. Advance",
+    paretsOnlyLadiesAllowed: "Parents(ONLY LADIES) allowed for stay",
     noDrinkingSmoking: "No drinking and smoking allowed in room",
     goodBehaviourRequired: "Good Behaviour is required",
     garbageManagementByStudents: "Garbage Management by students",
@@ -972,6 +983,7 @@ export const roomTranslations = {
     advanceRequiredRs1500: "1500 रु अग्रिम भुगतान",
     advanceRequiredRs2000: "2000 रु अग्रिम भुगतान",
     advanceRequiredRs5000: "5000 रु अग्रिम भुगतान",
+    paretsOnlyLadiesAllowed: "माता-पिता (केवल महिलाएं) रहने की अनुमति",
     noDrinkingSmoking: "कमरे में शराब और धूम्रपान की अनुमति नहीं",
     goodBehaviourRequired: "अच्छा व्यवहार आवश्यक है",
     garbageManagementByStudents: "छात्रों द्वारा कचरा प्रबंधन",
