@@ -51,6 +51,9 @@ en: {
   boys: "Boys",
   girls: "Girls",
   changeSelectionLater: "You can change this selection later in settings",
+  saving: "Saving...",
+  userStats: "User Statistics",
+  userStatsDescription: "Gender selection analytics",
   
   // Room Cards
   perStudent: "per student",
@@ -456,6 +459,9 @@ en: {
     boys: "लड़के",
     girls: "लड़कियां",
     changeSelectionLater: "आप बाद में सेटिंग्स में यह चयन बदल सकते हैं",
+    saving: "सहेज रहा है...",
+    userStats: "उपयोगकर्ता आंकड़े",
+    userStatsDescription: "लिंग चयन विश्लेषण",
   
   // Room Cards
     perStudent: "प्रति छात्र",
@@ -756,6 +762,9 @@ en: {
     boys: "मुले",
     girls: "मुली",
     changeSelectionLater: "तुम्ही नंतर सेटिंग्जमध्ये हा निवड बदलू शकता",
+    saving: "जतन करत आहे...",
+    userStats: "वापरकर्ता आकडेवारी",
+    userStatsDescription: "लिंग निवड विश्लेषण",
   
   // Room Cards
     perStudent: "प्रति विद्यार्थी",

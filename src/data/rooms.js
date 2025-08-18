@@ -10,6 +10,8 @@ export const sampleRooms = [
     note: "without including light and water bill , 2/3 Students can stay in this 1RK.",
     contact: "+91 9890491855",
     address: "Salokhe Nagar, Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "50m away from College Gate",
     mapLink: "https://maps.app.goo.gl/iSpymFmgpNX7F22X7?g_st=aw",
     gender: "boy", // Available for boys
@@ -39,6 +41,8 @@ export const sampleRooms = [
     note: "without including light and water bill",
     contact: "+91 7219637257",
     address: "879/53, More Mane Nagar, Shivganga Colony, Kolhapur, Maharashtra 416011",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "50m away from DYPSN College Gate , Behind Canteen Mess ",
     mapLink: "https://goo.gl/maps/9FvULyBjMRWmYziG8?g_st=aw",
     gender: "boy", // Available for boys
@@ -60,6 +64,8 @@ export const sampleRooms = [
     note: " Rent including light and water bill,2/3 girls can stay in this room.",
     contact: "+91 7568183951",
     address: "Survey Nagar ,Klamaba.",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "150m away from DYPSN College Gate, Infront of Mug Kirana Shop ,",
     mapLink: "https://maps.app.goo.gl/wwbd9bpKvDYmuowo6?g_st=aw",
     gender: "girl", // Available for girls
@@ -85,6 +91,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 1 girl can stay in this room.",
     contact: "+91 8999181429",
     address: " More Mane Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "300m away from DYPSN College Gate, Girls PG Area",
     mapLink: "https://goo.gl/maps/pc8vTXNy433X5CVq6?g_st=aw",
     gender: "girl", // Available for girls

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, lazy, Suspense, useCallback } from 'react';
-import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, Download, X, Filter } from 'lucide-react';
+import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, Download, X, Filter, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import RoomCard from './components/RoomCard.jsx';
 import Logo from './components/Logo.jsx';
@@ -20,6 +20,7 @@ const GenderSelectionModal = lazy(() => import('./components/GenderSelectionModa
 const BookingModal = lazy(() => import('./components/BookingModal.jsx'));
 const BookingManagementModal = lazy(() => import('./components/BookingManagementModal.jsx'));
 const FeatureFilterModal = lazy(() => import('./components/FeatureFilterModal.jsx'));
+const UserStatisticsModal = lazy(() => import('./components/UserStatisticsModal.jsx'));
 
 // Loading component for lazy-loaded modals
 const ModalLoadingSpinner = () => (
@@ -52,6 +53,7 @@ function App() {
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [selectedRoomForBooking, setSelectedRoomForBooking] = useState(null);
   const [showBookingManagement, setShowBookingManagement] = useState(false);
+  const [showUserStatistics, setShowUserStatistics] = useState(false);
   const [notification, setNotification] = useState({ message: '', type: 'success', isVisible: false });
   const [showInstallGuide, setShowInstallGuide] = useState(false);
   const [showContactPopup, setShowContactPopup] = useState(false);
@@ -234,13 +236,30 @@ function App() {
     // User declined terms, could redirect to logout or show message
   }, []);
 
-  const handleGenderSelect = useCallback((gender) => {
+  const handleGenderSelect = useCallback(async (gender) => {
     setSelectedGender(gender);
     setShowGenderSelection(false);
     setIsLoading(true);
+    
+    try {
+      // If user is changing gender (not first time), update in Firebase
+      if (selectedGender && selectedGender !== gender) {
+        const { updateUserGender } = await import('./services/userService.js');
+        await updateUserGender(auth.currentUser?.uid, gender);
+      }
+    } catch (error) {
+      console.error('Error updating gender:', error);
+      // Show notification for error
+      setNotification({
+        message: 'Failed to update gender selection. Please try again.',
+        type: 'error',
+        isVisible: true
+      });
+    }
+    
     // Simulate loading for better UX
     setTimeout(() => setIsLoading(false), 500);
-  }, []);
+  }, [selectedGender]);
 
   const handleChangeGender = useCallback(() => {
     setShowGenderSelection(true);
@@ -262,6 +281,10 @@ function App() {
 
   const handleShowBookingManagement = useCallback(() => {
     setShowBookingManagement(true);
+  }, []);
+
+  const handleShowUserStatistics = useCallback(() => {
+    setShowUserStatistics(true);
   }, []);
 
   // Show loading screen while auth is initializing
@@ -411,6 +434,15 @@ function App() {
                         </Button>
                         <Button
                           variant="outline"
+                          onClick={handleShowUserStatistics}
+                          size="sm"
+                          className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm flex-1"
+                        >
+                          <TrendingUp className="w-4 h-4" />
+                          Stats
+                        </Button>
+                        <Button
+                          variant="outline"
                           onClick={handleAdminLogout}
                           size="sm"
                           className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm flex-1"
@@ -471,6 +503,14 @@ function App() {
                       >
                         <Calendar className="w-4 h-4" />
                         {t('manageBookings') || 'Bookings'}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={handleShowUserStatistics}
+                        className="w-full sm:w-auto bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                      >
+                        <TrendingUp className="w-4 h-4" />
+                        User Stats
                       </Button>
                     </>
                   )}
@@ -898,6 +938,15 @@ function App() {
           <BookingManagementModal
             isOpen={showBookingManagement}
             onClose={() => setShowBookingManagement(false)}
+          />
+        </Suspense>
+      )}
+
+      {/* User Statistics Modal */}
+      {showUserStatistics && (
+        <Suspense fallback={<ModalLoadingSpinner />}>
+          <UserStatisticsModal
+            onClose={() => setShowUserStatistics(false)}
           />
         </Suspense>
       )}
