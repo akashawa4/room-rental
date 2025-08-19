@@ -73,6 +73,71 @@ export const supportsPopupAuth = () => {
 };
 
 /**
+ * Redirect to default browser for authentication
+ * This opens the authentication URL in the user's default browser
+ * @param {string} authUrl - The authentication URL to open
+ */
+export const redirectToDefaultBrowser = (authUrl) => {
+  const detection = detectWebView();
+  
+  if (detection.isWebView) {
+    // For WebView environments, open in default browser
+    console.log('Redirecting to default browser for authentication');
+    
+    // Try to open in default browser
+    try {
+      // Method 1: Use window.open with _system target (works in some WebViews)
+      window.open(authUrl, '_system', 'noopener,noreferrer');
+    } catch (error) {
+      console.log('Failed to open with _system, trying _blank');
+      try {
+        // Method 2: Use _blank target
+        window.open(authUrl, '_blank', 'noopener,noreferrer');
+      } catch (error2) {
+        console.log('Failed to open with _blank, trying location.href');
+        // Method 3: Direct redirect (fallback)
+        window.location.href = authUrl;
+      }
+    }
+  } else {
+    // For regular browsers, just redirect normally
+    window.location.href = authUrl;
+  }
+};
+
+/**
+ * Create a custom authentication URL for external browser
+ * @param {string} returnUrl - URL to return to after authentication
+ * @returns {string} The authentication URL
+ */
+export const createExternalAuthUrl = (returnUrl) => {
+  const currentUrl = window.location.origin + window.location.pathname;
+  const encodedReturnUrl = encodeURIComponent(returnUrl || currentUrl);
+  
+  // Create a custom authentication URL that will redirect back to the app
+  return `${currentUrl}?auth=external&return=${encodedReturnUrl}`;
+};
+
+/**
+ * Check if we're returning from external browser authentication
+ * @returns {boolean}
+ */
+export const isReturningFromExternalAuth = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('auth') === 'external';
+};
+
+/**
+ * Get the return URL from external authentication
+ * @returns {string|null}
+ */
+export const getExternalAuthReturnUrl = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const returnUrl = urlParams.get('return');
+  return returnUrl ? decodeURIComponent(returnUrl) : null;
+};
+
+/**
  * Get user-friendly message for authentication issues
  * @param {Error} error - The authentication error
  * @returns {string} User-friendly error message
@@ -141,6 +206,10 @@ export default {
   detectWebView,
   getRecommendedAuthMethod,
   supportsPopupAuth,
+  redirectToDefaultBrowser,
+  createExternalAuthUrl,
+  isReturningFromExternalAuth,
+  getExternalAuthReturnUrl,
   getAuthErrorMessage,
   getAuthSolutionSuggestions
 };

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { auth, googleProvider, signInWithPopup, signInWithRedirect } from '../firebase.js';
-import { detectWebView, getRecommendedAuthMethod, getAuthErrorMessage, getAuthSolutionSuggestions } from '../utils/webview.js';
-import { Loader2 } from 'lucide-react';
+import { detectWebView, getRecommendedAuthMethod, getAuthErrorMessage, getAuthSolutionSuggestions, redirectToDefaultBrowser } from '../utils/webview.js';
+import { Loader2, ExternalLink } from 'lucide-react';
 
 const LoginScreen = ({ onLoginSuccess }) => {
   const { t } = useLanguage();
@@ -22,12 +22,17 @@ const LoginScreen = ({ onLoginSuccess }) => {
       console.log('Environment detection:', detection);
       console.log('Recommended auth method:', recommendedMethod);
       
-      // For WebView or in-app browsers, always use redirect
-      if (detection.shouldUseRedirect) {
-        console.log('Using redirect authentication for WebView/in-app browser');
-        await signInWithRedirect(auth, googleProvider);
-        return; // Don't set loading to false as we're redirecting
-      }
+              // For WebView environments, redirect to default browser
+        if (detection.isWebView) {
+          console.log('WebView detected, redirecting to default browser for authentication');
+          
+          // Create the authentication URL
+          const authUrl = `${window.location.origin}/auth?redirect=${encodeURIComponent(window.location.href)}`;
+          
+          // Redirect to default browser
+          redirectToDefaultBrowser(authUrl);
+          return; // Don't set loading to false as we're redirecting
+        }
       
       // For regular browsers, try popup first
       try {
@@ -105,13 +110,19 @@ const LoginScreen = ({ onLoginSuccess }) => {
           </Button>
           
           {/* Enhanced WebView Notice */}
-          {detection.shouldUseRedirect && (
+          {detection.isWebView && (
             <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-blue-700 text-xs text-center">
+              <div className="flex items-center gap-2 mb-2">
+                <ExternalLink className="w-4 h-4 text-blue-600" />
+                <p className="text-blue-700 text-sm font-medium">
+                  Opening in Default Browser
+                </p>
+              </div>
+              <p className="text-blue-600 text-xs">
                 🔗 You'll be redirected to your default browser for secure authentication
               </p>
-              <p className="text-blue-600 text-xs text-center mt-1">
-                For the best experience, install the Nivasi Space app
+              <p className="text-blue-500 text-xs mt-1">
+                After signing in, you'll return to the app automatically
               </p>
             </div>
           )}
@@ -138,6 +149,27 @@ const LoginScreen = ({ onLoginSuccess }) => {
                 </ul>
               </div>
             )}
+          </div>
+        )}
+
+        {/* Manual Browser Link for WebView */}
+        {detection.isWebView && (
+          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+            <p className="text-green-700 text-xs font-medium mb-2">
+              📱 Alternative: Open in Browser
+            </p>
+            <Button
+              onClick={() => {
+                const authUrl = `${window.location.origin}/auth?redirect=${encodeURIComponent(window.location.href)}`;
+                window.open(authUrl, '_blank', 'noopener,noreferrer');
+              }}
+              variant="outline"
+              size="sm"
+              className="w-full bg-green-100 border-green-300 text-green-700 hover:bg-green-200"
+            >
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Open in Browser
+            </Button>
           </div>
         )}
 
