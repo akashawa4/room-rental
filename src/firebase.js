@@ -1,8 +1,9 @@
 // Firebase configuration and initialization
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, updateDoc, deleteDoc, query, where, orderBy, limit, onSnapshot, serverTimestamp } from 'firebase/firestore';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, setPersistence, browserLocalPersistence } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, setPersistence, browserLocalPersistence, browserSessionPersistence } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, listAll } from 'firebase/storage';
+import { detectWebView } from './utils/webview.js';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,20 +24,33 @@ export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 
-// Initialize Google Auth Provider with better configuration
+// Enhanced Google Auth Provider with better configuration for WebView compatibility
 export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: 'select_account',
   // Add additional scopes if needed
-  scope: 'email profile'
+  scope: 'email profile',
+  // Add login hint for better UX
+  login_hint: '',
+  // Add hd parameter if you want to restrict to specific domains
+  // hd: 'yourdomain.com'
 });
 
 // Configure auth settings to handle popup issues and COOP warnings
 auth.useDeviceLanguage();
 auth.settings.appVerificationDisabledForTesting = false;
 
-// Set auth persistence to handle popup issues better
-setPersistence(auth, browserLocalPersistence);
+// Set auth persistence based on environment using the WebView detection utility
+const detection = detectWebView();
+
+// Use session persistence for WebView to avoid storage issues
+if (detection.shouldUseRedirect) {
+  setPersistence(auth, browserSessionPersistence);
+  console.log('Firebase: Using session persistence for WebView/in-app browser');
+} else {
+  setPersistence(auth, browserLocalPersistence);
+  console.log('Firebase: Using local persistence for regular browser');
+}
 
 // Analytics disabled due to permission issues
 // Can be re-enabled later when Firebase project is properly configured
@@ -73,6 +87,7 @@ export {
   getRedirectResult,
   setPersistence,
   browserLocalPersistence,
+  browserSessionPersistence,
   // Storage
   ref,
   uploadBytes,

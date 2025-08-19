@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
 import { auth, googleProvider, signInWithPopup, signInWithRedirect } from '../firebase.js';
+import { detectWebView, getRecommendedAuthMethod, getAuthErrorMessage, getAuthSolutionSuggestions } from '../utils/webview.js';
 import { Loader2 } from 'lucide-react';
 
 const LoginScreen = ({ onLoginSuccess }) => {
@@ -14,13 +15,16 @@ const LoginScreen = ({ onLoginSuccess }) => {
     setError('');
     
     try {
-      // Check if we're in a WebView or mobile app environment
-      const isWebView = /WebView|wv|FB_IAB|FBAV|Instagram|Line|Twitter|LinkedInApp|WhatsApp/.test(navigator.userAgent);
-      const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      // Use the new WebView detection utility
+      const detection = detectWebView();
+      const recommendedMethod = getRecommendedAuthMethod();
       
-      if (isWebView) {
-        // For WebView, always use redirect
-        console.log('Detected WebView environment, using redirect authentication');
+      console.log('Environment detection:', detection);
+      console.log('Recommended auth method:', recommendedMethod);
+      
+      // For WebView or in-app browsers, always use redirect
+      if (detection.shouldUseRedirect) {
+        console.log('Using redirect authentication for WebView/in-app browser');
         await signInWithRedirect(auth, googleProvider);
         return; // Don't set loading to false as we're redirecting
       }
@@ -28,6 +32,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
       // For regular browsers, try popup first
       try {
         const result = await signInWithPopup(auth, googleProvider);
+        console.log('Popup sign-in successful:', result);
         // The AuthContext will handle the state change automatically
       } catch (popupError) {
         console.error('LoginScreen: Popup sign-in error:', popupError);
@@ -37,7 +42,9 @@ const LoginScreen = ({ onLoginSuccess }) => {
             popupError.code === 'auth/popup-closed-by-user' ||
             popupError.code === 'auth/cancelled-popup-request' ||
             popupError.message?.includes('Cross-Origin-Opener-Policy') ||
-            popupError.message?.includes('disallowed_useragent')) {
+            popupError.message?.includes('disallowed_useragent') ||
+            popupError.message?.includes('Use secure browsers') ||
+            popupError.code === 'auth/unauthorized-domain') {
           // Fallback to redirect for popup issues or WebView
           console.log('Falling back to redirect due to popup/WebView issues');
           await signInWithRedirect(auth, googleProvider);
@@ -49,22 +56,17 @@ const LoginScreen = ({ onLoginSuccess }) => {
     } catch (error) {
       console.error('LoginScreen: Google sign-in error:', error);
       
-      // Handle specific error cases
-      if (error.code === 'auth/unauthorized-domain') {
-        setError('This domain is not authorized for Google sign-in.');
-      } else if (error.code === 'auth/network-request-failed') {
-        setError('Network error. Please check your connection and try again.');
-      } else if (error.code === 'auth/too-many-requests') {
-        setError('Too many sign-in attempts. Please try again later.');
-      } else if (error.message?.includes('disallowed_useragent')) {
-        setError('Google Sign-In is not supported in this browser. Please use a different browser or open in external browser.');
-      } else {
-        setError(error.message || 'Failed to sign in with Google');
-      }
+      // Use the new error handling utility
+      const errorMessage = getAuthErrorMessage(error);
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
   };
+
+  // Get WebView detection for UI
+  const detection = detectWebView();
+  const solutionSuggestions = error ? getAuthSolutionSuggestions({ message: error }) : [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center p-4">
@@ -102,11 +104,14 @@ const LoginScreen = ({ onLoginSuccess }) => {
             {isLoading ? 'Signing in...' : 'Continue with Google'}
           </Button>
           
-          {/* WebView Notice */}
-          {/WebView|wv|FB_IAB|FBAV|Instagram|Line|Twitter|LinkedInApp|WhatsApp/.test(navigator.userAgent) && (
-            <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded-lg">
+          {/* Enhanced WebView Notice */}
+          {detection.shouldUseRedirect && (
+            <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
               <p className="text-blue-700 text-xs text-center">
                 🔗 You'll be redirected to your default browser for secure authentication
+              </p>
+              <p className="text-blue-600 text-xs text-center mt-1">
+                For the best experience, install the Nivasi Space app
               </p>
             </div>
           )}
@@ -116,6 +121,23 @@ const LoginScreen = ({ onLoginSuccess }) => {
         {error && (
           <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
             <p className="text-red-600 text-sm">{error}</p>
+            
+            {/* Solution Suggestions */}
+            {solutionSuggestions.length > 0 && (
+              <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded">
+                <p className="text-blue-700 text-xs font-medium mb-1">
+                  💡 <strong>Solutions:</strong>
+                </p>
+                <ul className="text-blue-600 text-xs space-y-1">
+                  {solutionSuggestions.map((suggestion, index) => (
+                    <li key={index} className="flex items-start gap-1">
+                      <span className="text-blue-500">•</span>
+                      <span>{suggestion}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
 
