@@ -1,43 +1,60 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button.jsx';
 import { useLanguage } from '../contexts/LanguageContext.jsx';
+import { useAuth } from '../contexts/AuthContext.jsx';
 import { auth, googleProvider, signInWithPopup, signInWithRedirect } from '../firebase.js';
-import { detectWebView, getRecommendedAuthMethod, getAuthErrorMessage, getAuthSolutionSuggestions, redirectToDefaultBrowser } from '../utils/webview.js';
-import { Loader2, ExternalLink } from 'lucide-react';
+import { detectWebView, getRecommendedAuthMethod, getAuthErrorMessage, getAuthSolutionSuggestions } from '../utils/webview.js';
+import { Loader2, RefreshCw, AlertCircle } from 'lucide-react';
 
 const LoginScreen = ({ onLoginSuccess }) => {
   const { t } = useLanguage();
+  const { authError, clearAuthError } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [retryCount, setRetryCount] = useState(0);
+
+  // Clear errors when component mounts
+  useEffect(() => {
+    clearAuthError();
+    setError('');
+  }, [clearAuthError]);
+
+  // Handle auth errors from context
+  useEffect(() => {
+    if (authError) {
+      console.error('LoginScreen: Auth error from context:', authError);
+      const errorMessage = getAuthErrorMessage(authError);
+      setError(errorMessage);
+      setIsLoading(false);
+    }
+  }, [authError]);
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
     setError('');
+    clearAuthError();
     
     try {
       // Use the new WebView detection utility
       const detection = detectWebView();
       const recommendedMethod = getRecommendedAuthMethod();
       
-      console.log('Environment detection:', detection);
-      console.log('Recommended auth method:', recommendedMethod);
+      console.log('LoginScreen: Environment detection:', detection);
+      console.log('LoginScreen: Recommended auth method:', recommendedMethod);
+      console.log('LoginScreen: Retry count:', retryCount);
       
-              // For WebView environments, redirect to default browser
-        if (detection.isWebView) {
-          console.log('WebView detected, redirecting to default browser for authentication');
-          
-          // Create the authentication URL
-          const authUrl = `${window.location.origin}/auth?redirect=${encodeURIComponent(window.location.href)}`;
-          
-          // Redirect to default browser
-          redirectToDefaultBrowser(authUrl);
-          return; // Don't set loading to false as we're redirecting
-        }
+      // For WebView or in-app browsers, always use redirect
+      if (detection.shouldUseRedirect) {
+        console.log('LoginScreen: Using redirect authentication for WebView/in-app browser');
+        await signInWithRedirect(auth, googleProvider);
+        return; // Don't set loading to false as we're redirecting
+      }
       
       // For regular browsers, try popup first
       try {
         const result = await signInWithPopup(auth, googleProvider);
-        console.log('Popup sign-in successful:', result);
+        console.log('LoginScreen: Popup sign-in successful:', result);
+        console.log('LoginScreen: User authenticated:', result.user.email);
         // The AuthContext will handle the state change automatically
       } catch (popupError) {
         console.error('LoginScreen: Popup sign-in error:', popupError);
@@ -51,7 +68,7 @@ const LoginScreen = ({ onLoginSuccess }) => {
             popupError.message?.includes('Use secure browsers') ||
             popupError.code === 'auth/unauthorized-domain') {
           // Fallback to redirect for popup issues or WebView
-          console.log('Falling back to redirect due to popup/WebView issues');
+          console.log('LoginScreen: Falling back to redirect due to popup/WebView issues');
           await signInWithRedirect(auth, googleProvider);
           return; // Don't set loading to false as we're redirecting
         } else {
@@ -64,9 +81,25 @@ const LoginScreen = ({ onLoginSuccess }) => {
       // Use the new error handling utility
       const errorMessage = getAuthErrorMessage(error);
       setError(errorMessage);
+      
+      // Increment retry count
+      setRetryCount(prev => prev + 1);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleRetry = () => {
+    setRetryCount(0);
+    setError('');
+    clearAuthError();
+    handleGoogleSignIn();
+  };
+
+  const handleClearError = () => {
+    setError('');
+    clearAuthError();
+    setRetryCount(0);
   };
 
   // Get WebView detection for UI
@@ -89,6 +122,9 @@ const LoginScreen = ({ onLoginSuccess }) => {
           </p>
         </div>
 
+        {/* Debug Information (only in development) */}
+        
+
         {/* Google Sign In Button */}
         <div className="space-y-4">
           <Button 
@@ -110,19 +146,13 @@ const LoginScreen = ({ onLoginSuccess }) => {
           </Button>
           
           {/* Enhanced WebView Notice */}
-          {detection.isWebView && (
+          {detection.shouldUseRedirect && (
             <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <div className="flex items-center gap-2 mb-2">
-                <ExternalLink className="w-4 h-4 text-blue-600" />
-                <p className="text-blue-700 text-sm font-medium">
-                  Opening in Default Browser
-                </p>
-              </div>
-              <p className="text-blue-600 text-xs">
+              <p className="text-blue-700 text-xs text-center">
                 🔗 You'll be redirected to your default browser for secure authentication
               </p>
-              <p className="text-blue-500 text-xs mt-1">
-                After signing in, you'll return to the app automatically
+              <p className="text-blue-600 text-xs text-center mt-1">
+                For the best experience, install the Nivasi Space app
               </p>
             </div>
           )}
@@ -131,45 +161,49 @@ const LoginScreen = ({ onLoginSuccess }) => {
         {/* Error Message */}
         {error && (
           <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-red-600 text-sm">{error}</p>
-            
-            {/* Solution Suggestions */}
-            {solutionSuggestions.length > 0 && (
-              <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded">
-                <p className="text-blue-700 text-xs font-medium mb-1">
-                  💡 <strong>Solutions:</strong>
-                </p>
-                <ul className="text-blue-600 text-xs space-y-1">
-                  {solutionSuggestions.map((suggestion, index) => (
-                    <li key={index} className="flex items-start gap-1">
-                      <span className="text-blue-500">•</span>
-                      <span>{suggestion}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
+              <div className="flex-1">
+                <p className="text-red-600 text-sm">{error}</p>
+                
+                {/* Solution Suggestions */}
+                {solutionSuggestions.length > 0 && (
+                  <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded">
+                    <p className="text-blue-700 text-xs font-medium mb-1">
+                      💡 <strong>Solutions:</strong>
+                    </p>
+                    <ul className="text-blue-600 text-xs space-y-1">
+                      {solutionSuggestions.map((suggestion, index) => (
+                        <li key={index} className="flex items-start gap-1">
+                          <span className="text-blue-500">•</span>
+                          <span>{suggestion}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
+                {/* Action Buttons */}
+                <div className="mt-3 flex gap-2">
+                  <Button
+                    onClick={handleRetry}
+                    size="sm"
+                    className="bg-red-600 hover:bg-red-700 text-white text-xs"
+                  >
+                    <RefreshCw className="w-3 h-3 mr-1" />
+                    Try Again
+                  </Button>
+                  <Button
+                    onClick={handleClearError}
+                    size="sm"
+                    variant="outline"
+                    className="text-xs"
+                  >
+                    Clear Error
+                  </Button>
+                </div>
               </div>
-            )}
-          </div>
-        )}
-
-        {/* Manual Browser Link for WebView */}
-        {detection.isWebView && (
-          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-            <p className="text-green-700 text-xs font-medium mb-2">
-              📱 Alternative: Open in Browser
-            </p>
-            <Button
-              onClick={() => {
-                const authUrl = `${window.location.origin}/auth?redirect=${encodeURIComponent(window.location.href)}`;
-                window.open(authUrl, '_blank', 'noopener,noreferrer');
-              }}
-              variant="outline"
-              size="sm"
-              className="w-full bg-green-100 border-green-300 text-green-700 hover:bg-green-200"
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Open in Browser
-            </Button>
+            </div>
           </div>
         )}
 

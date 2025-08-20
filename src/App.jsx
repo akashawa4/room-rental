@@ -7,7 +7,6 @@ import LanguageSelector from './components/LanguageSelector.jsx';
 import TermsAndConditionsModal from './components/TermsAndConditionsModal.jsx';
 import Notification from './components/Notification.jsx';
 import LoginScreen from './components/LoginScreen.jsx';
-import ExternalAuthHandler from './components/ExternalAuthHandler.jsx';
 
 import { useLanguage } from './contexts/LanguageContext.jsx';
 import { useAuth } from './contexts/AuthContext.jsx';
@@ -37,10 +36,6 @@ const ModalLoadingSpinner = () => (
 function App() {
   const { t, currentLanguage } = useLanguage();
   const { user, loading, logout, isAuthenticated } = useAuth();
-  
-  // Check if we're on the external auth route
-  const isExternalAuthRoute = window.location.pathname === '/auth' || 
-                             window.location.search.includes('auth=external');
   
   const [rooms, setRooms] = useState([]);
   const [isLoadingRooms, setIsLoadingRooms] = useState(true);
@@ -302,11 +297,6 @@ function App() {
     setShowUserStatistics(true);
   }, []);
 
-  // Show external auth handler if on auth route
-  if (isExternalAuthRoute) {
-    return <ExternalAuthHandler />;
-  }
-
   // Show loading screen while auth is initializing
   if (loading) {
     return (
@@ -418,7 +408,9 @@ function App() {
                       <div className="flex items-center gap-2 flex-1">
                         {user?.photoURL ? (
                           <img 
-                            src={user.photoURL} 
+                            src={user.photoURL || '/logo.svg'}
+                            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/logo.svg'; }}
+                            referrerPolicy="no-referrer"
                             alt={user.displayName || 'User'} 
                             className="w-6 h-6 rounded-full border border-white/30"
                           />
@@ -547,7 +539,9 @@ function App() {
                   <div className="flex flex-col items-center gap-1">
                     {user?.photoURL ? (
                       <img 
-                        src={user.photoURL} 
+                        src={user.photoURL || '/logo.svg'} 
+                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/logo.svg'; }}
+                        referrerPolicy="no-referrer"
                         alt={user.displayName || 'User'} 
                         className="w-8 h-8 rounded-full border-2 border-white/30"
                       />
@@ -1256,6 +1250,8 @@ function App() {
           />
         </Suspense>
       )}
+
+      
     </div>
   );
 }
