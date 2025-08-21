@@ -639,7 +639,7 @@ export const sampleRooms = [
     title: "Morya Mess",
     rent: 1800,
     note: "Including light and water bill , 4 BOYS needed to stay in this room.",
-    contact: "+91 9673820526",
+    contact: "+91 9673860526",
     address: "Salokhenagar , Kalamba",
     location: "50m away from DYPSN College Gate.",
     mapLink: "https://maps.app.goo.gl/sm5JZRbvKpb7pqUT6?g_st=aw",
