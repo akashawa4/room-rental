@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, lazy, Suspense, useCallback } from 'react';
-import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, Download, X, Filter, TrendingUp } from 'lucide-react';
+import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, Download, X, Filter, TrendingUp, Home, Utensils } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import RoomCard from './components/RoomCard.jsx';
 import Logo from './components/Logo.jsx';
@@ -14,6 +14,7 @@ import './App.css';
 
 // Lazy load modal components to reduce initial bundle size
 const RoomDetailModal = lazy(() => import('./components/RoomDetailModal.jsx'));
+const MessCard = lazy(() => import('./components/MessCard.jsx'));
 const AddRoomModal = lazy(() => import('./components/AddRoomModal.jsx'));
 const AdminLoginModal = lazy(() => import('./components/AdminLoginModal.jsx'));
 const LocationSelectionModal = lazy(() => import('./components/LocationSelectionModal.jsx'));
@@ -63,6 +64,8 @@ function App() {
   const [isWebViewApp, setIsWebViewApp] = useState(false);
   const [showFeatureFilter, setShowFeatureFilter] = useState(false);
   const [featureFilters, setFeatureFilters] = useState({});
+  const [activeSection, setActiveSection] = useState('rooms'); // 'rooms' | 'mess'
+  const [messItems, setMessItems] = useState([]);
   
   // Load rooms data dynamically
   useEffect(() => {
@@ -85,6 +88,24 @@ function App() {
     
     loadRooms();
   }, [currentLanguage]);
+
+  // Load mess data lazily when selected first time
+  useEffect(() => {
+    const loadMess = async () => {
+      try {
+        const { getMess } = await import('./data/mess.js');
+        const items = getMess();
+        setMessItems(items);
+      } catch (error) {
+        console.error('Failed to load mess data:', error);
+        setMessItems([]);
+      }
+    };
+
+    if (activeSection === 'mess' && messItems.length === 0) {
+      loadMess();
+    }
+  }, [activeSection, messItems.length]);
 
   // Room type categories - use useMemo to update when language changes
   const categories = useMemo(() => [
@@ -580,49 +601,87 @@ function App() {
 
         {/* Enhanced Main Content */}
         <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-        {/* Categories Bar and Search Bar */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4 animate-slide-up">
-          <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 scrollbar-hide">
-            {categories.map(cat => (
-              <button
-                key={cat.key}
-                className={`px-3 sm:px-4 py-2 rounded-full border transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0 ${category === cat.key ? 'bg-orange-800 text-white border-orange-800 shadow-lg' : 'bg-white text-orange-700 border-orange-400 hover:bg-orange-50 hover:text-orange-800'}`}
-                onClick={() => setCategory(cat.key)}
-                aria-pressed={category === cat.key}
-              >
-                {cat.label}
-              </button>
-            ))}
-            
-            {/* Feature Filter Button */}
+        {/* Section Toggle - Below Header, Above Categories */}
+        <div className="flex items-center justify-center mb-4 animate-slide-up px-2">
+          <div className="inline-flex w-full max-w-md items-center gap-1 bg-white border border-orange-300 rounded-full shadow-sm overflow-hidden">
+            <span className="hidden md:flex items-center gap-1 pl-3 pr-2 text-xs font-medium text-orange-700">
+              <Search className="w-3.5 h-3.5" />
+              Searching for
+            </span>
             <button
-              className={`px-3 sm:px-4 py-2 rounded-full border transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${
-                Object.keys(featureFilters).length > 0 
-                  ? 'bg-orange-800 text-white border-orange-800 shadow-lg' 
-                  : 'bg-white text-orange-700 border-orange-400 hover:bg-orange-50 hover:text-orange-800'
+              role="tab"
+              aria-selected={activeSection==='rooms'}
+              className={`group flex-1 justify-center flex items-center gap-2 px-4 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
+                activeSection==='rooms'
+                  ? 'bg-orange-600 text-white shadow-inner'
+                  : 'text-orange-800 hover:bg-orange-50'
               }`}
-              onClick={handleShowFeatureFilter}
+              onClick={() => setActiveSection('rooms')}
             >
-              <Filter className="w-4 h-4" />
-              {t('filterByFeatures') || 'Filter'}
-              {Object.keys(featureFilters).length > 0 && (
-                <span className="bg-white text-orange-800 text-xs px-1.5 py-0.5 rounded-full">
-                  {Object.values(featureFilters).filter(Boolean).length}
-                </span>
-              )}
+              <Home className={`w-4 h-4 ${activeSection==='rooms' ? 'text-white' : 'text-orange-600'}`} />
+              Rooms
             </button>
-            
-            {/* Clear Filters Button */}
-            {Object.keys(featureFilters).length > 0 && (
-              <button
-                className="px-3 sm:px-4 py-2 rounded-full border border-red-400 bg-white text-red-600 hover:bg-red-50 hover:text-red-700 transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0"
-                onClick={handleClearFeatureFilters}
-              >
-                {t('clearAll') || 'Clear'}
-              </button>
-            )}
+            <button
+              role="tab"
+              aria-selected={activeSection==='mess'}
+              className={`group flex-1 justify-center flex items-center gap-2 px-4 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 ${
+                activeSection==='mess'
+                  ? 'bg-orange-600 text-white shadow-inner'
+                  : 'text-orange-800 hover:bg-orange-50'
+              }`}
+              onClick={() => setActiveSection('mess')}
+            >
+              <Utensils className={`w-4 h-4 ${activeSection==='mess' ? 'text-white' : 'text-orange-600'}`} />
+              Mess
+            </button>
           </div>
         </div>
+
+        {/* Categories Bar and Search Bar - only for Rooms */}
+        {activeSection === 'rooms' && (
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4 animate-slide-up">
+            <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 scrollbar-hide">
+              {categories.map(cat => (
+                <button
+                  key={cat.key}
+                  className={`px-3 sm:px-4 py-2 rounded-full border transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0 ${category === cat.key ? 'bg-orange-800 text-white border-orange-800 shadow-lg' : 'bg-white text-orange-700 border-orange-400 hover:bg-orange-50 hover:text-orange-800'}`}
+                  onClick={() => setCategory(cat.key)}
+                  aria-pressed={category === cat.key}
+                >
+                  {cat.label}
+                </button>
+              ))}
+              
+              {/* Feature Filter Button */}
+              <button
+                className={`px-3 sm:px-4 py-2 rounded-full border transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${
+                  Object.keys(featureFilters).length > 0 
+                    ? 'bg-orange-800 text-white border-orange-800 shadow-lg' 
+                    : 'bg-white text-orange-700 border-orange-400 hover:bg-orange-50 hover:text-orange-800'
+                }`}
+                onClick={handleShowFeatureFilter}
+              >
+                <Filter className="w-4 h-4" />
+                {t('filterByFeatures') || 'Filter'}
+                {Object.keys(featureFilters).length > 0 && (
+                  <span className="bg-white text-orange-800 text-xs px-1.5 py-0.5 rounded-full">
+                    {Object.values(featureFilters).filter(Boolean).length}
+                  </span>
+                )}
+              </button>
+              
+              {/* Clear Filters Button */}
+              {Object.keys(featureFilters).length > 0 && (
+                <button
+                  className="px-3 sm:px-4 py-2 rounded-full border border-red-400 bg-white text-red-600 hover:bg-red-50 hover:text-red-700 transition-all text-xs sm:text-sm font-semibold whitespace-nowrap flex-shrink-0"
+                  onClick={handleClearFeatureFilters}
+                >
+                  {t('clearAll') || 'Clear'}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* App Promotion Tagline */}
         {!isWebViewApp ? (
@@ -689,10 +748,10 @@ function App() {
           </div>
         )}
 
-        {/* Enhanced Room Count Section */}
+        {/* Section Heading */}
         <div className="mb-8 text-center animate-slide-up">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold title-gradient mb-3">
-            {t('availableRooms')}
+            {activeSection === 'rooms' ? t('availableRooms') : 'Available Mess Options'}
             {selectedGender && (
               <span className="text-lg sm:text-xl lg:text-2xl ml-2">
                 {selectedGender === 'boy' ? t('forBoys') : t('forGirls')}
@@ -700,35 +759,49 @@ function App() {
             )}
           </h2>
           <p className="text-xs sm:text-sm text-gray-500 mt-2 px-4">
-            {t('poweredBy')}
+            {activeSection === 'rooms' ? t('poweredBy') : 'Powered by Nivasi.space'}
           </p>
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mt-4 rounded-full"></div>
         </div>
 
-        {/* Enhanced Room Grid */}
+        {/* Grid */}
         {isLoading || isLoadingRooms ? (
           <div className="flex justify-center items-center py-16">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
-            <span className="ml-3 text-gray-600">{t('loadingRooms')}</span>
+            <span className="ml-3 text-gray-600">{activeSection==='rooms' ? t('loadingRooms') : 'Loading mess options...'}</span>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {filteredRooms.map((room, index) => (
-              <div 
-                key={room.id} 
-                className="animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <RoomCard
-                  room={room}
-                  onViewDetails={handleViewDetails}
-                  isAdmin={isAdmin}
-                  onEdit={handleEditRoom}
-                  onBookNow={handleBookNow}
-                  isFirst={index < 3}
-                />
-              </div>
-            ))}
+            {activeSection === 'rooms' ? (
+              filteredRooms.map((room, index) => (
+                <div 
+                  key={room.id} 
+                  className="animate-slide-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <RoomCard
+                    room={room}
+                    onViewDetails={handleViewDetails}
+                    isAdmin={isAdmin}
+                    onEdit={handleEditRoom}
+                    onBookNow={handleBookNow}
+                    isFirst={index < 3}
+                  />
+                </div>
+              ))
+            ) : (
+              messItems.map((mess, index) => (
+                <div
+                  key={mess.id}
+                  className="animate-slide-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <Suspense fallback={<ModalLoadingSpinner />}>
+                    <MessCard mess={mess} isFirst={index < 3} />
+                  </Suspense>
+                </div>
+              ))
+            )}
           </div>
         )}
 

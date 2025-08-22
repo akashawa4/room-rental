@@ -117,6 +117,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 1 girl is needed can stay in this room.",
     contact: "+91 9975867802",
     address: "MORE MANE NAGAR KALAMBA ",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "320m away from DYPSN College Gate, Girls PG Area",
     mapLink: "https://maps.app.goo.gl/Ydgb2vWPs4hGAUfa8?g_st=aw",
     gender: "girl", // Available for girls
@@ -145,6 +147,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4/5 GIRLS can stay in this room.",
     contact: "+91 8855883164",
     address: "MORE MANE NAGAR ,Klamaba.",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "300m away from DYPSN College Gate, Near Trimurti House.",
     mapLink: "https://maps.google.com/?q=987+Budget+Street+Student+Area",
     gender: "girl", // Available for girls
@@ -169,6 +173,8 @@ export const sampleRooms = [
     note: "Including light and water bill .",
     contact: "+91 9922113453",
     address: "More Mane Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "300m away from DYPSN College Gate, Near Trimurti House.",
     mapLink: "https://maps.app.goo.gl/iwbvTqrh6DGkvww76?g_st=aw",
     gender: "boys", // Available for boys
@@ -196,6 +202,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4/3 boys can stay in this room.",
     contact: "+91 8421150854",
     address: "Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "600m away from DYPSN College Gate, Near Karvir Chicken Shop , Kalamba.",
     mapLink: "https://maps.app.goo.gl/bYt8aXNyASz1KWhW7?g_st=aw",
     gender: "boy", // Available for boys
@@ -223,6 +231,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 5 GIRLS can stay in this room.",
     contact: "+91 9763539136",
     address: "More Mane Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "300m away from DYPSN College Gate, Near Trimurti House.",
     mapLink: "https://maps.app.goo.gl/iwbvTqrh6DGkvww76?g_st=aw",
     gender: "girls", // Available for girls
@@ -246,6 +256,8 @@ export const sampleRooms = [
     note: "Including light and water bill.",
     contact: "+91 9975099944",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "72m away from DYPSN College Gate, Behind Gavli Mess.",
     mapLink: "https://maps.app.goo.gl/BSaCPfDSAueXuXYQ7?g_st=aw",
     gender: "boys", // Available for boys
@@ -277,6 +289,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4 Girls per room and 12 GIRLS can stay in this 3 FLOOR HOUSE.",
     contact: "+91 9975098773",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "100m away from DYPSN College Gate, Behind Gavli Mess.",
     mapLink: "https://goo.gl/maps/4Xn1fdBChd95sgpz6?g_st=aw",
     gender: "girls", // Available for girls
@@ -308,6 +322,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 8 GIRLS can stay in this room.",
     contact: "+91 8855903406",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "100m away from DYPSN College Gate, .",
     mapLink: "https://maps.app.goo.gl/9EZtgicry5Wd4zyt7?g_st=aw",
     gender: "girls", // Available for girls
@@ -334,6 +350,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 5 GIRLS can stay in this room.",
     contact: "+91 9930407171",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "100m away from DYPSN College Gate, Near Arjun Patil's House.",
     mapLink: "https://maps.app.goo.gl/DXAs81tDtrg1B4Nw5?g_st=aw",
     gender: "girls", // Available for girls
@@ -359,6 +377,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4 GIRLS can stay in this room.",
     contact: "+91 9822673489",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "100m away from DYPSN College Gate, Near Trimurti House.",
     mapLink: "https://maps.app.goo.gl/3M5fqmDY7AAWcDA6A?g_st=aw",
     gender: "girls", // Available for girls
@@ -384,6 +404,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 9 BOYS needed to stay in this room.",
     contact: "+91 9822673489",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "100m away from DYPSN College Gate, Near Gurukrupa Mess.",
     mapLink: "https://maps.app.goo.gl/8Xs7bWKifv9cf6vo8?g_st=aw",
     gender: "boys", // Available for boys
@@ -410,6 +432,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 3 Boys needed to  stay in this room.",
     contact: "+91 9890489797",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "90m away from DYPSN College Gate.",
     mapLink: "https://maps.app.goo.gl/3foeiBa4Vc4Jx8C77?g_st=aw",
     gender: "boys", // Available for boys
@@ -439,6 +463,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 9 BOYS can stay in this room.",
     contact: "+91 9423275126",
     address: "Kalamba Lake , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "1.5km away from DYPSN College Gate, Near Kalamba Lake Waterfall.",
     mapLink: "https://goo.gl/maps/s1Ew2DPs6TYyER449?g_st=aw",
     gender: "boys", // Available for boys
@@ -470,6 +496,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 7 BOYS can stay in this room.",
     contact: "+91 9822264124",
     address: "Kalamba Lake , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "1.5km away from DYPSN College Gate, Near Kalamba Lake Waterfall.",
     mapLink: "https://goo.gl/maps/s1Ew2DPs6TYyER449?g_st=aw",
     gender: "boys", // Available for boys
@@ -498,6 +526,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 6 Boys can stay in this room.",
     contact: "+91 7057831999",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "60m away from DYPSN College Gate.",
     mapLink: "https://maps.app.goo.gl/4NxWJ6PUYktSKdjC6?g_st=aw",
     gender: "boys", // Available for boys
@@ -525,6 +555,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4 Boys can stay in this room.",
     contact: "+91 9420258442",
     address: "Survey Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "900m away from DYPSN College Gate.",
     mapLink: "https://maps.app.goo.gl/zFmaM4EvcrAHpNg1A?g_st=aw",
     gender: "boys", // Available for boys
@@ -554,6 +586,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 6 GIRLS can stay in this room.",
     contact: "+91 9028083205",
     address: "More Mane Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "300m away from DYPSN College Gate, Near Trimurti House.",
     mapLink: "https://maps.app.goo.gl/oxd6jxXUy5jqKwS48",
     gender: "girls", // Available for girls
@@ -586,6 +620,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 3 Boys can stay in this room.",
     contact: "+91 7020287835",
     address: "Survey Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "110m away from DYPSN College Gate.Near Vimal Hospital",
     mapLink: "https://maps.app.goo.gl/XeZT5qhenUaJhVaD8?g_st=aw",
     gender: "boys", // Available for boys
@@ -613,6 +649,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 2/3 STUDENTS can stay in this room.",
     contact: "+91 9730456081" ,
     address: "Survey Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "450m away from DYPSN College Gate.",
     mapLink: "https://maps.app.goo.gl/EQZqAZwxrhii4SwUA?g_st=aw",
     gender: "boys", // Available for boys
@@ -641,6 +679,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4 BOYS needed to stay in this room.",
     contact: "+91 9673860526",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "50m away from DYPSN College Gate.",
     mapLink: "https://maps.app.goo.gl/sm5JZRbvKpb7pqUT6?g_st=aw",
     gender: "boys", // Available for boys
@@ -667,6 +707,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4 GIRLS needed to stay in this room.",
     contact: "+91 9623135707",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "70m away from DYPSN College Gate, Near GuruKrupa Mess.", 
     mapLink: "https://maps.app.goo.gl/N6JB1pJWAj9gevMb8?g_st=aw",
     gender: "girls", // Available for girls
@@ -691,6 +733,8 @@ export const sampleRooms = [
     note: "Including light and water bill ,8 Boys needed to stay in this room.",
     contact: "+91 9423825260",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "50m away from DYPSN College Gate, Infront Of Vijaya Canteen.", 
     mapLink: "https://maps.app.goo.gl/18DGno4JqcGt245x8?g_st=aw",
     gender: "boys", // Available for boys
@@ -715,6 +759,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 7 Boys needed to stay in this room.",
     contact: "+91 9423271691",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "50m away from DYPSN College Gate,", 
     mapLink: "https://maps.app.goo.gl/z9aE94LYzoDba1d26?g_st=aw",
     gender: "boys", // Available for boys
@@ -744,6 +790,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 4 Boys can stay in this room.",
     contact: "+91 9379767676",
     address: "Prathamesh Nagar , Near Blossom School",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "300m away from DYPSN College Gate.",
     mapLink: "https://maps.app.goo.gl/gyjQXpGUezrS5cKw5?g_st=aw",
     gender: "boys", // Available for boys
@@ -768,7 +816,9 @@ export const sampleRooms = [
     rent: 1700,
     note: "Including light and water bill , 4 GIRLS needed to stay in this room.",
     contact: "+91 9423858882",
-      address: "More Mane Nagar , Kalamba",
+    address: "More Mane Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "150m away from DYPSN College Gate", 
     mapLink: "https://maps.app.goo.gl/iczXk8Gjy7R3hfeN7?g_st=aw",
     gender: "girls", // Available for girls
@@ -794,6 +844,8 @@ export const sampleRooms = [
     note: "Including light and water bill , 3 GIRLS needed to stay in this room.",
     contact: "+91 9960525255",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "70m away from DYPSN College Gate, Near DakshinMukhi Hanuman Mandir.", 
     mapLink: "https://maps.app.goo.gl/LmwXf7hiTRSC3zHN8?g_st=aw",
     gender: "girls", // Available for girls
@@ -816,6 +868,8 @@ export const sampleRooms = [
     note: "Including water bill, 1 Boy needed to stay in this room.",
     contact: "+91 9272505991",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "10m away from DYPSN College Gate, Infront of DYPSN College Gate.",
     mapLink: "https://maps.app.goo.gl/XVmHjvu2zBABn4bM8?g_st=aw",
     gender: "boy", // Available for boys
@@ -843,6 +897,8 @@ export const sampleRooms = [
     note: "Including  water bill ,1 Girl needed to stay and 4 GIRLS can stay in this room.",
     contact: "+91 9421202731",
     address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "70m away from DYPSN College Gate.", 
     mapLink: "https://maps.app.goo.gl/Kw9qMDPCJMwHGvyq8?g_st=aw",
     gender: "girls", // Available for girls
@@ -858,6 +914,87 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  ,Self Cooking not allowed, Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "STUDY TABLE FOR STUDENTS","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets(ONLY LADIES) allowed for stay"]
   },
+  {
+    id: 33,
+    title: "Disha Dilip Kadam's House",
+    rent: 1300,
+    note: "Including water bill , 1 girl needed , 5 GIRLS can stay in this room.",
+    contact: "+91 9921160303",
+    address: "Prathamesh Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "200m away from DYPSN College Gate", 
+    mapLink: "https://maps.app.goo.gl/eRs6iWG3mYnqEZpv6?g_st=aw",
+    gender: "girls", // Available for girls
+    roomType: "Cot Basis",
+    rooms: "2 BHK",
+    images: [
+      "/Disha Dilip Kadam/disha 0_converted.avif",
+      "/Disha Dilip Kadam/disha 1_converted.avif",
+      "/Disha Dilip Kadam/disha 2_converted.avif",
+      "/Disha Dilip Kadam/disha 3_converted.avif",
+      "/Disha Dilip Kadam/disha 4_converted.avif",
+      "/Disha Dilip Kadam/disha 5_converted.avif",
+      "/Disha Dilip Kadam/disha 6_converted.avif",
+      "/Disha Dilip Kadam/disha 7_converted.avif",
+      "/Disha Dilip Kadam/disha 8_converted.avif",
+      "/Disha Dilip Kadam/disha 9_converted.avif",
+      "/Disha Dilip Kadam/disha 10_converted.avif",
+      "/Disha Dilip Kadam/disha 11_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry Gate will be locked and opens at 07 am, 3000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory, Self Cleaning , No self cooking allowed, Good Behaviour is required, Group Studies not allowed",
+    features: ["WIFI(Recharge by Student)", "WATER SUPPLY", "Hot Water", "NEAR BY MESS", "TERRACE ACCESS","Breakfast allow for cooking", "Parents allowed for stay"]
+  },
+  {
+    id: 34,
+    title: "Ujwala Teke's House",
+    rent: 1500,
+    note: "Including  water bill ,1 Girl needed to stay and 4 GIRLS can stay in this room.",
+    contact: "+91 8806496510",
+    address: "More Mane Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "200m away from DYPSN College Gate.", 
+    mapLink: "https://maps.app.goo.gl/iczXk8Gjy7R3hfeN7?g_st=aw",
+    gender: "girls", // Available for girls
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Ujawala Teke/teke 0_converted.avif",
+      "/Ujawala Teke/teke 1_converted.avif",
+      "/Ujawala Teke/teke 2_converted.avif",
+      "/Ujawala Teke/teke 3_converted.avif",
+      "/Ujawala Teke/teke 4_converted.avif",
+
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed, Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "STUDY TABLE FOR STUDENTS","Shoes Stand","WATER SUPPLY", "NEAR BY MESS", "TERRACE ACCESS", "PARKING", "Parents(ONLY LADIES) allowed for stay", "Mattress"]
+  },
+  {
+    id: 35,
+    title: "Dilip Kadam's House",
+    rent: 2000,
+    note: "Including  water bill ,6 Boys needed to stay and 13 Students can stay in this room.",
+    contact: "+91 7020319571",
+    address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "70m away from DYPSN College Gate.", 
+    mapLink: "https://maps.app.goo.gl/s5FRY9czMYfEV6mA7?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "2 BHK",
+    images: [
+      "/Dilip Kadam/dilip 0_converted.avif",
+      "/Dilip Kadam/dilip 1_converted.avif",
+      "/Dilip Kadam/dilip 2_converted.avif",
+      "/Dilip Kadam/dilip 3_converted.avif",
+      "/Dilip Kadam/dilip 4_converted.avif",
+      "/Dilip Kadam/dilip 5_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
+  }
 
 ];
 
@@ -924,9 +1061,10 @@ const translateRoomTitle = (title, t) => {
   translatedTitle = translatedTitle.replace(/Jayshree Pardhi's House/g, t('jayshreePardhisHouse'));
   translatedTitle = translatedTitle.replace(/Vrushali Gadge's House/g, t('vrushaliGadgesHouse'));
   translatedTitle = translatedTitle.replace(/Sangita Mithari's House/g, t('sangitaMitharisHouse'));
-
-
-    
+  translatedTitle = translatedTitle.replace(/Disha Dilip Kadam's House/g, t('dishaDilipKadamsHouse'));
+  translatedTitle = translatedTitle.replace(/Ujwala Teke's House/g, t('ujwalaTekesHouse'));
+  translatedTitle = translatedTitle.replace(/Dilip Kadam's House/g, t('dilipKadamsHouse'));
+  
     return translatedTitle
 };
 
@@ -937,8 +1075,10 @@ const translateAddress = (address, t) => {
   
   // Translate common address patterns
   translatedAddress = translatedAddress.replace(/Salokhe Nagar/g, t('salokheNagar'));
+  translatedAddress = translatedAddress.replace(/Salokhenagar/g, t('salokhenagar'));
   translatedAddress = translatedAddress.replace(/Kalamba/g, t('kalamba'));
   translatedAddress = translatedAddress.replace(/More Mane Nagar/g, t('moreManeNagar'));
+  translatedAddress = translatedAddress.replace(/Prathamesh Nagar/g, t('prathameshNagar'));
   translatedAddress = translatedAddress.replace(/Shivganga Colony/g, t('shivgangaColony'));
   translatedAddress = translatedAddress.replace(/Kolhapur/g, t('kolhapur'));
   translatedAddress = translatedAddress.replace(/Maharashtra/g, t('maharashtra'));
