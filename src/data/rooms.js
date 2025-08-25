@@ -7,7 +7,7 @@ export const sampleRooms = [
     title: "Mulla's 1RK",
     rent: 6000,
     pricingType: 'perRoom',
-    note: "without including light and water bill , 2/3 Students can stay in this 1RK.",
+    note: "with including light and water bill , 2/3 Students can stay in this 1RK.",
     contact: "+91 9890491855",
     address: "Salokhe Nagar, Kalamba",
     city: "Kolhapur",
