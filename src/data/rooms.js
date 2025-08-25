@@ -140,7 +140,7 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry(Entry gate locked) , Self cooking not allowed , 2000 Rs. Advance , addhar car and student photo is mandatory ",
     features: ["3 Floor buliding","WIFI", "GEYSER", "WATER SUPPLY", "Cloth Drying Area", "TERRACE ACCESS" , "PARKING" , "CCTV CAMERA" , "SECURITY" , "BEDS" , "CUBERT", "LADY DOCTOR SUPPORT", "shoes stand" , "Grbage Mnagement by owner", "Parents allowed for stay", "Solar Panel"]
   },
-  {
+  {/*
     id: 6,
     title: "RUPALI NIKAM'S 1RK",
     rent: 1700,
@@ -165,7 +165,7 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory. ",
     features: ["WIFI","Hot Water","PARKING", "WATER SUPPLY","Cubert","Basic furniture", "SELF COOKING ALLOW", "NEAR BY MESS", "TERRACE ACCESS", "STUDY TABLE FOR STUDENTS", "PARKING",  "Mattress", "shoes stand" , "Parets allowed for stay"]
-  },
+  */},
   {
     id: 7,
     title: "Swati Naik's House",
@@ -315,7 +315,7 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,If some damage happen in room by Student then they have to pay for that , 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory, Self Cleaning , After 10pm no entry , Friends are not allowed in room  .",
     features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "SELF COOKING ALLOW", "NEAR BY MESS", "TERRACE ACCESS",  "PARKING" , "Parets allowed for stay only one day"]
   },
-  {
+  {/*
     id: 12,
     title: "SWAMI SAMARTH HOUSE (ROHIT RANJIT BENDARE)",
     rent: 1800,
@@ -342,7 +342,7 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry.",
     features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "OWNER'S MESS", "NEAR BY MESS", "TERRACE ACCESS", "PARKING",  "BEDS" , "Mattress","Parets allowed for stay", "Charging Bulb for ELECTRICITY issue"]
-  },
+  */ },
   {
     id: 13,
     title: "DIPAK CHOUGALE'S HOUSE",
@@ -374,7 +374,7 @@ export const sampleRooms = [
     id: 14,
     title: "BADAM SALOKHE'S HOUSE",
     rent: 2000,
-    note: "Including light and water bill , 4 GIRLS can stay in this room.",
+    note: "Including light and water bill , 2/3 GIRLS can stay in this room.",
     contact: "+91 9822673489",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
@@ -866,7 +866,7 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
   },
-  {
+  {/*
     id: 31,
     title: "Vrushali Gadge's House",
     rent: 2100,
@@ -888,14 +888,14 @@ export const sampleRooms = [
       "/Vrushali Gadge/gadge 4_converted.avif",
       "/Vrushali Gadge/gadge 5_converted.avif",
       "/Vrushali Gadge/gadge 6_converted.avif",
-      "/Vrushali Gadge/gadge 7_converted.avif",
+       ],
+    descriptio   "/Vrushali Gadge/gadge 7_converted.avif",
       "/Vrushali Gadge/gadge 8_converted.avif",
       "/Vrushali Gadge/gadge 9_converted.avif"
-    ],
-    description: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2100 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
+n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2100 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
     features: ["WIFI","BEDS","New Room","HOT WATER", "Self Cooking Allowed","Group Studies Allowed","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay", "Mattress","Study Table for Students","Near College Gate"]
-  },
-  {
+  */},
+  {/*
     id: 32,
     title: "Sangita Mithari's House",
     rent: 1500,
@@ -918,7 +918,7 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  ,Self Cooking not allowed, Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "STUDY TABLE FOR STUDENTS","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets(ONLY LADIES) allowed for stay"]
-  },
+  */},
   {
     id: 33,
     title: "Disha Dilip Kadam's House",
@@ -950,7 +950,7 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry Gate will be locked and opens at 07 am, 3000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory, Self Cleaning , No self cooking allowed, Good Behaviour is required, Group Studies not allowed",
     features: ["WIFI(Recharge by Student)", "WATER SUPPLY", "Hot Water", "NEAR BY MESS", "TERRACE ACCESS","Breakfast allow for cooking", "Parents allowed for stay"]
   },
-  {
+  {/*
     id: 34,
     title: "Ujwala Teke's House",
     rent: 1500,
@@ -974,7 +974,7 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed, Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "STUDY TABLE FOR STUDENTS","Shoes Stand","WATER SUPPLY", "NEAR BY MESS", "TERRACE ACCESS", "PARKING", "Parents(ONLY LADIES) allowed for stay", "Mattress"]
-  },
+  */},
   {
     id: 35,
     title: "Dilip Kadam's House",
@@ -999,7 +999,34 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
+  },
+  {
+    id: 36,
+    title: "Manasi Khanvelkar's House",
+    rent: 1800,
+    note: "Including  water bill ,3 Girls needed to stay and 4 GIRLS can stay in this room.",
+    contact: "+91 7066301144",
+    address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "70m away from DYPSN College Gate.", 
+    mapLink: "https://maps.app.goo.gl/X5MgbbAqesP2HkU19?g_st=aw ",
+    gender: "girls", // Available for girls
+    roomType: "Cot Basis",
+    rooms: "2 BHK",
+    images: [
+      "/Manasi Khanvelkar/mana 0_converted.avif",
+      "/Manasi Khanvelkar/mana 1_converted.avif",
+      "/Manasi Khanvelkar/mana 2_converted.avif",
+      "/Manasi Khanvelkar/mana 3_converted.avif",
+      "/Manasi Khanvelkar/mana 4_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
   }
+
+ 
+
 
 ];
 
@@ -1014,7 +1041,9 @@ export const getTranslatedRooms = (language = 'en') => {
     description: translateRoomDescription(room.description, t),
     address: translateAddress(room.address, t),
     location: translateLocation(room.location, t),
-    features: room.features.map(feature => translateFeature(feature, t)),
+    features: Array.isArray(room.features)
+      ? room.features.map(feature => translateFeature(feature, t))
+      : [],
     roomType: translateRoomType(room.roomType, t),
     rooms: translateRoomType(room.rooms, t)
   }));
