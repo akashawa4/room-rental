@@ -1031,7 +1031,7 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     title: "Seema Choughule's House",
     rent: 2000,
     note: "Including light and water bill ,10 Boys needed to stay and 10 Students can stay in this room.",
-    contact: "+91 7020319571",
+    contact: "+91 9021076232",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
     college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
