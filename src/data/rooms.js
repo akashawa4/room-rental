@@ -996,6 +996,8 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
       "/Dilip Kadam/dilip 3_converted.avif",
       "/Dilip Kadam/dilip 4_converted.avif",
       "/Dilip Kadam/dilip 5_converted.avif",
+      "/Dilip Kadam/dilip 6_converted.avif",
+      "/Dilip Kadam/dilip 7_converted.avif",
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
