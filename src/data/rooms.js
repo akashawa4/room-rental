@@ -1025,7 +1025,39 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
-  }
+  },
+  {
+    id: 37,
+    title: "Seema Choughule's House",
+    rent: 2000,
+    note: "Including light and water bill ,10 Boys needed to stay and 10 Students can stay in this room.",
+    contact: "+91 7020319571",
+    address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "30m away from DYPSN College Gate.", 
+    mapLink: "https://maps.app.goo.gl/k1xRdUam3eYp26kx5?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Seema Choughule/seema 0_converted.avif",
+      "/Seema Choughule/seema 1_converted.avif",
+      "/Seema Choughule/seema 2_converted.avif",
+      "/Seema Choughule/seema 3_converted.avif",
+      "/Seema Choughule/seema 4_converted.avif",
+      "/Seema Choughule/seema 5_converted.avif",
+      "/Seema Choughule/seema 6_converted.avif",
+      "/Seema Choughule/seema 7_converted.avif",
+      "/Seema Choughule/seema 8_converted.avif",
+      "/Seema Choughule/seema 9_converted.avif",
+      "/Seema Choughule/seema 10_converted.avif",
+      "/Seema Choughule/seema 11_converted.avif",
+
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(Recharge by Student)","BEDS","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
+  },
 
  
 
