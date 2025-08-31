@@ -82,8 +82,8 @@ const LocationSelectionModal = ({ onLocationSelect }) => {
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 animate-slide-up">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
-            <MapPin className="w-8 h-8 text-white" />
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <MapPin className="w-8 h-8 text-gray-600" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             {t('selectYourLocation') || 'Select Your Location'}
@@ -106,8 +106,8 @@ const LocationSelectionModal = ({ onLocationSelect }) => {
                   onClick={() => handleCitySelect(city)}
                   className={`h-12 text-sm font-semibold rounded-xl transition-all duration-200 ${
                     selectedCity === city
-                      ? 'bg-blue-600 hover:bg-blue-700 text-white scale-105'
-                      : 'bg-blue-50 hover:bg-blue-100 text-blue-700 border-2 border-blue-200 hover:border-blue-300'
+                      ? 'bg-gray-900 hover:bg-gray-800 text-white scale-105'
+                      : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-2 border-gray-200 hover:border-gray-300'
                   }`}
                   variant={selectedCity === city ? 'default' : 'outline'}
                 >
@@ -129,7 +129,7 @@ const LocationSelectionModal = ({ onLocationSelect }) => {
                     onClick={() => setShowCollegeDropdown(!showCollegeDropdown)}
                     className={`w-full h-12 text-left justify-between px-4 ${
                       selectedCollege
-                        ? 'bg-green-50 border-green-300 text-green-700'
+                        ? 'bg-gray-100 border-gray-400 text-gray-900'
                         : 'bg-gray-50 border-gray-300 text-gray-700'
                     }`}
                     variant="outline"
@@ -149,11 +149,11 @@ const LocationSelectionModal = ({ onLocationSelect }) => {
                         <button
                           key={college}
                           onClick={() => handleCollegeSelect(college)}
-                          className="w-full px-4 py-3 text-left hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
+                          className="w-full px-4 py-3 text-left hover:bg-gray-100 transition-colors border-b border-gray-100 last:border-b-0"
                         >
                           <div className="flex items-start">
-                            <Building className="w-4 h-4 mr-2 text-gray-500 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm leading-relaxed break-words">{college}</span>
+                            <Building className="w-4 h-4 mr-2 text-gray-600 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm leading-relaxed break-words text-gray-900">{college}</span>
                           </div>
                         </button>
                       ))}
@@ -174,7 +174,7 @@ const LocationSelectionModal = ({ onLocationSelect }) => {
           <Button
             onClick={handleContinue}
             disabled={!selectedCity || !selectedCollege || isSaving}
-            className="w-full h-12 text-lg font-semibold rounded-xl transition-all duration-200 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-12 text-lg font-semibold rounded-xl transition-all duration-200 bg-gray-900 hover:bg-gray-800 text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSaving ? (
               <div className="flex items-center justify-center gap-2">

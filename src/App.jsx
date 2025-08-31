@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, lazy, Suspense, useCallback } from 'react';
-import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, Download, X, Filter, TrendingUp, Home, Utensils } from 'lucide-react';
+import { Phone, Shield, LogOut, Settings, Search, Users, User, Calendar, X, Filter, TrendingUp, Home, Utensils } from 'lucide-react';
 import { Button } from '@/components/ui/button.jsx';
 import RoomCard from './components/RoomCard.jsx';
 import Logo from './components/Logo.jsx';
@@ -59,7 +59,7 @@ function App() {
   const [showBookingManagement, setShowBookingManagement] = useState(false);
   const [showUserStatistics, setShowUserStatistics] = useState(false);
   const [notification, setNotification] = useState({ message: '', type: 'success', isVisible: false });
-  const [showInstallGuide, setShowInstallGuide] = useState(false);
+
   const [showContactPopup, setShowContactPopup] = useState(false);
   const [isWebViewApp, setIsWebViewApp] = useState(false);
   const [showFeatureFilter, setShowFeatureFilter] = useState(false);
@@ -293,6 +293,10 @@ function App() {
   }, [selectedLocation]);
 
   const handleChangeGender = useCallback(() => {
+    setShowGenderSelection(true);
+  }, []);
+
+  const handleChangeLocation = useCallback(() => {
     setShowLocationSelection(true);
   }, []);
 
@@ -352,17 +356,17 @@ function App() {
         t={t}
       />
       
-      {/* Enhanced Header */}
-      <header className="header-gradient text-white shadow-2xl">
-            <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 lg:py-6">
+      {/* Compact Header */}
+      <header className="header-gradient text-white shadow-lg">
+        <div className="container mx-auto px-3 sm:px-4 py-2 sm:py-3">
                               {/* Mobile Layout - Optimized */}
                 <div className="sm:hidden">
-                  {/* Top Row - Logo, Title, and Profile */}
-                  <div className="flex items-center justify-between mb-3">
+            {/* Top Row - Logo and Title */}
+            <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2 flex-1 min-w-0">
                       <Logo className="bg-white/20 backdrop-blur-sm flex-shrink-0" />
                       <div className="min-w-0 flex-1">
-                        <h1 className="text-lg font-bold text-white leading-tight truncate">
+                  <h1 className="text-base font-bold text-white leading-tight truncate">
                           {t('title')}
                         </h1>
                         <p className="text-white text-xs opacity-90 truncate">
@@ -370,51 +374,32 @@ function App() {
                         </p>
                       </div>
                     </div>
-                    {/* User Profile - Top Right */}
-                    <div className="flex flex-col items-center gap-1 flex-shrink-0 ml-2">
-                      <User className="w-8 h-8 text-white" />
-                      <span className="text-xs text-white/80 font-medium">Profile</span>
-                    </div>
                   </div>
 
-                  {/* Middle Row - Language, Gender, and Status */}
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2 flex-1">
+            {/* Middle Row - Language and Location/Gender Buttons */}
+            <div className="flex items-center gap-1 mb-2">
                       <LanguageSelector />
-                      {selectedGender && (
-                        <Button
-                          onClick={handleChangeGender}
-                          variant="outline"
-                          size="sm"
-                          className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm text-xs"
-                        >
-                          <Settings className="w-4 h-4" />
-                          {t('changeGender')}
-                        </Button>
-                      )}
-                    </div>
-                    {/* Status Indicators - Right Side */}
-                    <div className="flex items-center gap-1 flex-shrink-0">
-                      {selectedGender && (
-                        <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">
-                          {selectedGender === 'boy' ? t('forBoys') : t('forGirls')}
-                        </span>
-                      )}
-                      <span className="px-2 py-1 bg-white/10 rounded-full text-xs text-white">
-                        {currentLanguage.toUpperCase()}
-                      </span>
-                      {isAdmin && (
-                        <div className="status-badge status-admin animate-fade-scale text-xs">
-                          <Shield className="w-3 h-3" />
-                          {t('adminMode')}
-                        </div>
-                      )}
-                    </div>
+              <Button
+                onClick={handleChangeLocation}
+                variant="outline"
+                size="sm"
+                className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm text-[10px] px-1.5 py-0.5 min-w-0 flex-shrink-0"
+              >
+                <Settings className="w-2.5 h-2.5 mr-0.5 flex-shrink-0" />
+                <span>{selectedLocation ? 'Change Location' : 'Location'}</span>
+              </Button>
+              <Button
+                onClick={handleChangeGender}
+                variant="outline"
+                size="sm"
+                className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm text-[10px] px-1.5 py-0.5 min-w-0 flex-shrink-0"
+              >
+                <Settings className="w-2.5 h-2.5 mr-0.5 flex-shrink-0" />
+                <span>{selectedGender ? 'Change Gender' : 'Gender'}</span>
+              </Button>
                   </div>
 
-                  {/* Bottom Row - Contact and Admin Actions */}
-                  <div className="space-y-2">
-                    {/* Contact Button */}
+            {/* Bottom Row - Contact Button */}
                     <Button
                       onClick={handleContactUs}
                       size="sm"
@@ -423,69 +408,6 @@ function App() {
                       <Phone className="w-4 h-4" />
                       For Room Registration Contact Us
                     </Button>
-                    
-                    {/* User Profile and Logout */}
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-2 flex-1">
-                        {user?.photoURL ? (
-                          <img 
-                            src={user.photoURL || '/logo.svg'}
-                            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/logo.svg'; }}
-                            referrerPolicy="no-referrer"
-                            alt={user.displayName || 'User'} 
-                            className="w-6 h-6 rounded-full border border-white/30"
-                          />
-                        ) : (
-                          <User className="w-6 h-6 text-white" />
-                        )}
-                        <span className="text-xs text-white/80 font-medium">
-                          {user?.displayName || 'User'}
-                        </span>
-                      </div>
-                      <Button
-                        variant="outline"
-                        onClick={logout}
-                        size="sm"
-                        className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
-                      >
-                        <LogOut className="w-4 h-4" />
-                        {t('logout')}
-                      </Button>
-                    </div>
-                    
-                    {/* Admin Buttons - Only show if admin */}
-                    {isAdmin && (
-                      <div className="flex items-center gap-2">
-                        <Button
-                          variant="outline"
-                          onClick={handleShowBookingManagement}
-                          size="sm"
-                          className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm flex-1"
-                        >
-                          <Calendar className="w-4 h-4" />
-                          {t('manageBookings') || 'Bookings'}
-                        </Button>
-                        <Button
-                          variant="outline"
-                          onClick={handleShowUserStatistics}
-                          size="sm"
-                          className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm flex-1"
-                        >
-                          <TrendingUp className="w-4 h-4" />
-                          Stats
-                        </Button>
-                        <Button
-                          variant="outline"
-                          onClick={handleAdminLogout}
-                          size="sm"
-                          className="bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm flex-1"
-                        >
-                          <Shield className="w-4 h-4" />
-                          {t('adminLogout')}
-                        </Button>
-                      </div>
-                    )}
-                  </div>
                 </div>
 
               {/* Desktop Layout */}
@@ -499,20 +421,22 @@ function App() {
                       </h1>
                       <p className="text-white text-sm flex flex-wrap justify-center sm:justify-start items-center gap-1">
                         {t('tagline')}
-                        {selectedGender && (
-                          <span className="ml-2 px-2 py-1 bg-white/20 rounded-full text-xs">
-                            {selectedGender === 'boy' ? t('forBoys') : t('forGirls')}
-                          </span>
-                        )}
-                        <span className="ml-2 px-2 py-1 bg-white/10 rounded-full text-xs">
-                          {currentLanguage.toUpperCase()}
-                        </span>
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3 w-full sm:w-auto mt-2 sm:mt-0">
                   <LanguageSelector />
+                  {selectedLocation && (
+                    <Button
+                      onClick={handleChangeLocation}
+                      variant="outline"
+                      className="w-full sm:w-auto bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
+                    >
+                      <Settings className="w-4 h-4" />
+                      Change Location
+                    </Button>
+                  )}
                   {selectedGender && (
                     <Button
                       onClick={handleChangeGender}
@@ -520,7 +444,7 @@ function App() {
                       className="w-full sm:w-auto bg-white/20 border-white/30 text-white hover:bg-white/30 backdrop-blur-sm"
                     >
                       <Settings className="w-4 h-4" />
-                      {t('changeGender')}
+                      Change Gender
                     </Button>
                   )}
                   {isAdmin && (
@@ -556,23 +480,7 @@ function App() {
                     For Room Registration Contact Us
                   </Button>
                   
-                  {/* User Profile */}
-                  <div className="flex flex-col items-center gap-1">
-                    {user?.photoURL ? (
-                      <img 
-                        src={user.photoURL || '/logo.svg'} 
-                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/logo.svg'; }}
-                        referrerPolicy="no-referrer"
-                        alt={user.displayName || 'User'} 
-                        className="w-8 h-8 rounded-full border-2 border-white/30"
-                      />
-                    ) : (
-                      <User className="w-8 h-8 text-white" />
-                    )}
-                    <span className="text-xs text-white/80 font-medium">
-                      {user?.displayName || 'Profile'}
-                    </span>
-                  </div>
+
                   
                   {/* Logout Button */}
                   <Button
@@ -683,80 +591,12 @@ function App() {
           </div>
         )}
 
-        {/* App Promotion Tagline */}
-        {!isWebViewApp ? (
-          <div className="mb-8 text-center animate-slide-up">
-            <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-4 border border-orange-200">
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <div className="w-6 h-6 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
-                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-orange-800">{t('getNivasiApp')}</span>
-              </div>
-              <div className="flex items-center justify-center gap-4 text-xs text-orange-700 mb-3">
-                <span className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
-                  {t('browseOffline')}
-                </span>
-                <span className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
-                  {t('instantNotifications')}
-                </span>
-                <span className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-orange-500 rounded-full"></div>
-                  {t('fasterLoading')}
-                </span>
-              </div>
-              {/* Install App Button */}
-              <Button
-                onClick={() => setShowInstallGuide(true)}
-                className="install-app-btn-attractive w-full mt-3"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                {t('installApp') || 'Install App'}
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="mb-8 text-center animate-slide-up">
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <div className="w-6 h-6 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
-                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-green-800">Welcome to Nivasi Space App!</span>
-              </div>
-              <div className="flex items-center justify-center gap-4 text-xs text-green-700 mb-3">
-                <span className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
-                  Native App Experience
-                </span>
-                <span className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
-                  Enhanced Performance
-                </span>
-                <span className="flex items-center gap-1">
-                  <div className="w-1 h-1 bg-green-500 rounded-full"></div>
-                  Offline Access
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
+
 
         {/* Section Heading */}
         <div className="mb-8 text-center animate-slide-up">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold title-gradient mb-3">
             {activeSection === 'rooms' ? t('availableRooms') : 'Available Mess Options'}
-            {selectedGender && (
-              <span className="text-lg sm:text-xl lg:text-2xl ml-2">
-                {selectedGender === 'boy' ? t('forBoys') : t('forGirls')}
-              </span>
-            )}
           </h2>
           <p className="text-xs sm:text-sm text-gray-500 mt-2 px-4">
             {activeSection === 'rooms' ? t('poweredBy') : 'Powered by Nivasi.space'}
@@ -1045,155 +885,7 @@ function App() {
         </Suspense>
       )}
 
-      {/* Install Guide Modal */}
-      {showInstallGuide && !isWebViewApp && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] flex flex-col">
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
-                  <Download className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold text-gray-900">
-                    {t('installAppTitle') || 'Install Nivasi Space App'}
-                  </h2>
-                  <p className="text-sm text-gray-600">
-                    {t('enhancedExperience') || 'Get the best experience'}
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setShowInstallGuide(false)}
-                className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
 
-            {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6">
-              <div className="space-y-6">
-                {/* Benefits */}
-                <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-4 border border-orange-200">
-                  <h3 className="font-semibold text-orange-800 mb-3">
-                    {t('installationBenefits') || 'App Benefits'}
-                  </h3>
-                  <div className="space-y-2 text-sm text-orange-700">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                      <span>{t('browseOffline') || 'Browse offline'}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                      <span>{t('instantNotifications') || 'Instant notifications'}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                      <span>{t('fasterLoading') || 'Faster loading'}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                      <span>{t('nativeFeatures') || 'Native app features'}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Installation Steps */}
-                <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-900">
-                    {t('installationGuide') || 'Installation Guide'}
-                  </h3>
-                  
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                        1
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-blue-900 mb-1">
-                          {t('step1Title') || 'Download APK'}
-                        </h4>
-                        <p className="text-sm text-blue-700">
-                          {t('step1Description') || 'Download the Nivasi Space App APK file'}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                        2
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-blue-900 mb-1">
-                          {t('step2Title') || 'Enable Installation'}
-                        </h4>
-                        <p className="text-sm text-blue-700">
-                          {t('step2Description') || 'Allow installation from unknown sources in settings'}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                        3
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-blue-900 mb-1">
-                          {t('step3Title') || 'Install App'}
-                        </h4>
-                        <p className="text-sm text-blue-700">
-                          {t('step3Description') || 'Open the downloaded APK and tap Install'}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                        4
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-blue-900 mb-1">
-                          {t('step4Title') || 'Open App'}
-                        </h4>
-                        <p className="text-sm text-blue-700">
-                          {t('step4Description') || 'Launch the app and enjoy the enhanced experience'}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="space-y-3">
-                  <Button
-                    onClick={() => {
-                      const link = document.createElement('a');
-                      link.href = '/Nivasi Space App.apk';
-                      link.download = 'Nivasi Space App.apk';
-                      link.click();
-                      setShowInstallGuide(false);
-                    }}
-                    className="w-full bg-orange-600 hover:bg-orange-700 text-white"
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    {t('downloadNow') || 'Download Now'}
-                  </Button>
-                  
-                  <Button
-                    onClick={() => setShowInstallGuide(false)}
-                    variant="outline"
-                    className="w-full"
-                  >
-                    {t('close') || 'Close'}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Contact Popup Modal */}
       {showContactPopup && (

@@ -117,45 +117,7 @@ en: {
   cancel: "Cancel",
   submit: "Submit",
   
-  // Install App Button
-  installApp: "Install App",
-  openApp: "Open App",
-  downloading: "Downloading...",
-  installing: "Installing...",
-  installAppTitle: "Install Nivasi Space App",
-  downloadNow: "Download Now",
-  installationComplete: "Installation Complete",
-  close: "Close",
-  step1Title: "Download",
-  step1Description: "Download the APK file",
-  step2Title: "Install",
-  step2Description: "Tap the downloaded file",
-  step3Title: "Allow",
-  step3Description: "Enable unknown sources if prompted",
-  step4Title: "Complete",
-  step4Description: "Installation completed",
-  installationGuide: "Installation Guide",
-  installationBenefits: "Get the Nivasi Space App for the best experience:",
-  benefit1: "Browse rooms offline",
-  benefit2: "Get instant notifications",
-  benefit3: "Faster loading times",
-  benefit4: "Native app features",
-  needHelp: "Need help?",
-  contactSupport: "Contact Support",
-  
-  // App Promotion
-  getNivasiApp: "Get the Nivasi Space App for the best experience!",
-  browseOffline: "Browse offline",
-  instantNotifications: "Instant notifications",
-  fasterLoading: "Faster loading",
-  nativeFeatures: "Native app features",
-  enhancedExperience: "Enhanced experience with offline access and notifications",
-  
-  // Web View App Welcome
-  welcomeToNivasiApp: "Welcome to Nivasi Space App!",
-  usingEnhancedApp: "You're using our enhanced mobile app",
-  fasterBrowsing: "Faster browsing experience",
-  offlineAccess: "Offline access to saved rooms",
+
   
   // Booking System
   bookNow: "Book Now",
@@ -532,45 +494,7 @@ en: {
     cancel: "रद्द करें",
     submit: "जमा करें",
   
-  // Install App Button
-    installApp: "ऐप इंस्टॉल करें",
-    openApp: "ऐप खोलें",
-    downloading: "डाउनलोड हो रहा...",
-    installing: "इंस्टॉल हो रहा...",
-    installAppTitle: "Nivasi Space ऐप इंस्टॉल करें",
-    downloadNow: "अभी डाउनलोड करें",
-    installationComplete: "इंस्टॉलेशन पूरा",
-    close: "बंद करें",
-    step1Title: "डाउनलोड",
-    step1Description: "APK फाइल डाउनलोड करें",
-    step2Title: "इंस्टॉल",
-    step2Description: "डाउनलोड की गई फाइल पर टैप करें",
-    step3Title: "अनुमति",
-    step3Description: "यदि पूछा जाए तो अज्ञात स्रोतों को सक्षम करें",
-    step4Title: "पूरा",
-    step4Description: "इंस्टॉलेशन पूरा हुआ",
-    installationGuide: "इंस्टॉलेशन गाइड",
-    installationBenefits: "सर्वोत्तम अनुभव के लिए Nivasi Space ऐप प्राप्त करें:",
-    benefit1: "ऑफलाइन कमरे ब्राउज़ करें",
-    benefit2: "तत्काल नोटिफिकेशन प्राप्त करें",
-    benefit3: "तेज़ लोडिंग समय",
-    benefit4: "नेटिव ऐप सुविधाएं",
-    needHelp: "मदद चाहिए?",
-    contactSupport: "सहायता से संपर्क करें",
-  
-  // App Promotion
-    getNivasiApp: "सर्वोत्तम अनुभव के लिए Nivasi Space ऐप प्राप्त करें!",
-    browseOffline: "ऑफलाइन ब्राउज़ करें",
-    instantNotifications: "तत्काल नोटिफिकेशन",
-    fasterLoading: "तेज़ लोडिंग",
-    nativeFeatures: "नेटिव ऐप सुविधाएं",
-    enhancedExperience: "ऑफलाइन एक्सेस और नोटिफिकेशन के साथ बेहतर अनुभव",
-  
-  // Web View App Welcome
-    welcomeToNivasiApp: "Nivasi Space ऐप में आपका स्वागत है!",
-    usingEnhancedApp: "आप हमारा बेहतर मोबाइल ऐप उपयोग कर रहे हैं",
-    fasterBrowsing: "तेज़ ब्राउज़िंग अनुभव",
-    offlineAccess: "सहेजे गए कमरों तक ऑफलाइन पहुंच",
+
   
   // Booking System
     bookNow: "अभी बुक करें",
@@ -859,16 +783,7 @@ en: {
     ourVision: "आमचे दृष्टीकोन",
     visionText: "सर्वात विश्वसनीय आणि विद्यार्थी-अनुकूल खोली भाडे प्लॅटफॉर्म बनणे, विद्यार्थ्यांना माहितीपूर्ण निवडी करण्यास सक्षम बनवणे आणि सहाय्यक समुदायाला प्रोत्साहन देणे.",
   
-  // PWA Install
-    installApp: "ऐप इंस्टॉल करा",
-    install: "इंस्टॉल",
-    appInstalled: "ऐप इंस्टॉल झाले",
-    
-    // Web View App Welcome
-    welcomeToNivasiApp: "Nivasi Space ऐप मध्ये तुमचे स्वागत आहे!",
-    usingEnhancedApp: "तुम्ही आमचा बेहतर मोबाइल ऐप वापरत आहात",
-    fasterBrowsing: "वेगवान ब्राउझिंग अनुभव",
-    offlineAccess: "सेव्ह केलेल्या खोल्यांना ऑफलाइन प्रवेश",
+
   
   // Contact
     contactUs: "संपर्क साधा",
