@@ -38,6 +38,20 @@ function App() {
   const { t, currentLanguage } = useLanguage();
   const { user, loading, logout, isAuthenticated } = useAuth();
   
+  // Debug logging for iOS authentication issues
+  useEffect(() => {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    if (isIOS) {
+      console.log('App: iOS Device - Auth State:', {
+        user: user ? 'exists' : 'null',
+        loading,
+        isAuthenticated,
+        userEmail: user?.email,
+        userUID: user?.uid
+      });
+    }
+  }, [user, loading, isAuthenticated]);
+  
   const [rooms, setRooms] = useState([]);
   const [isLoadingRooms, setIsLoadingRooms] = useState(true);
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -336,7 +350,28 @@ function App() {
 
   // Show login screen if not authenticated
   if (!isAuthenticated) {
-    return <LoginScreen onLoginSuccess={() => {}} />;
+    // For iOS devices, add additional check to prevent showing login screen after redirect
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    
+    // On iOS, be more careful about showing login screen
+    if (isIOS) {
+      // Check if we have a user object or if we're still processing authentication
+      if (user === null && loading === false && !isAuthenticated) {
+        console.log('App: iOS - Showing login screen (no user, not loading, not authenticated)');
+        return <LoginScreen onLoginSuccess={() => {}} />;
+      } else if (user || loading) {
+        console.log('App: iOS - User exists or still loading, not showing login screen');
+        // Don't show login screen if we have a user or are still loading
+        // Continue to the main app
+      } else {
+        // If we reach here on iOS, show login screen as fallback
+        console.log('App: iOS - Fallback: showing login screen');
+        return <LoginScreen onLoginSuccess={() => {}} />;
+      }
+    } else {
+      // For non-iOS devices, use the standard check
+      return <LoginScreen onLoginSuccess={() => {}} />;
+    }
   }
 
   return (

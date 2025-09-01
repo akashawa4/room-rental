@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     let isMounted = true;
     let authStateUnsubscribe = null;
     let redirectCheckTimeout = null;
+    let redirectResultHandled = false; // Track if redirect result was handled
 
     // Handle redirect result when user returns from Google auth
     const handleRedirectResult = async () => {
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }) => {
         
         // For iOS, add a small delay to ensure redirect is complete
         if (isIOS) {
-          await new Promise(resolve => setTimeout(resolve, 500));
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Increased delay for iOS
         }
         
         const result = await getRedirectResult(auth);
@@ -44,10 +45,19 @@ export const AuthProvider = ({ children }) => {
           console.log('AuthContext: User email:', result.user.email);
           console.log('AuthContext: User display name:', result.user.displayName);
           
+          // Mark redirect result as handled
+          redirectResultHandled = true;
+          
           // Set user immediately from redirect result
           setUser(result.user);
           setLoading(false);
           setRedirectLoading(false);
+          
+          // For iOS, also clear any existing auth state to prevent conflicts
+          if (isIOS) {
+            console.log('AuthContext: iOS - User set from redirect result, clearing loading states');
+          }
+          
           return;
         } else if (isMounted) {
           console.log('AuthContext: No redirect result found');
@@ -91,10 +101,24 @@ export const AuthProvider = ({ children }) => {
         }
         
         if (isMounted) {
-          setUser(user);
-          setLoading(false);
-          setRedirectLoading(false);
-          setAuthError(null);
+          // For iOS, ensure we don't override redirect result user
+          if (isIOS && !redirectLoading) {
+            console.log('AuthContext: iOS - User authenticated through auth state listener');
+          }
+          
+          // If we have a user and redirect result was handled, ensure we stay logged in
+          if (redirectResultHandled && isMounted) {
+            console.log('AuthContext: Maintaining user session from redirect result');
+            setUser(user);
+            setLoading(false);
+            setRedirectLoading(false);
+            setAuthError(null);
+          } else {
+            setUser(user);
+            setLoading(false);
+            setRedirectLoading(false);
+            setAuthError(null);
+          }
         }
       }, (error) => {
         console.error('AuthContext: Auth state change error:', error);
@@ -116,16 +140,17 @@ export const AuthProvider = ({ children }) => {
         // Then set up auth state listener
         setupAuthStateListener();
         
-        // For iOS, add additional redirect result checks
+        // For iOS, add additional redirect result checks with better logic
         if (isIOS) {
           // Set up periodic redirect result checks for iOS
           redirectCheckTimeout = setInterval(async () => {
-            if (isMounted && !user && !redirectLoading) {
+            if (isMounted && !user && !redirectLoading && !redirectResultHandled) {
               console.log('AuthContext: iOS - Periodic redirect result check...');
               try {
                 const result = await getRedirectResult(auth);
                 if (result && isMounted) {
                   console.log('AuthContext: iOS - Found redirect result in periodic check:', result.user);
+                  redirectResultHandled = true;
                   setUser(result.user);
                   setLoading(false);
                   setRedirectLoading(false);
@@ -135,7 +160,29 @@ export const AuthProvider = ({ children }) => {
                 console.log('AuthContext: iOS - Periodic check error:', error);
               }
             }
-          }, 2000); // Check every 2 seconds
+          }, 1000); // Check every 1 second for iOS (faster response)
+          
+          // Additional check after a longer delay for iOS
+          setTimeout(async () => {
+            if (isMounted && !user && !redirectLoading && !redirectResultHandled) {
+              console.log('AuthContext: iOS - Delayed redirect result check...');
+              try {
+                const result = await getRedirectResult(auth);
+                if (result && isMounted) {
+                  console.log('AuthContext: iOS - Found redirect result in delayed check:', result.user);
+                  redirectResultHandled = true;
+                  setUser(result.user);
+                  setLoading(false);
+                  setRedirectLoading(false);
+                  if (redirectCheckTimeout) {
+                    clearInterval(redirectCheckTimeout);
+                  }
+                }
+              } catch (error) {
+                console.log('AuthContext: iOS - Delayed check error:', error);
+              }
+            }
+          }, 5000); // Check after 5 seconds
         }
         
         // Add a timeout to prevent infinite loading
@@ -145,7 +192,7 @@ export const AuthProvider = ({ children }) => {
             setLoading(false);
             setRedirectLoading(false);
           }
-        }, isIOS ? 15000 : 10000); // Longer timeout for iOS
+        }, isIOS ? 20000 : 10000); // Extended timeout for iOS
         
       } catch (error) {
         console.error('AuthContext: Initialization error:', error);

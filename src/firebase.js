@@ -42,12 +42,18 @@ auth.settings.appVerificationDisabledForTesting = false;
 
 // Set auth persistence based on environment using the WebView detection utility
 const detection = detectWebView();
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-// Use session persistence for WebView to avoid storage issues
-if (detection.shouldUseRedirect) {
+// For iOS devices, always use local persistence to maintain auth state after redirect
+if (isIOS) {
+  setPersistence(auth, browserLocalPersistence);
+  console.log('Firebase: Using local persistence for iOS device');
+} else if (detection.shouldUseRedirect) {
+  // For other WebView environments, use session persistence
   setPersistence(auth, browserSessionPersistence);
   console.log('Firebase: Using session persistence for WebView/in-app browser');
 } else {
+  // For regular browsers, use local persistence
   setPersistence(auth, browserLocalPersistence);
   console.log('Firebase: Using local persistence for regular browser');
 }
