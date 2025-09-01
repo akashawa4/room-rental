@@ -34,6 +34,21 @@ const LoginScreen = ({ onLoginSuccess }) => {
     setError('');
     clearAuthError();
     
+    // Detect iOS device
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    
+    // Set a timeout for iOS devices to prevent infinite loading
+    let authTimeout;
+    if (isIOS) {
+      authTimeout = setTimeout(() => {
+        if (isLoading) {
+          console.warn('LoginScreen: iOS authentication timeout reached');
+          setError('Authentication is taking longer than expected. Please try again or refresh the page.');
+          setIsLoading(false);
+        }
+      }, 20000); // 20 second timeout for iOS
+    }
+    
     try {
       // Use the new WebView detection utility
       const detection = detectWebView();
@@ -42,6 +57,13 @@ const LoginScreen = ({ onLoginSuccess }) => {
       console.log('LoginScreen: Environment detection:', detection);
       console.log('LoginScreen: Recommended auth method:', recommendedMethod);
       console.log('LoginScreen: Retry count:', retryCount);
+      
+      // For iOS devices, always use redirect to avoid popup issues
+      if (isIOS) {
+        console.log('LoginScreen: iOS device detected, using redirect authentication');
+        await signInWithRedirect(auth, googleProvider);
+        return; // Don't set loading to false as we're redirecting
+      }
       
       // For WebView or in-app browsers, always use redirect
       if (detection.shouldUseRedirect) {
@@ -85,6 +107,10 @@ const LoginScreen = ({ onLoginSuccess }) => {
       // Increment retry count
       setRetryCount(prev => prev + 1);
     } finally {
+      // Clear timeout if it exists
+      if (authTimeout) {
+        clearTimeout(authTimeout);
+      }
       setIsLoading(false);
     }
   };
@@ -145,8 +171,20 @@ const LoginScreen = ({ onLoginSuccess }) => {
             {isLoading ? 'Signing in...' : 'Continue with Google'}
           </Button>
           
+          {/* iOS Notice */}
+          {/iPad|iPhone|iPod/.test(navigator.userAgent) && (
+            <div className="mt-2 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+              <p className="text-orange-700 text-xs text-center">
+                🍎 iOS Device Detected: You'll be redirected to Safari for secure authentication
+              </p>
+              <p className="text-orange-600 text-xs text-center mt-1">
+                This ensures the best compatibility with iOS security features
+              </p>
+            </div>
+          )}
+          
           {/* Enhanced WebView Notice */}
-          {detection.shouldUseRedirect && (
+          {detection.shouldUseRedirect && !/iPad|iPhone|iPod/.test(navigator.userAgent) && (
             <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
               <p className="text-blue-700 text-xs text-center">
                 🔗 You'll be redirected to your default browser for secure authentication

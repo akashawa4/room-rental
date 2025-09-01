@@ -17,9 +17,13 @@ export const AuthProvider = ({ children }) => {
   const [redirectLoading, setRedirectLoading] = useState(false);
   const [authError, setAuthError] = useState(null);
 
+  // Detect iOS device
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
   useEffect(() => {
     let isMounted = true;
     let authStateUnsubscribe = null;
+    let redirectCheckTimeout = null;
 
     // Handle redirect result when user returns from Google auth
     const handleRedirectResult = async () => {
@@ -27,6 +31,11 @@ export const AuthProvider = ({ children }) => {
         console.log('AuthContext: Checking for redirect result...');
         setRedirectLoading(true);
         setAuthError(null);
+        
+        // For iOS, add a small delay to ensure redirect is complete
+        if (isIOS) {
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
         
         const result = await getRedirectResult(auth);
         
@@ -84,6 +93,7 @@ export const AuthProvider = ({ children }) => {
         if (isMounted) {
           setUser(user);
           setLoading(false);
+          setRedirectLoading(false);
           setAuthError(null);
         }
       }, (error) => {
@@ -92,6 +102,7 @@ export const AuthProvider = ({ children }) => {
         if (isMounted) {
           setAuthError(error);
           setLoading(false);
+          setRedirectLoading(false);
         }
       });
     };
@@ -105,13 +116,36 @@ export const AuthProvider = ({ children }) => {
         // Then set up auth state listener
         setupAuthStateListener();
         
+        // For iOS, add additional redirect result checks
+        if (isIOS) {
+          // Set up periodic redirect result checks for iOS
+          redirectCheckTimeout = setInterval(async () => {
+            if (isMounted && !user && !redirectLoading) {
+              console.log('AuthContext: iOS - Periodic redirect result check...');
+              try {
+                const result = await getRedirectResult(auth);
+                if (result && isMounted) {
+                  console.log('AuthContext: iOS - Found redirect result in periodic check:', result.user);
+                  setUser(result.user);
+                  setLoading(false);
+                  setRedirectLoading(false);
+                  clearInterval(redirectCheckTimeout);
+                }
+              } catch (error) {
+                console.log('AuthContext: iOS - Periodic check error:', error);
+              }
+            }
+          }, 2000); // Check every 2 seconds
+        }
+        
         // Add a timeout to prevent infinite loading
         setTimeout(() => {
           if (isMounted && loading) {
             console.warn('AuthContext: Loading timeout reached, forcing loading to false');
             setLoading(false);
+            setRedirectLoading(false);
           }
-        }, 10000); // 10 second timeout
+        }, isIOS ? 15000 : 10000); // Longer timeout for iOS
         
       } catch (error) {
         console.error('AuthContext: Initialization error:', error);
@@ -119,6 +153,7 @@ export const AuthProvider = ({ children }) => {
         if (isMounted) {
           setAuthError(error);
           setLoading(false);
+          setRedirectLoading(false);
         }
       }
     };
@@ -131,8 +166,11 @@ export const AuthProvider = ({ children }) => {
       if (authStateUnsubscribe) {
         authStateUnsubscribe();
       }
+      if (redirectCheckTimeout) {
+        clearInterval(redirectCheckTimeout);
+      }
     };
-  }, []);
+  }, [isIOS]);
 
   const logout = async () => {
     try {
