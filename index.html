@@ -2,17 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Favicon - Use SVG with cache busting for immediate update -->
-    <link rel="icon" type="image/svg+xml" href="/logo.svg?v=3" />
-    <link rel="shortcut icon" href="/logo.svg?v=3" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/logo.svg?v=3" />
+    <!-- Favicon - Optimized for Google Search Results -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png?v=3" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png?v=3" />
+    <link rel="shortcut icon" href="/logo.png?v=3" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=3" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/logo.png?v=3" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/logo.png?v=3" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/logo.png?v=3" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/logo.png?v=3" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/logo.png?v=3" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/logo.png?v=3" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/logo.png?v=3" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/logo.png?v=3" />
     
     <!-- Preload critical images for LCP optimization -->
     <link rel="preload" as="image" href="/Ayan%20Mulla/mulla%200_converted_converted.avif" fetchpriority="high" />
     <link rel="preload" as="image" href="/Sabgita%20Gavde/S%20Gavde%200_converted_converted.avif" fetchpriority="high" />
     <link rel="preload" as="image" href="/Dipali%20Teli/Teli%200_converted_converted.avif" fetchpriority="high" />
     <link rel="preload" as="image" href="/Trimurti%20House/house%200_converted.avif" fetchpriority="high" />
-    <link rel="preload" as="image" href="/logo.svg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/logo.png" fetchpriority="high" />
     <!-- Preload additional critical images -->
     <link rel="preload" as="image" href="/Ayan%20Mulla/mulla%201_converted.avif" fetchpriority="medium" />
     <link rel="preload" as="image" href="/Sabgita%20Gavde/S%20Gavde%201_converted.avif" fetchpriority="medium" />
@@ -37,7 +46,10 @@
     <meta property="og:url" content="https://nivasi.space" />
     <meta property="og:title" content="Nivasi.space - College Room Rental | Find Your Perfect Room Near Campus | Nivasi" />
     <meta property="og:description" content="Nivasi.space - Find the perfect college room for rent near your campus. Browse listings, view features and conditions, and contact owners directly. Modern, user-friendly platform for students. Nivasi college room rental, student accommodation, hostel, PG, shared accommodation." />
-    <meta property="og:image" content="https://nivasi.space/logo.svg" />
+    <meta property="og:image" content="https://nivasi.space/logo.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:site_name" content="Nivasi.space" />
     <meta property="og:locale" content="en_US" />
     
@@ -46,7 +58,7 @@
     <meta name="twitter:url" content="https://nivasi.space" />
     <meta name="twitter:title" content="Nivasi.space - College Room Rental | Find Your Perfect Room Near Campus | Nivasi" />
     <meta name="twitter:description" content="Nivasi.space - Find the perfect college room for rent near your campus. Browse listings, view features and conditions, and contact owners directly. Modern, user-friendly platform for students." />
-    <meta name="twitter:image" content="https://nivasi.space/logo.svg" />
+    <meta name="twitter:image" content="https://nivasi.space/logo.png" />
     <meta name="twitter:site" content="@nivasi_space" />
     <meta name="twitter:creator" content="@nivasi_space" />
     
@@ -73,12 +85,16 @@
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-    
+
+    <!-- Removed COOP/COEP meta tags to avoid breaking OAuth on iOS Safari -->
+    <!-- <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups" /> -->
+    <!-- <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp" /> -->
+
     <!-- WebView Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#F97316" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#F97316" media="(prefers-color-scheme: dark)" />
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://nivasi.space" />
     
@@ -125,7 +141,7 @@
       "name": "Nivasi.space",
       "alternateName": "Nivasi",
       "url": "https://nivasi.space",
-      "logo": "https://nivasi.space/logo.svg",
+      "logo": "https://nivasi.space/logo.png",
       "description": "Nivasi.space - College Room Rental Platform. Find the perfect college room for rent near your campus. Student accommodation, hostel, PG, shared accommodation.",
       "foundingDate": "2024",
       "address": {
