@@ -67,28 +67,23 @@
     <meta name="apple-mobile-web-app-title" content="Nivasi" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups" />
-    <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp" />
+    <!-- iOS Safari OAuth Fix: Removed COOP/COEP meta tags that break Google OAuth -->
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-TileColor" content="#F97316" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
     
-    <!-- WebView and Security Headers -->
+    <!-- WebView and Security Headers - iOS OAuth Compatible -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
-    <!-- Security Headers for Authentication -->
+    <!-- Security Headers for Authentication - iOS Compatible -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-
-    <!-- Removed COOP/COEP meta tags to avoid breaking OAuth on iOS Safari -->
-    <!-- <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups" /> -->
-    <!-- <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp" /> -->
 
     <!-- WebView Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
