@@ -206,11 +206,11 @@ export const sampleMess = [
             //withBreakfast: 3000,
           },
           girls: {
-            withoutBreakfast: 2300,
-            withBreakfast: 2800
+            withoutBreakfast: 2000,
+            //withBreakfast: 2800
           }
         },
-        perMeal:70,
+        perMeal:60,
         perPlate: {
           description: "3 chapati, bhaji, rice, pickle, papad",
           addons: {
