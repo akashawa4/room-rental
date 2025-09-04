@@ -120,6 +120,9 @@ export const roomTranslations = {
     dishaDilipKadamsHouse: "Disha Dilip Kadam's House",
     ujwalaTekesHouse: "Ujwala Teke's House",
     dilipKadamsHouse: "Dilip Kadam's House",
+    kusumManesHouse: "Kusum Mane's House",
+    seemaChoughulesHouse: "Seema Choughule's House",
+    thoratsHouse: "Thorat's House",
     
     // Distance measurements
     fiftyMeters: "50m",

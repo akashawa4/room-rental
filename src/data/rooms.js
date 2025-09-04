@@ -733,7 +733,7 @@ export const sampleRooms = [
     id: 26,
     title: "Raosaheb Naik's House",
     rent: 1700,
-    note: "Including light and water bill ,8 Boys needed to stay in this room.",
+    note: "Including light and water bill , 1 Boy is required in this room.",
     contact: "+91 9423825260",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
@@ -1058,6 +1058,61 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(Recharge by Student)","BEDS","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
   },
+  {
+    id: 38,
+    title: "Kusum Mane's House",
+    rent: 2000,
+    note: "Including light and water bill ,4 Boys is required in this room.",
+    contact: "+91 9175319356",
+    address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "120m away from DYPSN College Gate.", 
+    mapLink: "https://maps.app.goo.gl/VWJLigCr4i9xZtLu6?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "1 BHK",
+    images: [
+      "/Kusum Mane/ku 0_converted.avif",
+      "/Kusum Mane/ku 1_converted.avif",
+      "/Kusum Mane/ku 2_converted.avif",
+      "/Kusum Mane/ku 3_converted.avif",
+      "/Kusum Mane/ku 4_converted.avif",
+      "/Kusum Mane/ku 5_converted.avif",
+      "/Kusum Mane/ku 6_converted.avif",
+      "/Kusum Mane/ku 7_converted.avif",
+
+
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","Cubert","HOT WATER","Shoes Stand","WATER SUPPLY","Aqua Gurad for drinking water", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
+  },
+  {
+    id: 39,
+    title: "Thorat's House",
+    rent: 2000,
+    note: "Including light and water bill ,4 Boys is required in this room.",
+    contact: "+91 98503080399",
+    address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "60m away from DYPSN College Gate.", 
+    mapLink: "hhttps://maps.app.goo.gl/g1jsrkjAbqMydqtf7?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "1 RK",
+    images: [
+      "/Thorats room/tho 0_converted.avif",
+      "/Thorats room/tho 1_converted.avif",
+      "/Thorats room/tho 2_converted.avif",
+      "/Thorats room/tho 3_converted.avif",
+      "/Thorats room/tho 4_converted.avif",
+      "/Thorats room/tho 5_converted.avif",
+
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(Recharge by Student)","BEDS","Mattress","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE","Self Cooking allowed", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
+  },
 
  
 
@@ -1131,8 +1186,10 @@ const translateRoomTitle = (title, t) => {
   translatedTitle = translatedTitle.replace(/Sangita Mithari's House/g, t('sangitaMitharisHouse'));
   translatedTitle = translatedTitle.replace(/Disha Dilip Kadam's House/g, t('dishaDilipKadamsHouse'));
   translatedTitle = translatedTitle.replace(/Ujwala Teke's House/g, t('ujwalaTekesHouse'));
-  translatedTitle = translatedTitle.replace(/Dilip Kadam's House/g, t('dilipKadamsHouse'));
-  
+  translatedTitle = translatedTitle.replace(/Dilip Kadam's House/g, t('dilipKadamsHouse')); 
+  translatedTitle = translatedTitle.replace(/Kusum Mane's House/g, t('kusumManesHouse'));
+  translatedTitle = translatedTitle.replace(/Seema Choughule's House/g, t('seemaChoughulesHouse'));
+  translatedTitle = translatedTitle.replace(/Thorat's House/g, t('thoratsHouse'));
     return translatedTitle
 };
 
