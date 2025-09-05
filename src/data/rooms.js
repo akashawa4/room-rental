@@ -1060,10 +1060,10 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
   },
   {
     id: 38,
-    title: "Kusum Mane's House",
+    title: "Kusum Rajmane's House",
     rent: 2000,
     note: "Including light and water bill ,4 Boys is required in this room.",
-    contact: "+91 9175319356",
+    contact: "+91 9175719356",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
     college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
@@ -1087,12 +1087,12 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","Cubert","HOT WATER","Shoes Stand","WATER SUPPLY","Aqua Gurad for drinking water", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
   },
-  {
+  {/*
     id: 39,
     title: "Thorat's House",
     rent: 2000,
     note: "Including light and water bill ,4 Boys is required in this room.",
-    contact: "+91 98503080399",
+    contact: "+91 9850380399",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
     college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
@@ -1112,7 +1112,7 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(Recharge by Student)","BEDS","Mattress","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE","Self Cooking allowed", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
-  },
+  */},
 
  
 
