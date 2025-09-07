@@ -7,7 +7,7 @@ export const sampleRooms = [
     title: "Mulla's 1RK",
     rent: 6000,
     pricingType: 'perRoom',
-    note: "with including light and water bill , 2/3 Students can stay in this 1RK.",
+    note: "with including light and water bill , 2 Students are required in this 1RK.",
     contact: "+91 9890491855",
     address: "Salokhe Nagar, Kalamba",
     city: "Kolhapur",
@@ -286,14 +286,14 @@ export const sampleRooms = [
     id: 11,
     title: "SURYAKANT SANGPAL HOUSE",
     rent: 2000,
-    note: "Including light and water bill , 4 Girls per room and 12 GIRLS can stay in this 3 FLOOR HOUSE.",
+    note: "Without including light and water bill , 4 Boys per room and 8 Boys can stay in this 3 FLOOR HOUSE.",
     contact: "+91 9975098773",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
     college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "100m away from DYPSN College Gate, Behind Gavli Mess.",
     mapLink: "https://goo.gl/maps/4Xn1fdBChd95sgpz6?g_st=aw",
-    gender: "girls", // Available for girls
+    gender: "boys", // Available for boys
     roomType: "Cot Basis",
     rooms: "1 RK",
     images: [
@@ -343,7 +343,7 @@ export const sampleRooms = [
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry.",
     features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "OWNER'S MESS", "NEAR BY MESS", "TERRACE ACCESS", "PARKING",  "BEDS" , "Mattress","Parets allowed for stay", "Charging Bulb for ELECTRICITY issue"]
   */ },
-  {
+  {/*
     id: 13,
     title: "DIPAK CHOUGALE'S HOUSE",
     rent: 2000,
@@ -369,12 +369,12 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory ,Only Laptop and Mobile Charging is allowed , Hairdryer and other electronics is not allowed , Self Cleaning , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , Self Cooking not allowed.",
     features: ["WIFI", "WATER SUPPLY", "NEAR BY MESS", "TERRACE ACCESS",  "BEDS", "shoes stand" , "Parets allowed for stay" , "Charging Bulb for ELECTRICITY issue","Self cooking allowed", "dedicated space for washing cloth","Stairs with Auto Light Sensor"]
-  },
-  {/*
+  */},
+  {
     id: 14,
     title: "BADAM SALOKHE'S HOUSE",
     rent: 2000,
-    note: "Including light and water bill , 2/3 GIRLS can stay in this room.",
+    note: "Including light and water bill , 2 girls is required in this room.",
     contact: "+91 9822673489",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
@@ -396,12 +396,12 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry , Friends are not allowed in room  , Self Cleaning , If there are three student in room then the electricity and water bill will be paid by students",
     features: ["WIFI(If Student want they can have it by their own)","HOT WATER", "WATER SUPPLY","Parking", "SELF COOKING ALLOW", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
-  */},
+  },
   {
     id: 15,
     title: "BADAM SALOKHE'S HOUSE",
     rent: 2000,
-    note: "Including light and water bill , 4 boys is required in this room.",
+    note: "Including light and water bill , 3 boys is required in this room.",
     contact: "+91 9822673489",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
@@ -975,7 +975,7 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 1500 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed, Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "STUDY TABLE FOR STUDENTS","Shoes Stand","WATER SUPPLY", "NEAR BY MESS", "TERRACE ACCESS", "PARKING", "Parents(ONLY LADIES) allowed for stay", "Mattress"]
   */},
-  {
+  {/*
     id: 35,
     title: "Dilip Kadam's House",
     rent: 2000,
@@ -1001,7 +1001,7 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 5000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,Self Cooking not allowed,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parents allowed for stay"]
-  },
+  */},
   {/*
     id: 36,
     title: "Manasi Khanvelkar's House",
