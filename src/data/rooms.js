@@ -523,7 +523,7 @@ export const sampleRooms = [
     id: 19,
     title: "SUREKHA GAVLI'S HOUSE(GAVLI MESS)",
     rent: 2000,
-    note: "Including light and water bill , 4 Boys is required in this room.",
+    note: "Including light and water bill , 1 Boys is required in this room.",
     contact: "+91 7057831999",
     address: "Salokhenagar , Kalamba",
     city: "Kolhapur",
@@ -583,14 +583,14 @@ export const sampleRooms = [
     id: 21,
     title: "Matoshree House",
     rent: 2000,
-    note: "Including light and water bill , 5 girls is required in this room.",
+    note: "Including light and water bill , 5 boys is required in this room.",
     contact: "+91 9028083205",
     address: "More Mane Nagar , Kalamba",
     city: "Kolhapur",
     college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "300m away from DYPSN College Gate, Near Trimurti House.",
     mapLink: "https://maps.app.goo.gl/oxd6jxXUy5jqKwS48",
-    gender: "girls", // Available for girls
+    gender: "boys", // Available for boys
     roomType: "Cot Basis",
     rooms: "1 BHK",
     images: [
@@ -1245,7 +1245,37 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","Mattress","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE","Self Cooking allowed", "TERRACE ACCESS", "Cubert","PARKING", "Parents allowed for stay"]
-  }
+  },
+  {
+    id: 45,
+    title: "Shridhar More's House",
+    rent: 2000,
+    note: "Including light and water bill, 4 Boys are required in this room. Total capacity 7.",
+    contact: "+91 7387268182",
+    address: "Shridhar More's House",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "Nearby DYPSN College",
+    mapLink: "https://maps.app.goo.gl/puVyMMVugLTQ4VWB9",
+    gender: "boys", // Available for boys
+    roomType: "Single Room",
+    rooms: "Single Room",
+    images: [
+      "/Shridhar More/sh 0_converted.avif",
+      "/Shridhar More/sh 1_converted.avif",
+      "/Shridhar More/sh 2_converted.avif",
+      "/Shridhar More/sh 3_converted.avif",
+      "/Shridhar More/sh 4_converted.avif",
+      "/Shridhar More/sh 5_converted.avif",
+      "/Shridhar More/sh 6_converted.avif",
+      "/Shridhar More/sh 7_converted.avif",
+      "/Shridhar More/sh 8_converted.avif",
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning",
+    features: [
+      "WIFI (If students want they can install it)","New Room","Hot Water","Parking","Self Cooking Allowed","Group Study Allowed","Cupboard","Shoe Stand","Near by Mess","Terrace Access","Parents allowed to stay","Charging Bulbs for Electricity issue"]
+}
+
  
 
 
@@ -1326,6 +1356,11 @@ const translateRoomTitle = (title, t) => {
   translatedTitle = translatedTitle.replace(/Kusum Mane's House/g, t('kusumManesHouse'));
   translatedTitle = translatedTitle.replace(/Seema Choughule's House/g, t('seemaChoughulesHouse'));
   translatedTitle = translatedTitle.replace(/Thorat's House/g, t('thoratsHouse'));
+  translatedTitle = translatedTitle.replace(/Shridhar More's House/g, t('shridharMoresHouse'));
+  translatedTitle = translatedTitle.replace(/Patankar's House/g, t('patankarsHouse'));
+  translatedTitle = translatedTitle.replace(/Madhuri Sandip Desai's House/g, t('madhuriSandipDesaisHouse'));
+  translatedTitle = translatedTitle.replace(/Anjana Mohite's House/g, t('anjanaMohitesHouse'));
+  translatedTitle = translatedTitle.replace(/Mukund Bhat's House/g, t('mukundBhatsHouse'));
     return translatedTitle
 };
 
