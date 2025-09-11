@@ -815,7 +815,7 @@ export const sampleRooms = [
     features: ["WIFI(If Student want they can have it by their own)", "WATER SUPPLY", "SELF COOKING ALLOW", "NEAR BY MESS", "TERRACE ACCESS", "PARKING",  "BEDS", "shoes stand" , "Parets allowed for stay"]
   },
   */
-  {
+  {/*
     id: 29,
     title: "Sanjay Kale's House",
     rent: 1700,
@@ -841,7 +841,7 @@ export const sampleRooms = [
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENTS'S addhar card, photo and parent phone number is mandatory , Self Cleaning , After 10pm no entry  , Good Behaviour is required",
     features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER", "Group Studies Allowed","Shoes Stand","WATER SUPPLY","Parking", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "PARKING", "Parets allowed for stay"]
-  },
+  */},
   {/*
     id: 30,
     title: "Jayshree Pardhi's House",
@@ -1165,7 +1165,7 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(Recharge by Student)","BEDS","Mattress","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE","Self Cooking allowed", "TERRACE ACCESS", "Cubert","PARKING", "Parents allowed for stay"]
   },
-  {
+  {/*
     id: 42,
     title: "Madhuri Sandip Desai's House",
     rent: 2000,
@@ -1190,6 +1190,61 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     ],
     description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
     features: ["WIFI(Recharge by Student)","BEDS","New Room","Mattress","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE","Self Cooking allowed", "TERRACE ACCESS", "Cubert","PARKING", "Parents allowed for stay"]
+  */},
+  {
+    id: 43,
+    title: "Mukund Bhat 's House",
+    rent: 2000,
+    note: "Including water bill , 4 Boys is required in this room.",
+    contact: "+91 9370736329",
+    address: "Salokhenagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "100m away from DYPSN College Gate.", 
+    mapLink: "https://maps.app.goo.gl/k1xRdUam3eYp26kx5?g_st=aw",
+    gender: "boys", // Available for boys
+    roomType: "Cot Basis",
+    rooms: "Single Room",
+    images: [
+      "/Mukund Bhats/bha 0_converted.avif",
+      "/Mukund Bhats/bha 1_converted.avif",
+      "/Mukund Bhats/bha 2_converted.avif",
+      "/Mukund Bhats/bha 3_converted.avif",
+      "/Mukund Bhats/bha 4_converted.avif",
+      "/Mukund Bhats/bha 5_converted.avif",
+      "/Mukund Bhats/bha 6_converted.avif",
+      "/Mukund Bhats/bha 7_converted.avif",
+
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card,Self Cooking not allowed, photo and parent phone number is mandatory , Self Cleaning ,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","HOT WATER","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE", "TERRACE ACCESS", "Cubert","PARKING", "Parents allowed for stay"]
+  },
+  {
+    id: 44,
+    title: "Anjana Mohite's House",
+    rent: 1800,
+    note: "Including light and water bill ,4 Girls is required in this room.",
+    contact: "+91 8007414703",
+    address: "More Mane Nagar , Kalamba",
+    city: "Kolhapur",
+    college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
+    location: "200m away from DYPSN College Gate.", 
+    mapLink: "https://maps.app.goo.gl/vsPrn3WNTEzQQZjA7?g_st=aw",
+    gender: "girls", // Available for girls
+    roomType: "Cot Basis",
+    rooms: "Single Room",
+    images: [
+      "/Anajna Mohite/mo 0_converted.avif",
+      "/Anajna Mohite/mo 1_converted.avif",
+      "/Anajna Mohite/mo 2_converted.avif",
+      "/Anajna Mohite/mo 3_converted.avif",
+      "/Anajna Mohite/mo 4_converted.avif",
+      "/Anajna Mohite/mo 5_converted.avif",
+      "/Anajna Mohite/mo 6_converted.avif",
+
+    ],
+    description: "1 YEAR AGREEMENT , The rent should be paid between the 1st and 10th of each month ,After 10pm no entry, 2000 Rs. Advance ,  STUDENT'S addhar card, photo and parent phone number is mandatory , Self Cleaning ,No loud sound allowed,Group Studies not allowed,Good Behaviour is required",
+    features: ["WIFI(if student want they can have it by their own)","BEDS","New Room","Mattress","HOT WATER","Shoes Stand","WATER SUPPLY", "NEAR BY MESS","CHARGING BULB FOR ELECTRICITY ISSUE","Self Cooking allowed", "TERRACE ACCESS", "Cubert","PARKING", "Parents allowed for stay"]
   }
  
 
@@ -1240,6 +1295,8 @@ const translateRoomTitle = (title, t) => {
   translatedTitle = translatedTitle.replace(/RUPALI NIKAM'S/g, t('rupaliNikams'));
   translatedTitle = translatedTitle.replace(/Patankar's/g, t('patankars'));
   translatedTitle = translatedTitle.replace(/Madhuri Sandip Desai's/g, t('madhuriSandipDesais'));
+  translatedTitle = translatedTitle.replace(/Anjana Mohite's/g, t('anjanaMohites'));
+  translatedTitle = translatedTitle.replace(/Mukund Bhat's/g, t('mukundBhats'));
 
   // Add missing translations for other rooms
   translatedTitle = translatedTitle.replace(/Morya Mess/g, t('moryaMess'));
