@@ -1255,7 +1255,7 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     address: "Shridhar More's House",
     city: "Kolhapur",
     college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
-    location: "Nearby DYPSN College",
+    location: "350m away from DYPSN College Gate , Near Matrix Group.",
     mapLink: "https://maps.app.goo.gl/puVyMMVugLTQ4VWB9",
     gender: "boys", // Available for boys
     roomType: "Single Room",
