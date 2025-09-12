@@ -1252,13 +1252,13 @@ n: "2 YEAR AGREEMENT , Light bill is separate , The rent should be paid between 
     rent: 2000,
     note: "Including light and water bill, 4 Boys are required in this room. Total capacity 7.",
     contact: "+91 7387268182",
-    address: "Shridhar More's House",
+    address: "Prathamesh Nagar , Kalamba",
     city: "Kolhapur",
     college: "Dr. D. Y. Patil Prathisthan's College of Engineering, Salokhenagar (DYPSN) Kolhapur",
     location: "350m away from DYPSN College Gate , Near Matrix Group.",
     mapLink: "https://maps.app.goo.gl/puVyMMVugLTQ4VWB9",
     gender: "boys", // Available for boys
-    roomType: "Single Room",
+    roomType: "Cot Basis",
     rooms: "Single Room",
     images: [
       "/Shridhar More/sh 0_converted.avif",
