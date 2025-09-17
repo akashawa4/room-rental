@@ -194,6 +194,71 @@ export const sampleMess = [
       features: ["Hygienic kitchen", "RO water", "Seating available","Orders can be can be placed 1 hour before the meal time"]
     },
     {
+      id: 5,
+      title: "Vijaya Canteen Veg/Non-Veg",
+      location: "Salokhenagar, Klamba",
+      contact: "+91 9769945050",
+      mapLink: "https://maps.app.goo.gl/VheiCxvetqmbR38Z6?g_st=aw",
+      pricing: {
+        monthly: {
+          boys: {
+            withoutBreakfast:2200,
+            //withBreakfast: 3000,
+          },
+          girls: {
+            withoutBreakfast: 2000,
+            //withBreakfast: 2800
+          }
+        },
+        perMeal:60,
+        perPlate: {
+          description: "3 chapati, bhaji, rice, pickle, papad",
+          addons: {
+            festivalSweet: {
+              description: "Sweet provided on festivals",
+              frequency: "Festival days"
+            },
+            specials: {
+              wednesday: {
+                nonVeg: "Egg curry (1 egg)",
+                veg: "Paneer or Basundi with sweet"
+              },
+              sunday: {
+                nonVeg: "Chicken curry (4 pieces)",
+                veg: "Paneer or Basundi with sweet"
+              }
+            }
+          }
+        }
+      },
+      cuisine: ["Veg", "Non-Veg"],
+      timings: {
+        breakfast: "08:30 AM - 10:00 AM",
+        lunch: "12:30 PM - 02:30 PM",
+        dinner: "08:30 PM - 10:00 PM"
+      },
+      breakfastMenu: ["Shira", "Upit", "Pohe","Special Breakfast on Sunday","Maggie,Pasta"],
+      rules: {
+        leavePolicy: "Leave considered only if more than 5 days",
+        messOff: "Twice a month mess is off",
+        chapatiPolicy: {
+          breakfast: "N/A",
+          lunch: "Unlimited",
+          dinner: "Unlimited",
+        },
+        service: "Self service during eating"
+      },
+      images: [
+        "/mess/Vijaya Canteen/v 0_converted.avif",
+        "/mess/Vijaya Canteen/v 1_converted.avif",
+        "/mess/Vijaya Canteen/v 2_converted.avif",
+
+
+
+      ],
+      features: ["Hygienic kitchen", "RO water", "Seating available"]
+    },
+    {
       id: 4,
       title: "Swami Samarth Gharghuti Khanaval Veg/Non-Veg",
       location: "Salokhenagar, Klamba",
